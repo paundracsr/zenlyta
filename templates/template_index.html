@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{PAGE_TITLE}}</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="{{CANONICAL_URL}}">
+    <meta name="theme-color" content="#10B981">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{OG_TITLE}}">
+    <meta property="og:description" content="{{OG_DESCRIPTION}}">
+    <meta property="og:url" content="{{OG_URL}}">
+    <meta property="og:site_name" content="zenlyta">
+    <meta property="og:image" content="{{OG_IMAGE}}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2310B981%22/><text y=%22.8em%22 x=%22.2em%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%23ffffff%22>Z</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="ads/ads.css">
+
+    <!-- Google Analytics / AdSense -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-3EQRT92T3L');
+    </script>
+
+    <script src="ads/ad-config.js"></script>
+    <script src="ads/ads.js"></script>
+
+    <style>
+        /* ============================================================
+           zenlyta GLOBAL SEO / PERFORMANCE CSS
+           Dark Tech UI — Mobile First
+           ============================================================ */
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%), linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+
+        img, svg, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button, input, textarea, select {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p, h1, h2, h3, h4 {
+            overflow-wrap: break-word;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin-inline: auto;
+            padding-inline: 1.25rem;
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: rgba(16, 185, 129, 0.25);
+            color: var(--text-main);
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translate3d(0, -16px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.92); } }
+
+        .js .animate-on-load { animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+        .js .reveal-left, .js .reveal-right, .js .reveal-up, .js .reveal-scale {
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .js .reveal-left { transform: translate3d(-24px, 0, 0); }
+        .js .reveal-right { transform: translate3d(24px, 0, 0); }
+        .js .reveal-up { transform: translate3d(0, 24px, 0); }
+        .js .reveal-scale { transform: scale(0.97); }
+        .js .reveal-left.visible, .js .reveal-right.visible, .js .reveal-up.visible, .js .reveal-scale.visible { opacity: 1; transform: none; }
+
+        .js .stagger-children > * {
+            opacity: 0;
+            transform: translate3d(0, 18px, 0);
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .js .stagger-children.visible > * { opacity: 1; transform: none; }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(6, 8, 9, 0.94);
+            border-bottom: 1px solid var(--border-color);
+            transition: box-shadow var(--transition), background var(--transition);
+        }
+        @supports (backdrop-filter: blur(10px)) {
+            .navbar { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+        }
+        .navbar.scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+        .nav-inner {
+            min-height: 3.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
+        }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            min-height: 28px;
+            background: var(--primary);
+            color: #000;
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 900;
+            transition: transform var(--transition);
+        }
+        .brand:hover .brand-badge { transform: scale(1.04); }
+        .brand span { color: var(--text-main); }
+        .brand .highlight { color: var(--primary); }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        .main-nav a {
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.7rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: color var(--transition), background var(--transition), border-color var(--transition);
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+        .menu-toggle {
+            display: none;
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .menu-toggle:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--border-glow); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: clamp(3rem, 7vw, 5rem) 0 2.75rem;
+            text-align: center;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: min(60%, 400px);
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.4;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            font-size: clamp(2.15rem, 6vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+        .hero h1 .highlight {
+            color: var(--primary);
+            text-shadow: 0 0 36px rgba(16, 185, 129, 0.18);
+        }
+        .hero-desc {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.7;
+        }
+
+        /* Buttons */
+        .btn-primary, .btn-secondary {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 1.25rem;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #051A14;
+            font-weight: 700;
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.18);
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(16, 185, 129, 0.25);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.04);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .sys-footer {
+            padding: 2.5rem 0 1.5rem;
+            background: #030507;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-grid h4 { margin: 0 0 0.75rem; color: var(--text-main); font-size: 0.85rem; letter-spacing: 0.02em; }
+        .footer-grid a { display: block; margin-bottom: 0.4rem; transition: color var(--transition), transform var(--transition); }
+        .footer-grid a:hover { color: var(--primary); transform: translateX(2px); }
+        .footer-brand-block { max-width: 280px; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding-inline: 1rem; }
+            .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+            .nav-inner { flex-wrap: wrap; }
+            .main-nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.25rem;
+                padding: 0.75rem 0 1rem;
+            }
+            .main-nav.open { display: flex; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+
+    {{CUSTOM_HEAD_EXTRA}}
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-badge">Z</span>
+                <span>zenlyta<span class="highlight">.com</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">☰</button>
+            <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+                <a href="index.html#tools">/tools</a>
+                <a href="architecture.html">/architecture</a>
+                <a href="privacy.html">/privacy</a>
+                <a href="about.html">/about</a>
+                <a href="donate.html">/support-us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero animate-on-load">
+            <div class="container">
+                <div class="hero-pill">{{HERO_BADGE}}</div>
+                <h1>{{HERO_TITLE}}</h1>
+                <p class="hero-desc">{{HERO_DESCRIPTION}}</p>
+            </div>
+        </section>
+
+        <!-- ===== TOP AD BANNER ===== -->
+        <div class="container">
+            <div class="zenlyta-ad" data-ad-position="top" aria-label="Advertisement"></div>
+        </div>
+
+        <!-- ===== MAIN DYNAMIC CONTENT ===== -->
+        {{MAIN_CONTENT}}
+
+        <!-- ===== BOTTOM AD BANNER ===== -->
+        <div class="container">
+            <div class="zenlyta-ad" data-ad-position="bottom" aria-label="Advertisement"></div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="sys-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-block">
+                    <a class="brand" href="index.html" style="margin-bottom:0.5rem;">
+                        <span class="brand-badge">Z</span>
+                        <span>ZENLYTA<span class="highlight">.com</span></span>
+                    </a>
+                    <p style="font-size:0.75rem; color:var(--text-muted);">
+                        Free, privacy-first browser tools designed to process supported files directly on your device.
+                    </p>
+                    <p style="font-size:0.7rem; color:var(--text-muted); margin-top:0.75rem; opacity:0.8;">
+                        No account. No unnecessary upload.
+                    </p>
+                </div>
+
+                <div>
+                    <h4>// UTILITIES</h4>
+                    <a href="index.html#image-tools">Image Tools</a>
+                    <a href="index.html#pdf-tools">PDF Tools</a>
+                    <a href="index.html#developer-tools">Developer Suite</a>
+                    <a href="index.html#text-tools">Text Tools</a>
+                    <a href="index.html#calculators">Calculators</a>
+                </div>
+
+                <div>
+                    <h4>// SYSTEM</h4>
+                    <a href="architecture.html">Architecture</a>
+                    <a href="privacy.html">Privacy Engine</a>
+                    <a href="about.html">About System</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div>
+                    <h4>// SUPPORT</h4>
+                    <a href="donate.html">Support Zenlyta</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 ZENLYTA.com — BROWSER EXECUTION ENGINE</span>
+                <span style="color:var(--primary);">STATUS: ALL SYSTEMS OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            "use strict";
+            document.documentElement.classList.add("js");
+
+            // Mobile Navigation Toggle
+            const toggleBtn = document.querySelector(".menu-toggle");
+            const mainNav = document.querySelector(".main-nav");
+
+            if (toggleBtn && mainNav) {
+                toggleBtn.setAttribute("aria-expanded", "false");
+                toggleBtn.addEventListener("click", function () {
+                    const isOpen = mainNav.classList.toggle("open");
+                    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+                    toggleBtn.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+                });
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.querySelector(".navbar");
+            if (navbar) {
+                window.addEventListener("scroll", function () {
+                    navbar.classList.toggle("scrolled", window.scrollY > 20);
+                }, { passive: true });
+            }
+        })();
+    </script>
+    {{CUSTOM_SCRIPTS_EXTRA}}
+</body>
+</html>

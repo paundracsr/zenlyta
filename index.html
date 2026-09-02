@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zenlyta — 27 Free Image Tools | Private & Local</title>
+    <meta name="description" content="zenlyta: 27 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://zenlyta.com/">
+    <meta name="theme-color" content="#10B981">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="zenlyta — 27 Free Image Tools | Private & Local">
+    <meta property="og:description" content="27 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
+    <meta property="og:url" content="https://zenlyta.com/">
+    <meta property="og:site_name" content="zenlyta">
+    <meta property="og:image" content="https://zenlyta.com/assets/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2310B981%22/><text y=%22.8em%22 x=%22.2em%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%23ffffff%22>Z</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="ads/ads.css">
+
+
+    <!-- Google AdSense (DI-KOMENTARI) -->
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-3EQRT92T3L');
+    </script>
+
+    <script src="ads/ad-config.js"></script>
+    <script src="ads/ads.js"></script>
+
+    <style>
+        /* ============================================================
+           zenlyta GLOBAL SEO / PERFORMANCE CSS
+           Dark Tech UI — Mobile First
+           ============================================================ */
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%), linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+
+        img, svg, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button, input, textarea, select {
+            font: inherit;
+        }
+
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        p, h1, h2, h3, h4 {
+            overflow-wrap: break-word;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin-inline: auto;
+            padding-inline: 1.25rem;
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        ::selection {
+            background: rgba(16, 185, 129, 0.25);
+            color: var(--text-main);
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translate3d(0, -16px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.92); } }
+
+        .js .animate-on-load { animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+        .js .reveal-left, .js .reveal-right, .js .reveal-up, .js .reveal-scale {
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .js .reveal-left { transform: translate3d(-24px, 0, 0); }
+        .js .reveal-right { transform: translate3d(24px, 0, 0); }
+        .js .reveal-up { transform: translate3d(0, 24px, 0); }
+        .js .reveal-scale { transform: scale(0.97); }
+        .js .reveal-left.visible, .js .reveal-right.visible, .js .reveal-up.visible, .js .reveal-scale.visible { opacity: 1; transform: none; }
+
+        .js .stagger-children > * {
+            opacity: 0;
+            transform: translate3d(0, 18px, 0);
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .js .stagger-children.visible > * { opacity: 1; transform: none; }
+        .js .stagger-children.visible > *:nth-child(1) { transition-delay: 0.03s; }
+        .js .stagger-children.visible > *:nth-child(2) { transition-delay: 0.06s; }
+        .js .stagger-children.visible > *:nth-child(3) { transition-delay: 0.09s; }
+        .js .stagger-children.visible > *:nth-child(4) { transition-delay: 0.12s; }
+        .js .stagger-children.visible > *:nth-child(5) { transition-delay: 0.15s; }
+        .js .stagger-children.visible > *:nth-child(6) { transition-delay: 0.18s; }
+        .js .stagger-children.visible > *:nth-child(7) { transition-delay: 0.21s; }
+        .js .stagger-children.visible > *:nth-child(8) { transition-delay: 0.24s; }
+        .js .stagger-children.visible > *:nth-child(9) { transition-delay: 0.27s; }
+        .js .stagger-children.visible > *:nth-child(10) { transition-delay: 0.30s; }
+        .js .stagger-children.visible > *:nth-child(11) { transition-delay: 0.33s; }
+        .js .stagger-children.visible > *:nth-child(12) { transition-delay: 0.36s; }
+        .js .stagger-children.visible > *:nth-child(13) { transition-delay: 0.39s; }
+        .js .stagger-children.visible > *:nth-child(14) { transition-delay: 0.42s; }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(6, 8, 9, 0.94);
+            border-bottom: 1px solid var(--border-color);
+            transition: box-shadow var(--transition), background var(--transition);
+        }
+        @supports (backdrop-filter: blur(10px)) {
+            .navbar { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+        }
+        .navbar.scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+        .nav-inner {
+            min-height: 3.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
+        }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            min-height: 28px;
+            background: var(--primary);
+            color: #000;
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 900;
+            transition: transform var(--transition);
+        }
+        .brand:hover .brand-badge { transform: scale(1.04); }
+        .brand span { color: var(--text-main); }
+        .brand .highlight { color: var(--primary); }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        .main-nav a {
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.7rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: color var(--transition), background var(--transition), border-color var(--transition);
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+        .menu-toggle {
+            display: none;
+            min-width: 44px;
+            min-height: 44px;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition);
+        }
+        .menu-toggle:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--border-glow); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: clamp(3rem, 7vw, 5rem) 0 2.75rem;
+            text-align: center;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: min(60%, 400px);
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.4;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            font-size: clamp(2.15rem, 6vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+        .hero h1 .highlight {
+            color: var(--primary);
+            text-shadow: 0 0 36px rgba(16, 185, 129, 0.18);
+        }
+        .hero-desc {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.7;
+        }
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary, .btn-secondary {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 1.25rem;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #051A14;
+            font-weight: 700;
+            box-shadow: 0 0 18px rgba(16, 185, 129, 0.18);
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(16, 185, 129, 0.25);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.04);
+            transform: translateY(-2px);
+        }
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.25rem 2rem;
+            flex-wrap: wrap;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+        }
+        .hero-trust span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Search & Filter */
+        .search-filter-section {
+            padding: 1rem 0 0.5rem;
+            text-align: center;
+        }
+        .search-wrapper {
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color var(--transition);
+            outline: none;
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-input:focus { border-color: var(--primary); }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.25rem 0 0;
+        }
+        .filter-tab {
+            padding: 0.4rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .filter-tab:hover { border-color: var(--primary); color: var(--text-main); }
+        .filter-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #000;
+        }
+
+        /* ADS */
+        .ad-banner-container {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px dashed var(--border-color);
+            padding: 0.75rem;
+            border-radius: var(--radius);
+        }
+        .ad-label {
+            margin-bottom: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .ad-wrapper {
+            width: 100%;
+            max-width: 728px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            min-height: 50px;
+        }
+        .ad-placeholder {
+            width: 100%;
+            padding: 1.25rem;
+            text-align: center;
+            background: #111827;
+            border-radius: var(--radius);
+            border: 1px dashed #2d3748;
+            color: #4a5568;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        /* Tools Section */
+        .section-tools { padding: 2rem 0 3rem; }
+        .section-heading {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .section-heading .label {
+            display: inline-block;
+            padding: 0.15rem 0.7rem;
+            background: rgba(16, 185, 129, 0.08);
+            border-radius: 999px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .section-heading h2 {
+            margin: 0.5rem 0 0;
+            font-size: clamp(1.55rem, 4vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .section-heading p {
+            max-width: 650px;
+            margin: 0.6rem auto 0;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .category-block {
+            margin-top: 3rem;
+            content-visibility: auto;
+            contain-intrinsic-size: 500px;
+        }
+        .cat-title {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            padding-bottom: 0.65rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .cat-tag {
+            background: rgba(16, 185, 129, 0.08);
+            color: var(--primary);
+            font-size: 0.65rem;
+            padding: 0.1rem 0.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 0.25rem;
+        }
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .signal-card {
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.15rem;
+            transition: transform var(--transition-smooth), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+        }
+        .signal-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.025), transparent 50%);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .signal-card:hover::before { opacity: 1; }
+        .signal-card:hover {
+            border-color: var(--primary);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+        .card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.7rem;
+        }
+        .tool-icon { font-size: 1.3rem; line-height: 1; }
+        .sys-badge {
+            padding: 0.1rem 0.4rem;
+            background: #010409;
+            border: 1px solid var(--border-color);
+            border-radius: 0.25rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+        }
+        .signal-card h3 {
+            margin: 0 0 0.3rem;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .signal-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 0.65rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            transition: border-color var(--transition);
+        }
+        .signal-card:hover .card-footer { border-top-color: rgba(16, 185, 129, 0.3); }
+
+        /* Architecture */
+        .console-box {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+        }
+        .console-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .console-dot { width: 10px; height: 10px; display: inline-block; border-radius: 50%; }
+        .console-dot.red { background: #FF5F56; }
+        .console-dot.yellow { background: #FFBD2E; }
+        .console-dot.green { background: #27C93F; }
+        .console-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .console-item {
+            padding: 1rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+        }
+        .console-item:hover {
+            border-color: rgba(16, 185, 129, 0.1);
+            background: rgba(16, 185, 129, 0.02);
+        }
+        .console-item h3 { margin: 0 0 0.4rem; color: var(--primary); font-size: 0.95rem; }
+        .console-item p { margin: 0; color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+
+        /* Privacy */
+        .advantage-section {
+            margin: 3rem 0;
+            padding: 2.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+        .advantage-section .section-heading { margin-bottom: 1.5rem; }
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .advantage-card {
+            padding: 1.5rem 1.25rem;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            text-align: center;
+            transition: transform var(--transition), border-color var(--transition), background var(--transition);
+        }
+        .advantage-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(16, 185, 129, 0.02);
+        }
+        .advantage-icon { display: block; margin-bottom: 0.5rem; font-size: 2.2rem; }
+        .advantage-card h3 { margin: 0 0 0.3rem; font-size: 1rem; font-weight: 600; }
+        .advantage-card p { margin: 0; color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+
+        /* FAQ */
+        .faq-section { max-width: 720px; margin: 3rem auto; }
+        .faq-section .section-heading { margin-bottom: 1.5rem; }
+        .faq-item {
+            margin-bottom: 0.6rem;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+        .faq-item summary {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1.25rem;
+            cursor: pointer;
+            list-style: none;
+            font-weight: 600;
+            transition: background var(--transition);
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: "+"; flex: 0 0 auto; color: var(--primary); font-size: 1.4rem; line-height: 1; }
+        .faq-item[open] summary::after { content: "−"; }
+        .faq-item summary:hover { background: rgba(16, 185, 129, 0.03); }
+        .faq-item .answer {
+            padding: 0 1.25rem 1.25rem;
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            margin: 3rem 0;
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, var(--bg-card), #0A1A12);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .final-cta h2 { margin: 0; font-size: clamp(1.4rem, 4vw, 1.7rem); }
+        .final-cta p { margin: 0.5rem 0 1.5rem; color: var(--text-muted); }
+
+        /* Footer */
+        .sys-footer {
+            padding: 2.5rem 0 1.5rem;
+            background: #030507;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-grid h4 { margin: 0 0 0.75rem; color: var(--text-main); font-size: 0.85rem; letter-spacing: 0.02em; }
+        .footer-grid a { display: block; margin-bottom: 0.4rem; transition: color var(--transition), transform var(--transition); }
+        .footer-grid a:hover { color: var(--primary); transform: translateX(2px); }
+        .footer-brand-block { max-width: 280px; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+        }
+
+        /* ===== SUPPORT CARD ===== */
+.support-section {
+    margin: 2rem auto 3rem;
+}
+
+.support-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1.75rem 2rem;
+    background: linear-gradient(135deg, var(--bg-card), #0A1A12);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.support-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
+}
+
+.support-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.support-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.support-content h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.support-content p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.support-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 640px) {
+    .support-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .support-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+        @media (max-width: 900px) {
+            .main-nav a { padding-inline: 0.55rem; font-size: 0.75rem; }
+            .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .container { padding-inline: 1rem; }
+            .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+            .nav-inner { flex-wrap: wrap; }
+            .main-nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.25rem;
+                padding: 0.75rem 0 1rem;
+            }
+            .main-nav.open { display: flex; }
+            .main-nav a {
+                min-height: 44px;
+                width: 100%;
+                padding-inline: 1rem;
+                justify-content: flex-start;
+            }
+            .hero { padding-top: 3rem; }
+            .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+            .hero-desc { font-size: 0.95rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: min(100%, 360px); }
+            .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .console-grid { grid-template-columns: 1fr; }
+            .advantage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .container { padding-inline: 0.9rem; }
+            .hero { padding-top: 2.5rem; }
+            .hero-pill { font-size: 0.62rem; padding-inline: 0.65rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-trust { gap: 0.5rem 1rem; font-size: 0.7rem; }
+            .tool-grid { grid-template-columns: 1fr; }
+            .signal-card { min-height: 175px; }
+            .advantage-grid { grid-template-columns: 1fr; }
+            .console-box, .advantage-section { padding: 1.25rem; }
+            .console-header { overflow-x: auto; white-space: nowrap; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-brand-block { max-width: none; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+            .faq-item summary { padding-inline: 1rem; }
+            .faq-item .answer { padding-inline: 1rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .js .animate-on-load, .js .reveal-left, .js .reveal-right, .js .reveal-up, .js .reveal-scale, .js .stagger-children > * { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }
+            .signal-card:hover, .advantage-card:hover, .btn-primary:hover, .btn-secondary:hover { transform: none; }
+        }
+        @media (forced-colors: active) {
+            .btn-primary, .btn-secondary, .signal-card, .faq-item, .advantage-card { border: 1px solid CanvasText; }
+            :focus-visible { outline: 2px solid Highlight; }
+        }
+        @media print {
+            body { background: #fff; color: #000; }
+            .navbar, .ad-banner-container, .menu-toggle { display: none !important; }
+            .signal-card, .console-box, .advantage-section, .faq-item, .final-cta { background: #fff; color: #000; border: 1px solid #ccc; box-shadow: none; }
+            .signal-card p, .section-heading p, .advantage-card p, .faq-item .answer { color: #333; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "zenlyta",
+        "url": "https://zenlyta.com/",
+        "description": "27 free, privacy-first image tools that run locally in your browser."
+    }
+    </script>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-badge">Z</span>
+                <span>zenlyta<span class="highlight">.com</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">☰</button>
+            <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+                <a href="#tools" class="active">/tools</a>
+                <a href="architecture.html">/architecture</a>
+                <a href="privacy.html">/privacy</a>
+                <a href="about.html">/about</a>
+                <a href="donate.html">/support-us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="hero animate-on-load">
+            <div class="container">
+                <div class="hero-pill">⚡ CLIENT-SIDE ENGINE — 27 ACTIVE IMAGE TOOLS</div>
+                <h1>Never Upload Private Files<br><span class="highlight">to Unknown Servers Again.</span></h1>
+                <p class="hero-desc">zenlyta executes image compression, conversion, resizing, and editing directly inside your browser. Your sensitive data never leaves your device. 100% private and offline-ready.</p>
+                <div class="hero-buttons">
+                    <a href="#tools" class="btn-primary">EXPLORE TOOLS [27 AVAILABLE]</a>
+                    <a href="#architecture" class="btn-secondary">SYS ARCHITECTURE</a>
+                </div>
+                <div class="hero-trust">
+                    <span>🔒 Privacy focused</span>
+                    <span>⚡ Fast workflow</span>
+                    <span>📦 No installation</span>
+                    <span>💰 Free tools</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEARCH & FILTER ===== -->
+        <section class="search-filter-section" aria-label="Search and filter tools">
+            <div class="container">
+                <div class="search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="toolSearch" class="search-input" placeholder="Search 27 image tools... (e.g., 'compress', 'png', 'resize')" autocomplete="off">
+                </div>
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-tab active" data-category="all">All Available (27)</button>
+                    <button class="filter-tab" data-category="image">🖼️ Image (27)</button>
+                    <button class="filter-tab" data-category="coming-soon">📄 Document (Coming Soon)</button>
+                    <button class="filter-tab" data-category="dev">💻 Dev (Coming Soon)</button>
+                    <button class="filter-tab" data-category="text">📝 Text (Coming Soon)</button>
+                    <button class="filter-tab" data-category="calc">🧮 Calc (Coming Soon)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AD BANNER 1 ===== -->
+        <div class="container">
+
+            <div
+                class="zenlyta-ad"
+                data-ad-position="top"
+                aria-label="Advertisement">
+            </div>
+
+        </div>
+        <!-- ===== TOOLS SECTION ===== -->
+        <section class="section-tools" id="tools">
+            <div class="container">
+                <div class="section-heading reveal-up">
+                    <span class="label">FILE TOOLKIT</span>
+                    <h2>Free online tools for your files</h2>
+                    <p>Everything you need to compress, convert, resize and manage common file formats.</p>
+                </div>
+
+                <!-- IMAGE TOOLS (27) -->
+                <div class="category-block reveal-up" id="image-tools" data-category="image">
+                    <div class="cat-title">
+                        <span>[01_IMAGE_PIPELINE]</span> Image Processing Tools
+                        <span class="cat-tag">27 TOOLS</span>
+                    </div>
+                    <div class="tool-grid stagger-children">
+                        <a class="signal-card" href="/tools/image/compress-image/">
+                            <div class="card-head"><span class="tool-icon">🗜️</span><span class="sys-badge">IMG-01</span></div>
+                            <div><h3>Compress Image</h3><p>Optimize JPG, PNG, and WebP size using local Canvas compression.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/resize-image/">
+                            <div class="card-head"><span class="tool-icon">↔️</span><span class="sys-badge">IMG-02</span></div>
+                            <div><h3>Resize Image</h3><p>Scale resolutions down with custom aspect ratio locking.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/jpg-to-png/">
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-03</span></div>
+                            <div><h3>JPG to PNG</h3><p>Convert JPG images to uncompressed PNG format.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/png-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-04</span></div>
+                            <div><h3>PNG to JPG</h3><p>Flatten PNG assets into compressed JPG files.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/webp-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">🌐</span><span class="sys-badge">IMG-05</span></div>
+                            <div><h3>WebP to JPG</h3><p>Decode modern WebP binaries back into traditional JPG.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/jpg-to-webp/">
+                            <div class="card-head"><span class="tool-icon">⚡</span><span class="sys-badge">IMG-06</span></div>
+                            <div><h3>JPG to WebP</h3><p>Convert JPG into lightweight next-gen WebP structures.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/png-to-webp/">
+                            <div class="card-head"><span class="tool-icon">✨</span><span class="sys-badge">IMG-07</span></div>
+                            <div><h3>PNG to WebP</h3><p>Compress PNG transparency vectors to WebP format.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-metadata/">
+                            <div class="card-head"><span class="tool-icon">🔎</span><span class="sys-badge">IMG-08</span></div>
+                            <div><h3>EXIF Inspector</h3><p>Parse binary metadata & EXIF headers right in browser memory.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/webp-to-png/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-09</span></div>
+                            <div><h3>WebP to PNG</h3><p>Convert WebP images to lossless PNG format in your browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/crop-image/">
+                            <div class="card-head"><span class="tool-icon">✂️</span><span class="sys-badge">IMG-10</span></div>
+                            <div><h3>Crop Image</h3><p>Trim and crop images to any custom dimension or aspect ratio.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/compress-png/">
+                            <div class="card-head"><span class="tool-icon">📦</span><span class="sys-badge">IMG-11</span></div>
+                            <div><h3>Compress PNG</h3><p>Reduce PNG file size while preserving transparency locally.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/remove-bg/">
+                            <div class="card-head"><span class="tool-icon">🪄</span><span class="sys-badge">IMG-12</span></div>
+                            <div><h3>Remove Background</h3><p>Erase solid-color backgrounds from images client-side.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/add-watermark/">
+                            <div class="card-head"><span class="tool-icon">©</span><span class="sys-badge">IMG-13</span></div>
+                            <div><h3>Add Watermark</h3><p>Stamp text or image watermarks onto photos in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/avif-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-14</span></div>
+                            <div><h3>AVIF to JPG</h3><p>Convert modern AVIF images to universally supported JPG.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/blur-background/">
+                            <div class="card-head"><span class="tool-icon">🌫️</span><span class="sys-badge">IMG-15</span></div>
+                            <div><h3>Blur Background</h3><p>Apply blur effects to image backgrounds locally.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/blur-image/">
+                            <div class="card-head"><span class="tool-icon">🌁</span><span class="sys-badge">IMG-16</span></div>
+                            <div><h3>Blur Image</h3><p>Apply Gaussian blur to entire images with adjustable intensity.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/collage-maker/">
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-17</span></div>
+                            <div><h3>Collage Maker</h3><p>Combine multiple images into a single collage layout.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/color-picker/">
+                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-18</span></div>
+                            <div><h3>Color Picker</h3><p>Extract HEX, RGB, and HSL color values from any image.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/favicon-generator/">
+                            <div class="card-head"><span class="tool-icon">⭐</span><span class="sys-badge">IMG-19</span></div>
+                            <div><h3>Favicon Generator</h3><p>Generate multi-size ICO and PNG favicons from any image.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/heic-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">📱</span><span class="sys-badge">IMG-20</span></div>
+                            <div><h3>HEIC to JPG</h3><p>Convert iPhone HEIC photos to universally supported JPG.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/heic-to-png/">
+                            <div class="card-head"><span class="tool-icon">📷</span><span class="sys-badge">IMG-21</span></div>
+                            <div><h3>HEIC to PNG</h3><p>Convert iPhone HEIC photos to lossless PNG format.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-to-base64/">
+                            <div class="card-head"><span class="tool-icon">🔢</span><span class="sys-badge">IMG-22</span></div>
+                            <div><h3>Image to Base64</h3><p>Encode images to Base64 data URI strings in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-to-pdf/">
+                            <div class="card-head"><span class="tool-icon">📄</span><span class="sys-badge">IMG-23</span></div>
+                            <div><h3>Image to PDF</h3><p>Pack one or more images into a clean PDF document.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-upscaler/">
+                            <div class="card-head"><span class="tool-icon">🔍</span><span class="sys-badge">IMG-24</span></div>
+                            <div><h3>Image Upscaler</h3><p>Upscale images up to 4× using browser-based interpolation.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/meme-generator/">
+                            <div class="card-head"><span class="tool-icon">😂</span><span class="sys-badge">IMG-25</span></div>
+                            <div><h3>Meme Generator</h3><p>Add custom top and bottom text captions to any image.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/photo-colorizer/">
+                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-26</span></div>
+                            <div><h3>Photo Colorizer</h3><p>Apply color tints and filters to images in your browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/svg-to-png/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-27</span></div>
+                            <div><h3>SVG to PNG</h3><p>Rasterize SVG vector graphics to PNG bitmap format.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DOCUMENT TOOLS — COMING SOON -->
+                <div class="category-block reveal-up" id="pdf-tools" data-category="coming-soon">
+                    <div class="cat-title">
+                        <span>📄 DOCUMENT TOOLS</span>
+                        <span class="cat-tag">COMING SOON</span>
+                    </div>
+                    <div class="signal-card" style="max-width: none; cursor: default;">
+                        <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
+                        <div><h3>Document Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
+                    </div>
+                </div>
+                <!-- DEVELOPER TOOLS — COMING SOON -->
+                <div class="category-block reveal-up" id="developer-tools" data-category="coming-soon">
+                    <div class="cat-title">
+                        <span>💻 DEVELOPER TOOLS</span>
+                        <span class="cat-tag">COMING SOON</span>
+                    </div>
+                    <div class="signal-card" style="max-width: none; cursor: default;">
+                        <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
+                        <div><h3>Developer Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
+                    </div>
+                </div>
+                <!-- TEXT TOOLS — COMING SOON -->
+                <div class="category-block reveal-up" id="text-tools" data-category="coming-soon">
+                    <div class="cat-title">
+                        <span>📝 TEXT TOOLS</span>
+                        <span class="cat-tag">COMING SOON</span>
+                    </div>
+                    <div class="signal-card" style="max-width: none; cursor: default;">
+                        <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
+                        <div><h3>Text Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
+                    </div>
+                </div>
+                <!-- CALCULATORS — COMING SOON -->
+                <div class="category-block reveal-up" id="calculators" data-category="coming-soon">
+                    <div class="cat-title">
+                        <span>🧮 CALCULATORS</span>
+                        <span class="cat-tag">COMING SOON</span>
+                    </div>
+                    <div class="signal-card" style="max-width: none; cursor: default;">
+                        <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
+                        <div><h3>Calculators are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
+                    </div>
+                </div>            </div>
+        </section>
+
+        <!-- AD BANNER 2 -->
+        <div class="container">
+
+            <div
+                class="zenlyta-ad"
+                data-ad-position="content"
+                aria-label="Advertisement">
+            </div>
+
+        </div>
+
+        <!-- ARCHITECTURE SECTION -->
+        <section class="container" id="architecture">
+            <div class="console-box reveal-scale">
+                <div class="console-header">
+                    <span class="console-dot red"></span>
+                    <span class="console-dot yellow"></span>
+                    <span class="console-dot green"></span>
+                    <span>zenlyta-core-architecture.sh</span>
+                </div>
+                <div class="console-grid stagger-children">
+                    <div class="console-item">
+                        <h3>01. Zero-Server Transmission</h3>
+                        <p>Files processed inside zenlyta never leave your RAM. Operations execute 100% locally via WebAssembly and Web Workers.</p>
+                    </div>
+                    <div class="console-item">
+                        <h3>02. Hardware Acceleration</h3>
+                        <p>Built on standard browser Canvas and V8 JIT execution to process images at raw CPU performance.</p>
+                    </div>
+                    <div class="console-item">
+                        <h3>03. Offline Operational Baseline</h3>
+                        <p>Once initial asset scripts load, zenlyta continues to process payloads seamlessly even without an active internet connection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVACY SECTION -->
+        <section class="container" id="privacy">
+            <div class="advantage-section reveal-up">
+                <div class="section-heading">
+                    <span class="label">WHY zenlyta</span>
+                    <h2>Image tools designed with privacy in mind</h2>
+                    <p>Image workflows often involve files people would rather not share unnecessarily. Our 27 available image tools process your files in the browser wherever technically possible.</p>
+                </div>
+                <div class="advantage-grid stagger-children">
+                    <div class="advantage-card">
+                        <span class="advantage-icon">🔒</span>
+                        <h3>Privacy-first architecture</h3>
+                        <p>Tools can be designed to process files locally in the browser, reducing unnecessary data transfer.</p>
+                    </div>
+                    <div class="advantage-card">
+                        <span class="advantage-icon">⚡</span>
+                        <h3>Simple and focused</h3>
+                        <p>No complicated desktop interface. Choose a tool, add your file, process it and download the result.</p>
+                    </div>
+                    <div class="advantage-card">
+                        <span class="advantage-icon">🌍</span>
+                        <h3>Works across devices</h3>
+                        <p>The website is designed for modern desktop and mobile browsers without requiring traditional software installation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="container faq-section reveal-up">
+            <div class="section-heading">
+                <span class="label">FAQ</span>
+                <h2>Frequently asked questions</h2>
+            </div>
+
+            <details class="faq-item">
+                <summary>Are these file tools free?</summary>
+                <div class="answer">The tools are designed to be available as free online utilities. Individual tools may have usage limits depending on their implementation.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do I need to install software?</summary>
+                <div class="answer">No traditional desktop software installation is required for the browser-based website.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Are my files uploaded?</summary>
+                <div class="answer">File handling depends on the implementation of each individual tool. Tools that process files locally in the browser should explicitly state this on their tool page.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>What file formats are supported?</summary>
+                <div class="answer">Supported formats vary by tool. The current toolkit focuses on image formats including JPG, JPEG, PNG, WebP, AVIF, HEIC, SVG, and image-based PDF creation.</div>
+            </details>
+
+            <details class="faq-item">
+                <summary>Can I use these tools on my phone?</summary>
+                <div class="answer">Yes. The interface is designed to work with modern mobile and desktop browsers.</div>
+            </details>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="container reveal-up">
+            <div class="final-cta">
+                <span class="label" style="display:inline-block; margin-bottom:0.25rem;">READY TO START?</span>
+                <h2>Choose an image tool and get started.</h2>
+                <p>No complicated setup. Pick one of the 27 available image tools and continue in your browser.</p>
+                <a href="#image-tools" class="btn-primary">Browse image tools →</a>
+            </div>
+        </section>
+    </main>
+
+   <!-- ===== SUPPORT CARD ===== -->
+<section class="container support-card-section reveal-up" style="margin: 3rem auto; max-width: 900px;">
+    <div style="
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 2rem 2.25rem;
+        background: linear-gradient(135deg, #0D1117, #0A1A12);
+        border: 1px solid #21262D;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        transition: border-color 0.25s, transform 0.25s;
+    "
+    onmouseover="this.style.borderColor='#10B981'; this.style.transform='translateY(-3px)';"
+    onmouseout="this.style.borderColor='#21262D'; this.style.transform='none';"
+    >
+        <div style="font-size: 2.5rem; line-height: 1;">☕</div>
+        <div style="flex: 1; min-width: 200px;">
+            <h3 style="margin: 0 0 0.5rem; font-size: 1.35rem; font-weight: 700; color: #F0F6FC;">Support Our Privacy-First Architecture</h3>
+            <p style="margin: 0; color: #8B949E; font-size: 0.95rem; line-height: 1.7;">
+                Maintaining a <strong style="color:#F0F6FC;">zero-server, client-side engine</strong> requires continuous development, security audits, and performance optimization. Your donation keeps all 27 available image tools <strong style="color:#F0F6FC;">free, private, and fast</strong> — without ever compromising your files.
+            </p>
+        </div>
+        <a href="donate.html" 
+           style="
+               display:inline-flex;
+               align-items:center;
+               justify-content:center;
+               min-height:48px;
+               padding:0.7rem 1.75rem;
+               background:#10B981;
+               color:#000000;
+               font-family:'Inter',system-ui,sans-serif;
+               font-size:0.9rem;
+               font-weight:700;
+               border-radius:0.5rem;
+               text-decoration:none;
+               box-shadow:0 0 18px rgba(16,185,129,0.18);
+               transition:0.25s;
+               white-space:nowrap;
+           "
+           onmouseover="this.style.background='#34D399'; this.style.transform='translateY(-2px)';"
+           onmouseout="this.style.background='#10B981'; this.style.transform='none';"
+        >
+           ❤️ Donate Now
+        </a>
+    </div>
+</section>
+
+<div class="container">
+
+    <div
+        class="zenlyta-ad"
+        data-ad-position="bottom"
+        aria-label="Advertisement">
+    </div>
+
+</div>
+    <!-- FOOTER -->
+   <footer class="sys-footer">
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- ===== BRAND ===== -->
+            <div class="footer-brand-block">
+
+                <a
+                    class="brand"
+                    href="index.html"
+                    style="margin-bottom:0.5rem;"
+                >
+                    <span class="brand-badge">Z</span>
+                    <span>
+                        ZENLYTA<span class="highlight">.com</span>
+                    </span>
+                </a>
+
+                <p style="font-size:0.75rem; color:var(--text-muted);">
+                    27 free, privacy-first image tools designed to process
+                    supported images directly on your device.
+                </p>
+
+                <p
+                    style="
+                        font-size:0.7rem;
+                        color:var(--text-muted);
+                        margin-top:0.75rem;
+                        opacity:0.8;
+                    "
+                >
+                    No account. No unnecessary upload.
+                </p>
+
+            </div>
+
+
+            <!-- ===== UTILITIES ===== -->
+            <div>
+
+                <h4>// UTILITIES</h4>
+
+                <a href="index.html#image-tools">
+                    Image Tools
+                </a>
+
+                <a href="index.html#pdf-tools">
+                    Document Tools (Coming Soon)
+                </a>
+
+                <a href="index.html#developer-tools">
+                    Developer Tools (Coming Soon)
+                </a>
+
+                <a href="index.html#text-tools">
+                    Text Tools (Coming Soon)
+                </a>
+
+                <a href="index.html#calculators">
+                    Calculators (Coming Soon)
+                </a>
+
+            </div>
+
+
+            <!-- ===== SYSTEM ===== -->
+            <div>
+
+                <h4>// SYSTEM</h4>
+
+                <a href="architecture.html">
+                    Architecture
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Engine
+                </a>
+
+                <a href="about.html">
+                    About System
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- ===== SUPPORT / LEGAL ===== -->
+            <div>
+
+                <h4>// SUPPORT</h4>
+
+                <a href="donate.html">
+                    Support Zenlyta
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms of Use
+                </a>
+
+                <a href="disclaimer.html">
+                    Disclaimer
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===== FOOTER BOTTOM ===== -->
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 ZENLYTA.com — BROWSER EXECUTION ENGINE
+            </span>
+
+            <span style="color:var(--primary);">
+                STATUS: ALL SYSTEMS OPERATIONAL
+            </span>
+
+        </div>
+
+    </div>
+</footer>
+
+    <script>
+        (function () {
+            "use strict";
+
+            document.documentElement.classList.add("js");
+
+            // ===================== MOBILE NAVIGATION =====================
+            const toggleBtn = document.querySelector(".menu-toggle");
+            const mainNav = document.querySelector(".main-nav");
+
+            if (toggleBtn && mainNav) {
+                toggleBtn.setAttribute("aria-expanded", "false");
+                toggleBtn.addEventListener("click", function () {
+                    const isOpen = mainNav.classList.toggle("open");
+                    toggleBtn.setAttribute("aria-expanded", String(isOpen));
+                    toggleBtn.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+                });
+
+                mainNav.querySelectorAll("a").forEach(function (link) {
+                    link.addEventListener("click", function () {
+                        mainNav.classList.remove("open");
+                        toggleBtn.setAttribute("aria-expanded", "false");
+                        toggleBtn.setAttribute("aria-label", "Open navigation");
+                    });
+                });
+            }
+
+            // ===================== NAVBAR SCROLL STATE =====================
+            const navbar = document.querySelector(".navbar");
+            let ticking = false;
+
+            function updateNavbar() {
+                if (!navbar) return;
+                navbar.classList.toggle("scrolled", window.scrollY > 20);
+                ticking = false;
+            }
+
+            window.addEventListener("scroll", function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateNavbar);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // ===================== ACTIVE NAVIGATION =====================
+            const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+            const sections = [];
+            navLinks.forEach(function (link) {
+                const id = link.getAttribute("href");
+                if (!id || id === "#") return;
+                const section = document.querySelector(id);
+                if (section) {
+                    sections.push({ element: section, link: link });
+                }
+            });
+
+            if ("IntersectionObserver" in window) {
+                const navObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        sections.forEach(function (item) { item.link.classList.remove("active"); });
+                        const current = sections.find(function (item) { return item.element === entry.target; });
+                        if (current) current.link.classList.add("active");
+                    });
+                }, { rootMargin: "-25% 0px -65% 0px", threshold: 0 });
+
+                sections.forEach(function (item) { navObserver.observe(item.element); });
+            }
+
+            // ===================== SMOOTH INTERNAL LINKS =====================
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    const href = link.getAttribute("href");
+                    if (!href || href === "#") return;
+                    const target = document.querySelector(href);
+                    if (!target) return;
+                    event.preventDefault();
+                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                    const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 12;
+                    window.scrollTo({
+                        top: Math.max(0, targetTop),
+                        behavior: prefersReducedMotion ? "auto" : "smooth"
+                    });
+                });
+            });
+
+            // ===================== SCROLL REVEAL =====================
+            const revealElements = document.querySelectorAll(".reveal-up, .reveal-left, .reveal-right, .reveal-scale, .stagger-children");
+
+            if ("IntersectionObserver" in window && !prefersReducedMotion) {
+                const revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    });
+                }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+
+                revealElements.forEach(function (element) { revealObserver.observe(element); });
+            } else {
+                revealElements.forEach(function (element) { element.classList.add("visible"); });
+            }
+
+            // ===================== SEARCH & FILTER =====================
+            const searchInput = document.getElementById('toolSearch');
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const allCards = document.querySelectorAll('.signal-card');
+
+            if (searchInput && filterTabs.length && allCards.length) {
+                let activeCategory = 'all';
+                let searchQuery = '';
+
+                function getCardCategory(card) {
+                    const parentBlock = card.closest('.category-block');
+                    return parentBlock ? parentBlock.dataset.category : 'unknown';
+                }
+
+                function filterCards() {
+                    allCards.forEach(function (card) {
+                        const cardCategory = getCardCategory(card);
+                        const cardText = card.textContent.toLowerCase();
+                        const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+                        const matchesSearch = searchQuery === '' || cardText.includes(searchQuery);
+
+                        if (matchesCategory && matchesSearch) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Search input listener
+                searchInput.addEventListener('input', function () {
+                    searchQuery = this.value.trim().toLowerCase();
+                    filterCards();
+                });
+
+                // Category tab listeners
+                filterTabs.forEach(function (tab) {
+                    tab.addEventListener('click', function () {
+                        filterTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        activeCategory = this.dataset.category;
+                        filterCards();
+                    });
+                });
+            }
+
+            // ===================== OPTIONAL DESKTOP GLOW =====================
+            const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+            if (!isTouchDevice && !prefersReducedMotion) {
+                const heroHighlight = document.querySelector(".hero h1 .highlight");
+                if (heroHighlight) {
+                    let glowTicking = false;
+                    document.addEventListener("mousemove", function (event) {
+                        if (glowTicking) return;
+                        glowTicking = true;
+                        window.requestAnimationFrame(function () {
+                            const x = (event.clientX / window.innerWidth - 0.5) * 6;
+                            const y = (event.clientY / window.innerHeight - 0.5) * 6;
+                            heroHighlight.style.textShadow = `${x}px ${y}px 36px rgba(16,185,129,0.22)`;
+                            glowTicking = false;
+                        });
+                    }, { passive: true });
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

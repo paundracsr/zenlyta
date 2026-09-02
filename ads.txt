@@ -1,0 +1,35 @@
+# =============================================================
+# ads.txt — ZENLYTA (PLUG AND PLAY)
+# =============================================================
+# File ini berfungsi ganda:
+# 1. Standar IAB ads.txt untuk verifikasi publisher ad network.
+# 2. PNP Auto-Config: Script iklan otomatis membaca file ini
+#    dan langsung mengaktifkan provider yang valid tanpa perlu
+#    mengubah konfigurasi JavaScript sama sekali.
+#
+# CARA PENGGUNAAN:
+# - Cukup hilangkan tanda pagar (#) pada baris provider yang Anda gunakan.
+# - Ganti ID dummy (pub-XXXXXXXXXXXXXXXX / XXXXXXX) dengan ID resmi Anda.
+# - Biarkan tanda pagar (#) pada provider yang belum aktif.
+# - Jika semua dikomentari/dummy: Slot iklan akan otomatis hilang/sembunyi total (tidak ada template dummy iklan yang mengganggu).
+# - Begitu ID resmi diaktifkan di file ini: Slot iklan langsung tampil dan menyesuaikan dengan provider tersebut secara otomatis.
+# =============================================================
+
+
+# ── GOOGLE ADSENSE ───────────────────────────────────────────
+# Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# (Hilangkan '#' di bawah dan ganti ID dengan Publisher ID AdSense Anda)
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+
+# ── ADSTERRA ─────────────────────────────────────────────────
+# Format: adsterra.com, XXXXXXX, DIRECT
+# (Hilangkan '#' di bawah dan ganti dengan baris resmi dari dashboard Adsterra)
+# adsterra.com, XXXXXXX, DIRECT
+
+
+# =============================================================
+# CATATAN:
+# - Letakkan file ini di root domain publik (misal: https://zenlyta.com/ads.txt).
+# - Pastikan tidak ada karakter khusus yang merusak format CSV di atas.
+# =============================================================
