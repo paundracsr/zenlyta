@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Round Image Corners Online Free — Add Rounded Corners to Photos | zenlyta</title>
+    <meta name="description" content="Round image corners online for free. Add rounded corners to JPG, PNG, and WebP photos with adjustable radius directly in your browser — no upload, privacy-first." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://zenlyta.com/tools/image/round-corners/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Round Image Corners Online Free — zenlyta" />
+    <meta property="og:description" content="Add rounded corners to images directly in your browser with adjustable radius." />
+    <meta property="og:url" content="https://zenlyta.com/tools/image/round-corners/" />
+    <meta property="og:site_name" content="zenlyta" />
+    <meta name="theme-color" content="#080808" />
+
+    <!-- Global Advertisement System -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3EQRT92T3L');
+    </script>
+    <link rel="stylesheet" href="../../../ads/ads.css" />
+
+    <style>
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body {
+            margin: 0; min-width: 320px; background-color: var(--bg-main); color: var(--text-main);
+            font-family: var(--font-sans); font-size: 16px; line-height: 1.6; overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%), linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        button, input, select { font: inherit; }
+        button { -webkit-tap-highlight-color: transparent; }
+        :focus { outline: none; }
+        :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+        ::selection { background: rgba(16, 185, 129, 0.25); color: var(--text-main); }
+        .container { width: 100%; max-width: var(--container-width); margin-inline: auto; padding-inline: 1.25rem; }
+
+        .sys-header { position: sticky; top: 0; z-index: 100; background: rgba(6, 8, 9, 0.94); border-bottom: 1px solid var(--border-color); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: box-shadow var(--transition), background var(--transition); }
+        .sys-header.scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+        .navbar { min-height: 3.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        .brand { display: inline-flex; align-items: center; gap: 0.65rem; font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; white-space: nowrap; }
+        .brand-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 28px; background: var(--primary); color: #000; padding: 0.15rem 0.45rem; border-radius: 0.25rem; font-size: 0.85rem; font-weight: 900; transition: transform var(--transition); }
+        .brand:hover .brand-badge { transform: scale(1.04); }
+        .brand span { color: var(--text-main); }
+        .brand .highlight { color: var(--primary); }
+        .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+        .nav-links a { min-height: 40px; display: inline-flex; align-items: center; padding: 0.45rem 0.7rem; border: 1px solid transparent; border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); transition: color var(--transition), background var(--transition), border-color var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.15); }
+
+        .breadcrumb-wrap { padding-top: 26px; }
+        .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span:last-child { color: var(--text-main); }
+
+        .tool-hero { padding: clamp(2.5rem, 5vw, 4rem) 0 2rem; text-align: center; }
+        .tool-badge { display: inline-flex; padding: 0.3rem 0.85rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 999px; color: var(--primary); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+        .tool-hero h1 { max-width: 800px; margin: 0 auto 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.12; }
+        .tool-hero > div > p { max-width: 680px; margin: 0 auto 1.5rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .hero-features { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; }
+        .hero-features span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+        .tool-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: start; }
+        .tool-main { min-width: 0; }
+        .tool-card { overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-card); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+        .tool-header { min-height: 75px; padding: 1.15rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--border-color); }
+        .terminal-label { display: block; margin-bottom: 3px; color: var(--primary); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; }
+        .tool-header h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+        .status { padding: 5px 9px; border: 1px solid rgba(16, 185, 129, 0.2); color: var(--primary); font-family: var(--font-mono); font-size: 0.62rem; border-radius: 4px; }
+
+        .dropzone { margin: 1.5rem; padding: 3.5rem 1.5rem; text-align: center; border: 1px dashed var(--border-glow); border-radius: 10px; background: rgba(255, 255, 255, 0.015); transition: border-color var(--transition), background var(--transition), transform var(--transition); }
+        .dropzone:hover, .dropzone.dragover { border-color: var(--primary); background: rgba(16, 185, 129, 0.025); transform: translateY(-2px); }
+        .drop-icon { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto 18px; border: 1px solid var(--border-glow); border-radius: 50%; color: var(--primary); font-family: var(--font-mono); font-size: 1.5rem; }
+        .dropzone h3 { margin: 0 0 5px; font-size: 1rem; font-weight: 700; }
+        .dropzone p { margin: 0 18px; color: var(--text-muted); font-size: 0.82rem; }
+        .dropzone small { display: block; margin-top: 15px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.65rem; opacity: 0.8; }
+        .upload-button { display: inline-flex; padding: 10px 18px; border: 1px solid var(--primary); border-radius: 6px; color: var(--primary); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: background var(--transition), color var(--transition); }
+        .upload-button:hover { background: var(--primary); color: #051A14; }
+
+        .preview-area { margin: 1.5rem; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: 9px; background: var(--bg-main); }
+        .preview-image-wrap { max-height: 400px; overflow: hidden; display: grid; place-items: center; background: #050505; border-radius: 7px; padding: 10px; background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%), linear-gradient(-45deg, #1a1a1a 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1a1a1a 75%), linear-gradient(-45deg, transparent 75%, #1a1a1a 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+        .preview-image-wrap img { max-height: 380px; width: auto; object-fit: contain; transition: border-radius 0.2s ease; }
+        .file-info { display: flex; justify-content: space-between; gap: 15px; margin-top: 12px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+        .file-info strong { max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-main); }
+
+        .round-options { margin: 1.5rem; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: 9px; background: var(--bg-card); display: flex; flex-direction: column; gap: 16px; }
+        .round-options label { display: flex; justify-content: space-between; gap: 15px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+        .round-options label > span:last-child { color: var(--primary); }
+        input[type="range"] { width: 100%; accent-color: var(--primary); }
+        .quality-scale { display: flex; justify-content: space-between; margin-top: 5px; color: var(--text-muted); font-size: 0.65rem; }
+        .option-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .option-group { display: flex; flex-direction: column; gap: 6px; }
+        .option-group label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
+        .option-group select, .option-group input[type="color"] { padding: 8px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-main); color: var(--text-main); font-family: var(--font-mono); font-size: 0.8rem; height: 42px; }
+        .option-group select:focus { border-color: var(--primary); }
+        .preset-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .preset-btn { padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-main); color: var(--text-muted); font-family: var(--font-mono); font-size: 0.7rem; cursor: pointer; transition: all 0.2s ease; }
+        .preset-btn:hover, .preset-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(16,185,129,0.08); }
+
+        .process-button { width: calc(100% - 3rem); margin: 0 1.5rem 1.5rem; padding: 13px; border: 1px solid var(--primary); border-radius: 7px; background: var(--primary); color: #051A14; font-family: var(--font-mono); font-weight: 800; cursor: pointer; transition: transform var(--transition), opacity var(--transition); }
+        .process-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .process-button:disabled { opacity: 0.55; cursor: wait; }
+
+        .result-area { margin: 1.5rem; padding: 2rem; text-align: center; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 9px; background: rgba(16, 185, 129, 0.025); }
+        .result-icon { width: 45px; height: 45px; display: grid; place-items: center; margin: 0 auto 12px; border: 1px solid var(--primary); border-radius: 50%; color: var(--primary); font-family: var(--font-mono); }
+        .result-area h3 { margin: 0 0 22px; font-size: 1.25rem; font-weight: 700; }
+        .result-preview { max-height: 350px; display: grid; place-items: center; background: #050505; border-radius: 7px; border: 1px solid var(--border-color); padding: 10px; margin-bottom: 20px; background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%), linear-gradient(-45deg, #1a1a1a 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1a1a1a 75%), linear-gradient(-45deg, transparent 75%, #1a1a1a 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+        .result-preview img { max-height: 330px; width: auto; object-fit: contain; }
+        .download-button { display: inline-flex; justify-content: center; width: 100%; padding: 13px; border: 1px solid var(--primary); border-radius: 7px; background: var(--primary); color: #051A14; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; transition: transform var(--transition); }
+        .download-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        .tool-sidebar { display: flex; flex-direction: column; gap: 18px; }
+        .sidebar-card { padding: 20px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-card); }
+        .sidebar-card h3 { margin: 0 0 14px; color: var(--primary); font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.04em; }
+        .sidebar-card a { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; border-bottom: 1px solid transparent; transition: all 0.2s ease; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+        .sidebar-card a:last-child { border-bottom: none; }
+        .sidebar-card a:hover { background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.2); color: var(--primary); transform: translateX(3px); }
+        .sidebar-card a .tool-emoji { font-size: 1.1rem; line-height: 1; }
+
+        .tool-content { padding: 10px 0 20px; }
+        .tool-content h2 { margin: 42px 0 13px; font-size: 1.4rem; line-height: 1.3; letter-spacing: -0.025em; color: var(--text-main); }
+        .tool-content h2:first-child { margin-top: 15px; }
+        .tool-content p, .tool-content li, .faq-section p { color: var(--text-muted); font-size: 0.9rem; }
+        .tool-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+        .tool-content a:hover { color: var(--primary-hover); }
+        .tool-content ol { padding-left: 22px; }
+        .tool-content li { margin-bottom: 8px; }
+        .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .format-card { padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); }
+        .format-card strong { display: block; margin-bottom: 4px; color: var(--primary); font-family: var(--font-mono); }
+        .format-card span { color: var(--text-muted); font-size: 0.72rem; }
+
+        .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .related-grid a { display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); text-decoration: none; transition: all 0.2s ease; }
+        .related-grid a:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+        .related-grid strong { color: var(--text-main); font-size: 0.8rem; }
+        .related-grid span { color: var(--text-muted); font-size: 0.7rem; }
+        .related-grid a .tool-emoji { font-size: 1.5rem; margin-bottom: 2px; }
+
+        .faq-section { max-width: 900px; padding: 15px 0 20px; }
+        .faq-section details { border-top: 1px solid var(--border-color); }
+        .faq-section details:last-child { border-bottom: 1px solid var(--border-color); }
+        .faq-section summary { padding: 18px 0; cursor: pointer; list-style: none; font-size: 0.9rem; font-weight: 650; color: var(--text-main); }
+        .faq-section summary::-webkit-details-marker { display: none; }
+        .faq-section summary::after { content: "+"; float: right; color: var(--primary); font-family: var(--font-mono); }
+        .faq-section details[open] summary::after { content: "−"; }
+
+        .donate-cta { display: flex; gap: 22px; align-items: center; margin: 35px 0; padding: 28px; border: 1px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius); background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0.02)); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1); }
+        .donate-icon { width: 60px; height: 60px; flex: 0 0 60px; display: grid; place-items: center; border: 1px solid var(--border-glow); border-radius: 12px; font-size: 1.6rem; }
+        .donate-copy h2 { margin: 3px 0 7px; font-size: 1.25rem; color: var(--text-main); }
+        .donate-copy p { margin: 0 15px 15px 0; color: var(--text-muted); font-size: 0.82rem; }
+        .donate-button { display: inline-flex; padding: 10px 20px; border-radius: 6px; background: var(--primary); color: #051A14; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; transition: all 0.25s ease; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); text-decoration: none; }
+        .donate-button:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5); }
+        .donate-trust { font-size: 0.7rem; color: var(--text-muted); margin-left: 10px; }
+
+        .sys-footer { margin-top: 80px; padding: 55px 0 25px; border-top: 1px solid var(--border-color); background: #030507; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 35px; }
+        .footer-brand-block p { max-width: 300px; color: var(--text-muted); font-size: 0.75rem; }
+        .footer-note { margin-top: 10px; opacity: 0.75; font-family: var(--font-mono); font-size: 0.65rem !important; }
+        .footer-grid h4 { margin: 0 0 12px; color: var(--primary); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; }
+        .footer-grid > div:not(.footer-brand-block) a { display: block; padding: 5px 0; color: var(--text-muted); font-size: 0.73rem; transition: color var(--transition), transform var(--transition); }
+        .footer-grid > div:not(.footer-brand-block) a:hover { color: var(--primary); transform: translateX(2px); }
+        .footer-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border-color); color: #5f5f5f; font-family: var(--font-mono); font-size: 0.62rem; }
+        .system-status { color: var(--primary); }
+
+        @media (max-width: 900px) {
+            .tool-layout { grid-template-columns: 1fr; }
+            .tool-sidebar { display: grid; grid-template-columns: repeat(2, 1fr); position: static; top: auto; max-height: none; overflow-y: visible; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 650px) {
+            .container { width: min(100% - 28px, 1180px); padding-inline: 0; }
+            .navbar { min-height: 62px; }
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: 0.65rem; }
+            .nav-links a:nth-child(2) { display: none; }
+            .tool-hero { padding: 50px 0 35px; }
+            .tool-hero h1 { font-size: 2.35rem; }
+            .hero-features { flex-direction: column; gap: 7px; align-items: flex-start; }
+            .tool-sidebar { grid-template-columns: 1fr; }
+            .format-grid { grid-template-columns: 1fr; }
+            .related-grid { grid-template-columns: 1fr; }
+            .option-row { grid-template-columns: 1fr; }
+            .donate-cta { align-items: flex-start; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; }
+        }
+        @media (max-width: 430px) {
+            .nav-links a { display: none; }
+            .nav-links a:last-child { display: block; }
+            .dropzone { margin: 15px; padding: 45px 15px; }
+            .preview-area, .round-options, .result-area { margin: 15px; }
+            .tool-header { padding: 16px; }
+            .status { display: none; }
+            .donate-cta { padding: 20px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .upload-button:hover, .process-button:hover, .download-button:hover, .donate-button:hover, .related-grid a:hover { transform: none; }
+        }
+        @media (min-width: 901px) {
+            .tool-sidebar { position: sticky; top: 100px; align-self: start; max-height: calc(100vh - 120px); overflow-y: auto; }
+        }
+    </style>
+
+    <script src="../../../ads/ad-config.js"></script>
+    <script src="../../../ads/ads.js"></script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "zenlyta Round Corners",
+            "url": "https://zenlyta.com/tools/image/round-corners/",
+            "description": "Add rounded corners to JPG, PNG, and WebP images directly in your browser. Free, privacy-first tool.",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires a modern web browser",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "featureList": ["Adjustable corner radius", "Live preview", "Transparent or colored background", "Client-side processing", "PNG JPG WebP support"]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenlyta.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://zenlyta.com/#image-tools" },
+                { "@type": "ListItem", "position": 3, "name": "Round Corners", "item": "https://zenlyta.com/tools/image/round-corners/" }
+            ]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "How do I round image corners?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Upload an image, adjust the radius slider, preview the result, and download the rounded image." }
+            }, {
+                "@type": "Question",
+                "name": "Will rounding corners reduce quality?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. The image is rendered at original resolution with smooth anti-aliased corners." }
+            }, {
+                "@type": "Question",
+                "name": "Can I make a circular image?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Set the radius to 50% or use the Circle preset to create a perfect circle (best with square images)." }
+            }, {
+                "@type": "Question",
+                "name": "Are my images uploaded?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. Rounding is performed locally in your browser using Canvas clipping." }
+            }, {
+                "@type": "Question",
+                "name": "What background is used for corners?",
+                "acceptedAnswer": { "@type": "Answer", "text": "PNG exports keep corners transparent. JPG exports fill corners with your chosen background color." }
+            }]
+        }
+    </script>
+</head>
+<body>
+
+    <header class="sys-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a class="brand" href="../../../index.html" aria-label="zenlyta homepage">
+                    <span class="brand-badge">Z</span>
+                    <span>zenlyta<span class="highlight">.com</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../../index.html#tools">Tools</a>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../about.html">About</a>
+                    <a href="../../../donate.html">Support Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container breadcrumb-wrap">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../../index.html#image-tools">Image Tools</a>
+                <span>/</span>
+                <span aria-current="page">Round Corners</span>
+            </nav>
+        </section>
+
+        <section class="tool-hero">
+            <div class="container">
+                <span class="tool-badge">IMAGE TOOL</span>
+                <h1>Round Image Corners</h1>
+                <p>Add smooth rounded corners to JPG, PNG, and WebP photos with adjustable radius — perfect for avatars, cards, and social media.</p>
+                <div class="hero-features">
+                    <span>✓ Free to use</span>
+                    <span>✓ Adjustable radius</span>
+                    <span>✓ Transparent PNG support</span>
+                    <span>✓ Privacy-first</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="top"></div>
+        </section>
+
+        <section class="container">
+            <div class="tool-layout">
+
+                <div class="tool-main">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div>
+                                <span class="terminal-label">// CORNER_ROUNDER</span>
+                                <h2>Round Your Image</h2>
+                            </div>
+                            <span class="status">LOCAL</span>
+                        </div>
+
+                        <div class="dropzone" id="dropzone">
+                            <div class="drop-icon">⭕</div>
+                            <h3>Drop your image here</h3>
+                            <p>or select a file from your device</p>
+                            <label for="fileInput" class="upload-button">Select Image</label>
+                            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden />
+                            <small>JPG · PNG · WebP</small>
+                        </div>
+
+                        <div class="preview-area" id="previewArea" hidden>
+                            <div class="preview-image-wrap">
+                                <img id="previewImage" alt="Selected image preview" />
+                            </div>
+                            <div class="file-info">
+                                <strong id="fileName">image.jpg</strong>
+                                <span id="fileSize">0 KB</span>
+                            </div>
+                        </div>
+
+                        <div class="round-options" id="roundOptions" hidden>
+                            <label for="radiusRange">
+                                <span>Corner Radius</span>
+                                <span id="radiusValue">40px</span>
+                            </label>
+                            <input type="range" id="radiusRange" min="0" max="200" value="40" />
+                            <div class="quality-scale">
+                                <span>Sharp</span>
+                                <span>Very Round</span>
+                            </div>
+                            <div class="preset-row">
+                                <button type="button" class="preset-btn" data-radius="0">Sharp (0px)</button>
+                                <button type="button" class="preset-btn active" data-radius="40">Medium (40px)</button>
+                                <button type="button" class="preset-btn" data-radius="80">Large (80px)</button>
+                                <button type="button" class="preset-btn" data-radius="150">Extra (150px)</button>
+                                <button type="button" class="preset-btn" data-radius="999">Circle (50%)</button>
+                            </div>
+                            <div class="option-row">
+                                <div class="option-group">
+                                    <label for="bgColor">Background for JPG</label>
+                                    <input type="color" id="bgColor" value="#ffffff" />
+                                </div>
+                                <div class="option-group">
+                                    <label for="exportFormat">Export Format</label>
+                                    <select id="exportFormat">
+                                        <option value="png">PNG (transparent corners)</option>
+                                        <option value="jpeg">JPG (with background)</option>
+                                        <option value="webp">WebP (transparent)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="process-button" id="roundButton" hidden>Apply Rounded Corners</button>
+
+                        <div class="result-area" id="resultArea" hidden>
+                            <div class="result-icon">✓</div>
+                            <h3>Corners Rounded Successfully</h3>
+                            <div class="result-preview">
+                                <img id="resultImage" alt="Rounded corners result" />
+                            </div>
+                            <a href="#" class="download-button" id="downloadButton" download="rounded-image.png">Download Rounded Image</a>
+                        </div>
+                    </div>
+
+                    <div class="ad-section" aria-label="Advertisement">
+                        <div class="zenlyta-ad" data-ad-position="content"></div>
+                    </div>
+
+                    <article class="tool-content">
+                        <h2>Free Online Rounded Corners Tool</h2>
+                        <p>zenlyta’s Round Corners tool lets you soften the edges of any photo by applying smooth, anti-aliased rounded corners. It is ideal for profile avatars, product cards, presentation slides, social media posts, and web UI elements where sharp rectangular edges feel too harsh.</p>
+                        <p>No account is required. Upload an image, drag the radius slider, preview the result instantly, and download the final file with transparent or colored corners.</p>
+
+                        <h2>How to Round Image Corners</h2>
+                        <ol>
+                            <li>Upload a JPG, PNG, or WebP image from your device.</li>
+                            <li>Adjust the <strong>Corner Radius</strong> slider or choose a preset (Sharp, Medium, Large, Circle).</li>
+                            <li>Check the live preview — corners update in real time.</li>
+                            <li>Choose export format: <strong>PNG</strong> for transparent corners or <strong>JPG</strong> with a custom background color.</li>
+                            <li>Click <strong>Apply Rounded Corners</strong> and download the result.</li>
+                        </ol>
+
+                        <h2>Why Round Image Corners?</h2>
+                        <p>Rounded corners make images feel softer, more modern, and more approachable. They are a staple of contemporary UI design — from app icons and avatars to cards and banners. Rounding corners can also help images blend better into layouts with rounded containers, reducing visual tension between sharp photos and soft UI elements.</p>
+                        <p>For circular avatars, set the radius to 50% (Circle preset) on a square image to create a perfect circle.</p>
+
+                        <h2>Privacy-First Image Processing</h2>
+                        <p>zenlyta is designed around a client-side, privacy-first architecture. Your image is processed directly in your browser using the Canvas clipping API — it is not uploaded to a zenlyta file-processing server.</p>
+                        <p>This keeps your personal photos private and ensures fast processing. Learn more on the <a href="../../../architecture.html">System Architecture</a> page and read our <a href="../../../privacy.html">Privacy Policy</a>.</p>
+
+                        <h2>Supported Features</h2>
+                        <div class="format-grid">
+                            <div class="format-card"><strong>Adjustable Radius</strong><span>0–200px slider with presets from sharp to circular</span></div>
+                            <div class="format-card"><strong>Transparent PNG</strong><span>Corners stay transparent for overlay on any background</span></div>
+                            <div class="format-card"><strong>Live Preview</strong><span>See corner rounding in real time before exporting</span></div>
+                        </div>
+
+                        <h2>More Image Tools</h2>
+                        <p>Looking for another image effect? Explore related zenlyta tools:</p>
+                        <div class="related-grid" id="relatedToolsGrid"></div>
+                    </article>
+                </div>
+
+                <aside class="tool-sidebar">
+                    <div class="sidebar-card">
+                        <h3>// IMAGE_TOOLS</h3>
+                        <div id="sidebarToolLinks"></div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>// ZENLYTA</h3>
+                        <a href="../../../architecture.html"><span>⚙️</span> System Architecture</a>
+                        <a href="../../../privacy.html"><span>🔒</span> Privacy Policy</a>
+                        <a href="../../../about.html"><span>💡</span> About zenlyta</a>
+                        <a href="../../../contact.html"><span>📧</span> Contact</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="container">
+            <article class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <details open>
+                    <summary>How do I round image corners?</summary>
+                    <p>Upload your image, move the radius slider to your desired roundness, and click Apply. The tool uses canvas clipping to create smooth anti-aliased corners.</p>
+                </details>
+                <details>
+                    <summary>Will rounding reduce image quality?</summary>
+                    <p>No. The image is rendered at its original resolution. Corners are anti-aliased for smooth edges without pixelation.</p>
+                </details>
+                <details>
+                    <summary>Can I make a circular image?</summary>
+                    <p>Yes. Use the Circle preset (50% radius) on a square image to create a perfect circle. For non-square images, the result will be an oval with fully rounded ends.</p>
+                </details>
+                <details>
+                    <summary>What happens to the corner background?</summary>
+                    <p>PNG and WebP exports keep corners transparent, so you can place the image on any background. JPG exports fill corners with the color you choose.</p>
+                </details>
+                <details>
+                    <summary>Are my images uploaded?</summary>
+                    <p>No. All processing happens locally in your browser. Your image never leaves your device.</p>
+                </details>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="donate-cta">
+                <div class="donate-icon">☕</div>
+                <div class="donate-copy">
+                    <span class="terminal-label">// SUPPORT_INDEPENDENT_DEVELOPMENT</span>
+                    <h2>Find zenlyta Useful?</h2>
+                    <p>zenlyta is free to use. If this tool saved you time or helped you complete your work, you can support the continued development and maintenance of the project.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                        <a href="../../../donate.html" class="donate-button">❤️ Support zenlyta</a>
+                        <span class="donate-trust">🔒 Secure · No account required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="bottom"></div>
+        </section>
+    </main>
+
+    <footer class="sys-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-block">
+                    <a class="brand" href="../../../index.html">
+                        <span class="brand-badge">Z</span>
+                        <span>zenlyta<span class="highlight">.com</span></span>
+                    </a>
+                    <p>Free, privacy-first browser tools designed to process supported files directly on your device.</p>
+                    <p class="footer-note">No account. No unnecessary upload.</p>
+                </div>
+                <div>
+                    <h4>// UTILITIES</h4>
+                    <a href="../../../index.html#image-tools">Image Tools</a>
+                    <a href="../../../index.html#pdf-tools">PDF Tools</a>
+                    <a href="../../../index.html#developer-tools">Developer Suite</a>
+                    <a href="../../../index.html#text-tools">Text Tools</a>
+                    <a href="../../../index.html#calculators">Calculators</a>
+                </div>
+                <div>
+                    <h4>// SYSTEM</h4>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../privacy.html">Privacy Policy</a>
+                    <a href="../../../about.html">About System</a>
+                    <a href="../../../contact.html">Contact</a>
+                </div>
+                <div>
+                    <h4>// SUPPORT</h4>
+                    <a href="../../../donate.html">Support zenlyta</a>
+                    <a href="../../../terms.html">Terms of Use</a>
+                    <a href="../../../disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 zenlyta.com — BROWSER EXECUTION ENGINE</span>
+                <span class="system-status">STATUS: ALL SYSTEMS OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        "use strict";
+        const TOOLS = [
+            { id: 'add-watermark', emoji: '©', label: 'Add Watermark' },
+            { id: 'aspect-ratio-calculator', emoji: '📐', label: 'Aspect Ratio Calculator' },
+            { id: 'avif-converter', emoji: '🔄', label: 'AVIF Converter' },
+            { id: 'avif-to-jpg', emoji: '🔄', label: 'AVIF to JPG' },
+            { id: 'base64-to-image', emoji: '🔢', label: 'Base64 to Image' },
+            { id: 'black-and-white', emoji: '⚫', label: 'Black & White' },
+            { id: 'blur-background', emoji: '🌫️', label: 'Blur Background' },
+            { id: 'blur-image', emoji: '🌫️', label: 'Blur Image' },
+            { id: 'change-brightness', emoji: '☀️', label: 'Change Brightness' },
+            { id: 'collage-maker', emoji: '🖼️', label: 'Collage Maker' },
+            { id: 'color-palette-extractor', emoji: '🎨', label: 'Color Palette Extractor' },
+            { id: 'color-picker', emoji: '🎨', label: 'Color Picker' },
+            { id: 'compress-image', emoji: '🗜️', label: 'Compress Image' },
+            { id: 'compress-png', emoji: '📦', label: 'Compress PNG' },
+            { id: 'crop-image', emoji: '✂️', label: 'Crop Image' },
+            { id: 'dicom-viewer', emoji: '🩻', label: 'DICOM Viewer' },
+            { id: 'eps-to-png', emoji: '🔄', label: 'EPS to PNG' },
+            { id: 'extract-text', emoji: '📝', label: 'Extract Text' },
+            { id: 'favicon-generator', emoji: '⭐', label: 'Favicon Generator' },
+            { id: 'flip-image', emoji: '↔️', label: 'Flip Image' },
+            { id: 'pixelate-image', emoji: '🟩', label: 'Pixelate Image' },
+            { id: 'heic-to-jpg', emoji: '🔄', label: 'HEIC to JPG' },
+            { id: 'heic-to-png', emoji: '🔄', label: 'HEIC to PNG' },
+            { id: 'image-converter', emoji: '🔄', label: 'Image Converter' },
+            { id: 'image-metadata', emoji: '🔎', label: 'Image Metadata' },
+            { id: 'image-overlay', emoji: '🖼️', label: 'Image Overlay' },
+            { id: 'image-to-base64', emoji: '🔢', label: 'Image to Base64' },
+            { id: 'image-to-pdf', emoji: '📄', label: 'Image to PDF' },
+            { id: 'image-upscaler', emoji: '🔍', label: 'Image Upscaler' },
+            { id: 'invert-colors', emoji: '🎨', label: 'Invert Colors' },
+            { id: 'jpg-to-png', emoji: '🔄', label: 'JPG to PNG' },
+            { id: 'jpg-to-webp', emoji: '🔄', label: 'JPG to WebP' },
+            { id: 'meme-generator', emoji: '😂', label: 'Meme Generator' },
+            { id: 'passport-photo-maker', emoji: '🪪', label: 'Passport Photo Maker' },
+            { id: 'pdf-to-jpg', emoji: '📄', label: 'PDF to JPG' },
+            { id: 'photo-colorizer', emoji: '🎨', label: 'Photo Colorizer' },
+            { id: 'png-to-ico', emoji: '🔄', label: 'PNG to ICO' },
+            { id: 'png-to-jpg', emoji: '🔄', label: 'PNG to JPG' },
+            { id: 'png-to-webp', emoji: '🔄', label: 'PNG to WebP' },
+            { id: 'remove-bg', emoji: '✂️', label: 'Remove Background' },
+            { id: 'remove-exif', emoji: '🔒', label: 'Remove EXIF' },
+            { id: 'resize-image', emoji: '↔️', label: 'Resize Image' },
+            { id: 'rotate-image', emoji: '🔄', label: 'Rotate Image' },
+            { id: 'round-corners', emoji: '⭕', label: 'Round Corners' },
+            { id: 'split-image', emoji: '✂️', label: 'Split Image' },
+            { id: 'sprite-sheet-generator', emoji: '🧩', label: 'Sprite Sheet Generator' },
+            { id: 'svg-optimizer', emoji: '⚡', label: 'SVG Optimizer' },
+            { id: 'svg-to-png', emoji: '🔄', label: 'SVG to PNG' },
+            { id: 'tiff-to-jpg', emoji: '🔄', label: 'TIFF to JPG' },
+            { id: 'webp-to-jpg', emoji: '🔄', label: 'WebP to JPG' },
+            { id: 'webp-to-png', emoji: '🔄', label: 'WebP to PNG' }
+        ];
+        const sidebarContainer = document.getElementById('sidebarToolLinks');
+        if (sidebarContainer) {
+            const pathParts = window.location.pathname.split('/');
+            const currentToolId = pathParts[pathParts.length - 2] || 'round-corners';
+            let html = '';
+            TOOLS.forEach(t => {
+                const active = (t.id === currentToolId) ? ' style="color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);"' : '';
+                html += `<a href="../${t.id}/"${active}><span class="tool-emoji">${t.emoji}</span> ${t.label}</a>`;
+            });
+            html += `<a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>`;
+            sidebarContainer.innerHTML = html;
+        }
+        const relatedGrid = document.getElementById('relatedToolsGrid');
+        if (relatedGrid) {
+            const pathParts = window.location.pathname.split('/');
+            const currentToolId = pathParts[pathParts.length - 2] || 'round-corners';
+            const others = TOOLS.filter(t => t.id !== currentToolId);
+            const selected = others.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let html = '';
+            selected.forEach(t => {
+                html += `<a href="../${t.id}/"><span class="tool-emoji">${t.emoji}</span><strong>${t.label}</strong><span>Free online tool</span></a>`;
+            });
+            relatedGrid.innerHTML = html;
+        }
+
+        (function() {
+            const fileInput = document.getElementById('fileInput');
+            const dropzone = document.getElementById('dropzone');
+            const previewArea = document.getElementById('previewArea');
+            const previewImage = document.getElementById('previewImage');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const roundOptions = document.getElementById('roundOptions');
+            const radiusRange = document.getElementById('radiusRange');
+            const radiusValue = document.getElementById('radiusValue');
+            const bgColor = document.getElementById('bgColor');
+            const exportFormat = document.getElementById('exportFormat');
+            const roundButton = document.getElementById('roundButton');
+            const resultArea = document.getElementById('resultArea');
+            const resultImage = document.getElementById('resultImage');
+            const downloadButton = document.getElementById('downloadButton');
+            const presetBtns = document.querySelectorAll('.preset-btn');
+
+            let selectedFile = null;
+            let previewURL = null;
+            let resultURL = null;
+
+            function formatBytes(bytes) {
+                if (!bytes) return '0 B';
+                const units = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+                return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + units[i];
+            }
+
+            function updatePreviewRadius() {
+                const r = parseInt(radiusRange.value);
+                if (r >= 999) {
+                    radiusValue.textContent = '50% (Circle)';
+                    previewImage.style.borderRadius = '50%';
+                } else {
+                    radiusValue.textContent = r + 'px';
+                    previewImage.style.borderRadius = r + 'px';
+                }
+                presetBtns.forEach(btn => {
+                    const br = parseInt(btn.dataset.radius);
+                    btn.classList.toggle('active', br === r);
+                });
+            }
+
+            radiusRange.addEventListener('input', updatePreviewRadius);
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    radiusRange.value = this.dataset.radius;
+                    updatePreviewRadius();
+                });
+            });
+
+            function loadFile(file) {
+                if (!file) return;
+                if (!file.type.startsWith('image/')) { alert('Please select a valid image.'); return; }
+                selectedFile = file;
+                if (previewURL) URL.revokeObjectURL(previewURL);
+                previewURL = URL.createObjectURL(file);
+                previewImage.src = previewURL;
+                fileName.textContent = file.name;
+                fileSize.textContent = formatBytes(file.size);
+                previewArea.hidden = false;
+                roundOptions.hidden = false;
+                roundButton.hidden = false;
+                resultArea.hidden = true;
+                updatePreviewRadius();
+            }
+
+            fileInput.addEventListener('change', function() { loadFile(this.files[0]); });
+            dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.classList.add('dragover'); });
+            dropzone.addEventListener('dragleave', function() { dropzone.classList.remove('dragover'); });
+            dropzone.addEventListener('drop', function(e) { e.preventDefault(); dropzone.classList.remove('dragover'); loadFile(e.dataTransfer.files[0]); });
+
+            function drawRoundedRect(ctx, x, y, w, h, r) {
+                // Clamp radius to half of smallest dimension
+                r = Math.min(r, w/2, h/2);
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            roundButton.addEventListener('click', function() {
+                if (!selectedFile || !previewURL) return;
+                roundButton.disabled = true;
+                roundButton.textContent = 'Rendering…';
+
+                const radius = parseInt(radiusRange.value);
+                const fmt = exportFormat.value;
+                const mime = fmt === 'png' ? 'image/png' : fmt === 'jpeg' ? 'image/jpeg' : 'image/webp';
+                const ext = fmt === 'jpeg' ? 'jpg' : fmt;
+
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) { alert('Canvas not supported.'); roundButton.disabled=false; roundButton.textContent='Apply Rounded Corners'; return; }
+
+                    // For JPG, fill background first
+                    if (fmt === 'jpeg') {
+                        ctx.fillStyle = bgColor.value;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+
+                    // Calculate radius in canvas pixels
+                    let r;
+                    if (radius >= 999) {
+                        r = Math.min(canvas.width, canvas.height) / 2;
+                    } else {
+                        // Scale radius proportionally if image is large
+                        // Slider is in CSS px, but we want similar visual ratio
+                        // Use direct pixel value, clamped
+                        r = radius;
+                        // If image is very small, scale down
+                        const maxR = Math.min(canvas.width, canvas.height) / 2;
+                        if (r > maxR) r = maxR;
+                    }
+
+                    ctx.save();
+                    drawRoundedRect(ctx, 0, 0, canvas.width, canvas.height, r);
+                    ctx.clip();
+                    ctx.drawImage(img, 0, 0);
+                    ctx.restore();
+
+                    canvas.toBlob(function(blob) {
+                        if (!blob) { alert('Failed to generate image.'); roundButton.disabled=false; roundButton.textContent='Apply Rounded Corners'; return; }
+                        if (resultURL) URL.revokeObjectURL(resultURL);
+                        resultURL = URL.createObjectURL(blob);
+                        resultImage.src = resultURL;
+                        // Apply same border radius to result preview for consistency
+                        if (radius >= 999) resultImage.style.borderRadius = '50%';
+                        else resultImage.style.borderRadius = Math.min(radius, 40) + 'px';
+                        downloadButton.href = resultURL;
+                        const baseName = selectedFile.name.replace(/\.[^/.]+$/, '');
+                        downloadButton.download = baseName + '-rounded.' + ext;
+                        resultArea.hidden = false;
+                        resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        roundButton.disabled = false;
+                        roundButton.textContent = 'Apply Rounded Corners';
+                    }, mime, 0.92);
+                };
+                img.onerror = function() { alert('Unable to read image.'); roundButton.disabled=false; roundButton.textContent='Apply Rounded Corners'; };
+                img.src = previewURL;
+            });
+
+            window.addEventListener('beforeunload', function() {
+                if (previewURL) URL.revokeObjectURL(previewURL);
+                if (resultURL) URL.revokeObjectURL(resultURL);
+            });
+        })();
+    </script>
+</body>
+</html>

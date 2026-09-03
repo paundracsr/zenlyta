@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIFF to JPG Converter Online Free — zenlyta</title>
+    <meta name="description" content="Convert TIFF images to JPG online for free. Transform TIF and TIFF photos directly in your browser with zenlyta's privacy-first TIFF to JPG converter.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://zenlyta.com/tools/image/tiff-to-jpg/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TIFF to JPG Converter Online Free — zenlyta">
+    <meta property="og:description" content="Convert TIFF images to JPG directly in your browser.">
+    <meta property="og:url" content="https://zenlyta.com/tools/image/tiff-to-jpg/">
+    <meta property="og:site_name" content="zenlyta">
+    <meta name="theme-color" content="#080808">
+
+    <!-- Tool CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Global Advertisement System -->
+        <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3EQRT92T3L');
+    </script>
+    <link rel="stylesheet" href="../../../ads/ads.css">
+
+    <!-- TIFF decoding library -->
+    <script src="https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.min.js"></script>
+
+    <style>
+        /* =========================================================
+           ZENLYTA GLOBAL TOOL CSS
+           Konsisten dengan index.html / about.html / architecture.html
+           (Tanpa styling untuk iklan — sudah ditangani oleh ads.css)
+           ========================================================= */
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        button, input { font: inherit; }
+        button { -webkit-tap-highlight-color: transparent; }
+        :focus { outline: none; }
+        :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+        ::selection { background: rgba(16, 185, 129, 0.25); color: var(--text-main); }
+
+        .container { width: 100%; max-width: var(--container-width); margin-inline: auto; padding-inline: 1.25rem; }
+
+        /* Header */
+        .sys-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 8, 9, 0.94);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: box-shadow var(--transition), background var(--transition);
+        }
+
+        .sys-header.scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+        .navbar { min-height: 3.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            min-height: 28px;
+            background: var(--primary);
+            color: #000;
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 900;
+            transition: transform var(--transition);
+        }
+
+        .brand:hover .brand-badge { transform: scale(1.04); }
+        .brand span { color: var(--text-main); }
+        .brand .highlight { color: var(--primary); }
+
+        .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+        .nav-links a {
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.7rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: color var(--transition), background var(--transition), border-color var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+
+        .breadcrumb-wrap { padding-top: 26px; }
+        .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span:last-child { color: var(--text-main); }
+
+        /* Hero */
+        .tool-hero { padding: clamp(2.5rem, 5vw, 4rem) 0 2rem; text-align: center; }
+        .tool-badge {
+            display: inline-flex;
+            padding: 0.3rem 0.85rem;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 999px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.25rem;
+        }
+        .tool-hero h1 {
+            max-width: 800px;
+            margin: 0 auto 0.75rem;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.12;
+        }
+        .tool-hero > .container > p { max-width: 680px; margin: 0 auto 1.5rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .hero-features { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; }
+        .hero-features span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+        /* Tool layout */
+        .tool-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: start; }
+        .tool-main { min-width: 0; }
+
+        .tool-card {
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-header {
+            min-height: 75px;
+            padding: 1.15rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .terminal-label {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.04em;
+        }
+
+        .tool-header h2 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .status {
+            padding: 5px 9px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            border-radius: 4px;
+        }
+
+        .dropzone {
+            margin: 1.5rem;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            border: 1px dashed var(--border-glow);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.015);
+            transition: border-color var(--transition), background var(--transition), transform var(--transition);
+        }
+
+        .dropzone:hover,
+        .dropzone.dragover {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.025);
+            transform: translateY(-2px);
+        }
+
+        .drop-icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+            border: 1px solid var(--border-glow);
+            border-radius: 50%;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+        }
+
+        .dropzone h3 {
+            margin: 0 0 5px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .dropzone p {
+            margin: 0 18px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .dropzone small {
+            display: block;
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+
+        .upload-button {
+            display: inline-flex;
+            padding: 10px 18px;
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .upload-button:hover {
+            background: var(--primary);
+            color: #051A14;
+        }
+
+        .preview-area {
+            margin: 1.5rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 9px;
+            background: var(--bg-main);
+        }
+
+        .preview-image-wrap {
+            max-height: 400px;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            background: #050505;
+            border-radius: 7px;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+        }
+
+        .preview-image-wrap canvas,
+        .preview-image-wrap img {
+            max-height: 380px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .preview-pages {
+            display: grid;
+            gap: 12px;
+        }
+
+        .preview-page {
+            display: grid;
+            place-items: center;
+            background: #050505;
+            border-radius: 7px;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+        }
+
+        .preview-page canvas {
+            max-height: 300px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .preview-page-label {
+            text-align: center;
+            margin-top: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .file-info strong {
+            max-width: 70%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-main);
+        }
+
+        .convert-options {
+            margin: 1.5rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 9px;
+            background: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .convert-options label {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .convert-options label > span:last-child { color: var(--primary); }
+        input[type="range"] { width: 100%; accent-color: var(--primary); }
+        .control-hint { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); text-align: center; }
+
+        .process-button {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--primary);
+            border-radius: 7px;
+            background: var(--primary);
+            color: #051A14;
+            font-family: var(--font-mono);
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform var(--transition), opacity var(--transition);
+        }
+
+        .process-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .process-button:disabled {
+            opacity: 0.55;
+            cursor: wait;
+        }
+
+        .result-area {
+            margin: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 9px;
+            background: rgba(16, 185, 129, 0.025);
+        }
+
+        .result-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 12px;
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            color: var(--primary);
+            font-family: var(--font-mono);
+        }
+
+        .result-area h3 {
+            margin: 0 0 22px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-stats div {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-card);
+        }
+
+        .result-stats span {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-muted);
+            font-size: 0.65rem;
+        }
+
+        .result-stats strong {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .result-pages {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .result-page-card {
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+        }
+
+        .result-page-card .preview-page {
+            margin-bottom: 12px;
+        }
+
+        .result-page-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .result-page-info strong { color: var(--text-main); }
+
+        .download-button {
+            display: inline-flex;
+            justify-content: center;
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--primary);
+            border-radius: 7px;
+            background: var(--primary);
+            color: #051A14;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 800;
+            transition: transform var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .download-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .download-all-button {
+            display: inline-flex;
+            justify-content: center;
+            width: 100%;
+            padding: 13px;
+            border: 1px solid var(--border-glow);
+            border-radius: 7px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition);
+            margin-top: 10px;
+        }
+
+        .download-all-button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Sidebar */
+        .tool-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .sidebar-card {
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+        }
+
+        .sidebar-card h3 {
+            margin: 0 0 14px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.67rem;
+            letter-spacing: 0.04em;
+        }
+
+        .sidebar-card a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-card a:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-card a:hover {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        /* SEO Content */
+        .tool-content {
+            padding: 10px 0 20px;
+        }
+
+        .tool-content h2,
+        .faq-section h2 {
+            margin: 42px 0 13px;
+            font-size: 1.4rem;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+        }
+
+        .tool-content h2:first-child {
+            margin-top: 15px;
+        }
+
+        .tool-content p,
+        .tool-content li,
+        .faq-section p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .tool-content a {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .tool-content a:hover {
+            color: var(--primary-hover);
+        }
+
+        .tool-content ol {
+            padding-left: 22px;
+        }
+
+        .tool-content li {
+            margin-bottom: 8px;
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .format-card {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+        }
+
+        .format-card strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+        }
+
+        .format-card span {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .related-grid a {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-card);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .related-grid a:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .related-grid strong {
+            color: var(--text-main);
+            font-size: 0.8rem;
+        }
+
+        .related-grid span {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        .related-grid a .tool-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+
+        .faq-section {
+            max-width: 900px;
+            padding: 15px 0 20px;
+        }
+
+        .faq-section details {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-section details:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-section summary {
+            padding: 18px 0;
+            cursor: pointer;
+            list-style: none;
+            font-size: 0.9rem;
+            font-weight: 650;
+            color: var(--text-main);
+        }
+
+        .faq-section summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-section summary::after {
+            content: "+";
+            float: right;
+            color: var(--primary);
+            font-family: var(--font-mono);
+        }
+
+        .faq-section details[open] summary::after {
+            content: "−";
+        }
+
+        /* Donate CTA */
+        .donate-cta {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            margin: 35px 0;
+            padding: 28px;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(255,255,255,0.02));
+            box-shadow: 0 8px 24px rgba(16,185,129,0.1);
+        }
+
+        .donate-icon {
+            width: 60px;
+            height: 60px;
+            flex: 0 0 60px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--border-glow);
+            border-radius: 12px;
+            font-size: 1.6rem;
+        }
+
+        .donate-copy h2 {
+            margin: 3px 0 7px;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .donate-copy p {
+            margin: 0 15px 15px 0;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .donate-button {
+            display: inline-flex;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background: var(--primary);
+            color: #051A14;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 800;
+            transition: all 0.25s ease;
+            box-shadow: 0 0 20px rgba(16,185,129,0.4);
+            text-decoration: none;
+        }
+
+        .donate-button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(16,185,129,0.5);
+        }
+
+        .donate-trust {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-left: 10px;
+        }
+
+        /* Footer */
+        .sys-footer {
+            margin-top: 80px;
+            padding: 55px 0 25px;
+            border-top: 1px solid var(--border-color);
+            background: #030507;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.7fr 1fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        .footer-brand-block p {
+            max-width: 300px;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .footer-note {
+            margin-top: 10px;
+            opacity: 0.75;
+            font-family: var(--font-mono);
+            font-size: 0.65rem !important;
+        }
+
+        .footer-grid h4 {
+            margin: 0 0 12px;
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-grid > div:not(.footer-brand-block) a {
+            display: block;
+            padding: 5px 0;
+            color: var(--text-muted);
+            font-size: 0.73rem;
+            transition: color var(--transition), transform var(--transition);
+        }
+
+        .footer-grid > div:not(.footer-brand-block) a:hover {
+            color: var(--primary);
+            transform: translateX(2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+            color: #5f5f5f;
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+        }
+
+        .system-status {
+            color: var(--primary);
+        }
+
+        @media (max-width: 900px) {
+            .tool-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-sidebar {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                position: static;
+                top: auto;
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                width: min(100% - 28px, 1180px);
+                padding-inline: 0;
+            }
+
+            .navbar {
+                min-height: 62px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 0.65rem;
+            }
+
+            .nav-links a:nth-child(2) {
+                display: none;
+            }
+
+            .tool-hero {
+                padding: 50px 0 35px;
+            }
+
+            .tool-hero h1 {
+                font-size: 2.35rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 7px;
+                align-items: flex-start;
+            }
+
+            .tool-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .format-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .donate-cta {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .nav-links a {
+                display: none;
+            }
+
+            .nav-links a:last-child {
+                display: block;
+            }
+
+            .dropzone {
+                margin: 15px;
+                padding: 45px 15px;
+            }
+
+            .preview-area,
+            .convert-options,
+            .result-area {
+                margin: 15px;
+            }
+
+            .tool-header {
+                padding: 16px;
+            }
+
+            .status {
+                display: none;
+            }
+
+            .donate-cta {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .upload-button:hover, .process-button:hover, .download-button:hover, .donate-button:hover, .related-grid a:hover { transform: none; }
+        }
+
+        @media (min-width: 901px) {
+            .tool-sidebar { position: sticky; top: 100px; align-self: start; max-height: calc(100vh - 120px); overflow-y: auto; }
+        }
+    </style>
+
+    <script src="../../../ads/ad-config.js"></script>
+    <script src="../../../ads/ads.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "zenlyta TIFF to JPG Converter",
+        "url": "https://zenlyta.com/tools/image/tiff-to-jpg/",
+        "description": "A browser-based TIFF to JPG converter for TIF and TIFF images. Multi-page support.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": ["Convert TIFF images to JPG", "Multi-page TIFF support", "Adjustable JPG quality", "Client-side processing", "No account required", "Privacy-first"]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenlyta.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://zenlyta.com/#image-tools" },
+            { "@type": "ListItem", "position": 3, "name": "TIFF to JPG", "item": "https://zenlyta.com/tools/image/tiff-to-jpg/" }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Is zenlyta's TIFF to JPG converter free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. zenlyta's core browser tools are designed to be free to use without requiring an account." } },
+            { "@type": "Question", "name": "Are my images uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "Supported client-side image processing happens directly in your browser. The selected image does not need to be uploaded to a zenlyta file-processing server." } },
+            { "@type": "Question", "name": "Does it support multi-page TIFF?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each page of a multi-page TIFF is converted to a separate JPG file for download." } },
+            { "@type": "Question", "name": "What image formats are supported?", "acceptedAnswer": { "@type": "Answer", "text": "This tool supports TIF and TIFF input, and produces JPG output with adjustable quality." } },
+            { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "No account is required to use the core TIFF to JPG conversion functionality." } }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+    <header class="sys-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a class="brand" href="../../../index.html" aria-label="zenlyta homepage">
+                    <span class="brand-badge">Z</span>
+                    <span>zenlyta<span class="highlight">.com</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../../index.html#tools">Tools</a>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../about.html">About</a>
+                    <a href="../../../donate.html">Support Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container breadcrumb-wrap">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../../index.html#image-tools">Image Tools</a>
+                <span>/</span>
+                <span aria-current="page">TIFF to JPG</span>
+            </nav>
+        </section>
+
+        <section class="tool-hero">
+            <div class="container">
+                <span class="tool-badge">IMAGE TOOL</span>
+                <h1>TIFF to JPG Converter</h1>
+                <p>Convert TIFF, TIF images to JPG online for free. Transform your high-quality TIFF photos directly in your browser — multi-page supported.</p>
+                <div class="hero-features">
+                    <span>✓ Free to use</span>
+                    <span>✓ Multi-page support</span>
+                    <span>✓ Adjustable quality</span>
+                    <span>✓ Privacy-first</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="top"></div>
+        </section>
+
+        <section class="container">
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div>
+                                <span class="terminal-label">// TIFF_TO_JPG</span>
+                                <h2>Convert TIFF to JPG</h2>
+                            </div>
+                            <span class="status">LOCAL</span>
+                        </div>
+
+                        <div class="dropzone" id="dropzone">
+                            <div class="drop-icon">↑</div>
+                            <h3>Drop your TIFF here</h3>
+                            <p>or select a file from your device</p>
+                            <label for="fileInput" class="upload-button">Select TIFF</label>
+                            <input type="file" id="fileInput" accept=".tiff,.tif,image/tiff" hidden>
+                            <small>TIF · TIFF · Multi-page supported</small>
+                        </div>
+
+                        <div class="preview-area" id="previewArea" hidden>
+                            <div id="previewPages" class="preview-pages"></div>
+                            <div class="file-info">
+                                <strong id="fileName">image.tiff</strong>
+                                <span id="fileSize">0 KB</span>
+                            </div>
+                            <div id="pageInfo" style="margin-top:8px; font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); text-align:center;"></div>
+                        </div>
+
+                        <div class="convert-options" id="convertOptions" hidden>
+                            <label for="qualityRange">
+                                <span>JPG Quality</span>
+                                <span id="qualityValue">92%</span>
+                            </label>
+                            <input type="range" id="qualityRange" min="10" max="100" value="92" />
+                            <div class="control-hint">Higher quality = larger file · 92% recommended for photos</div>
+                            <button type="button" class="process-button" id="convertButton">Convert to JPG</button>
+                        </div>
+
+                        <div class="result-area" id="resultArea" hidden>
+                            <div class="result-icon">✓</div>
+                            <h3>Conversion Complete</h3>
+                            <div class="result-stats">
+                                <div>
+                                    <span>Original</span>
+                                    <strong id="originalSize">—</strong>
+                                </div>
+                                <div>
+                                    <span>Converted</span>
+                                    <strong id="convertedSize">—</strong>
+                                </div>
+                                <div>
+                                    <span>Pages</span>
+                                    <strong id="pageCount">—</strong>
+                                </div>
+                            </div>
+                            <div id="resultPages" class="result-pages"></div>
+                            <button type="button" class="download-all-button" id="downloadAllButton" hidden>Download All JPGs</button>
+                        </div>
+                    </div>
+
+                    <div class="ad-section" aria-label="Advertisement">
+                        <div class="zenlyta-ad" data-ad-position="content"></div>
+                    </div>
+
+                    <article class="tool-content">
+                        <h2>Free Online TIFF to JPG Converter</h2>
+                        <p>zenlyta's TIFF to JPG converter helps you convert TIF and TIFF images — including multi-page TIFFs — to the widely compatible JPG format directly in your browser. No account required, and your images never leave your device.</p>
+                        <p>This tool uses the <a href="https://github.com/photopea/UTIF.js" target="_blank" rel="noopener">UTIF.js</a> library to decode TIFF files client-side and render them to JPG via Canvas.</p>
+
+                        <h2>How to Convert TIFF to JPG</h2>
+                        <ol>
+                            <li>Select a .tif or .tiff file from your device (single or multi-page).</li>
+                            <li>Preview the decoded image(s) and adjust JPG quality if needed.</li>
+                            <li>Click Convert to JPG.</li>
+                            <li>Preview the converted JPG(s) and download — each page as a separate JPG.</li>
+                        </ol>
+
+                        <h2>Why Convert TIFF to JPG?</h2>
+                        <p>TIFF files are high-quality but large and not universally supported by browsers and social platforms. JPG is universally accepted, much smaller, and ideal for sharing, uploading, or web use — while still preserving excellent visual quality at 90–92% quality.</p>
+                        <p>Multi-page TIFFs (common for scanned documents) are automatically split into individual JPGs, one per page.</p>
+
+                        <h2>Privacy-First Image Processing</h2>
+                        <p>zenlyta is designed around a client-side, privacy-first architecture. For supported local processing, the selected image is processed directly in your browser rather than being uploaded to a zenlyta file-processing server.</p>
+                        <p>Learn more about how zenlyta works on the <a href="../../../architecture.html">System Architecture</a> page and read our <a href="../../../privacy.html">Privacy Policy</a>.</p>
+
+                        <h2>Supported Image Formats</h2>
+                        <div class="format-grid">
+                            <div class="format-card"><strong>TIFF</strong><span>Input — .tiff</span></div>
+                            <div class="format-card"><strong>TIF</strong><span>Input — .tif</span></div>
+                            <div class="format-card"><strong>JPG</strong><span>Output — adjustable quality</span></div>
+                        </div>
+
+                        <h2>More Image Tools</h2>
+                        <p>Looking for another image utility? Explore related zenlyta tools:</p>
+                        <div class="related-grid" id="relatedToolsGrid"></div>
+                    </article>
+                </div>
+
+                <aside class="tool-sidebar">
+                    <div class="sidebar-card">
+                        <h3>// IMAGE_TOOLS</h3>
+                        <div id="sidebarToolLinks"></div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>// ZENLYTA</h3>
+                        <a href="../../../architecture.html"><span>⚙️</span> System Architecture</a>
+                        <a href="../../../privacy.html"><span>🔒</span> Privacy Policy</a>
+                        <a href="../../../about.html"><span>💡</span> About zenlyta</a>
+                        <a href="../../../contact.html"><span>📧</span> Contact</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="container">
+            <article class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <details open>
+                    <summary>Is zenlyta's TIFF to JPG converter free?</summary>
+                    <p>Yes. zenlyta's core browser tools are designed to be free to use without requiring an account.</p>
+                </details>
+                <details>
+                    <summary>Are my images uploaded?</summary>
+                    <p>Supported client-side image processing happens directly in your browser. The selected image does not need to be uploaded to a zenlyta file-processing server.</p>
+                </details>
+                <details>
+                    <summary>Does it support multi-page TIFF?</summary>
+                    <p>Yes. Each page is decoded and converted to a separate JPG. You can download pages individually or all at once.</p>
+                </details>
+                <details>
+                    <summary>What JPG quality should I use?</summary>
+                    <p>92% is recommended for photos — excellent quality with good compression. Use 80–85% for smaller files, 95–100% for maximum quality.</p>
+                </details>
+                <details>
+                    <summary>Can I convert on mobile?</summary>
+                    <p>The tool is designed to work in modern desktop and mobile browsers. Performance may vary depending on the device and browser capabilities, especially for large TIFFs.</p>
+                </details>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="donate-cta">
+                <div class="donate-icon">☕</div>
+                <div class="donate-copy">
+                    <span class="terminal-label">// SUPPORT_INDEPENDENT_DEVELOPMENT</span>
+                    <h2>Find zenlyta Useful?</h2>
+                    <p>zenlyta is free to use. If this tool saved you time or helped you complete your work, you can support the continued development and maintenance of the project.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                        <a href="../../../donate.html" class="donate-button">❤️ Support zenlyta</a>
+                        <span class="donate-trust">🔒 Secure · No account required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="bottom"></div>
+        </section>
+    </main>
+
+    <footer class="sys-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-block">
+                    <a class="brand" href="../../../index.html">
+                        <span class="brand-badge">Z</span>
+                        <span>zenlyta<span class="highlight">.com</span></span>
+                    </a>
+                    <p>Free, privacy-first browser tools designed to process supported files directly on your device.</p>
+                    <p class="footer-note">No account. No unnecessary upload.</p>
+                </div>
+                <div>
+                    <h4>// UTILITIES</h4>
+                    <a href="../../../index.html#image-tools">Image Tools</a>
+                    <a href="../../../index.html#pdf-tools">PDF Tools</a>
+                    <a href="../../../index.html#developer-tools">Developer Suite</a>
+                    <a href="../../../index.html#text-tools">Text Tools</a>
+                    <a href="../../../index.html#calculators">Calculators</a>
+                </div>
+                <div>
+                    <h4>// SYSTEM</h4>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../privacy.html">Privacy Policy</a>
+                    <a href="../../../about.html">About System</a>
+                    <a href="../../../contact.html">Contact</a>
+                </div>
+                <div>
+                    <h4>// SUPPORT</h4>
+                    <a href="../../../donate.html">Support zenlyta</a>
+                    <a href="../../../terms.html">Terms of Use</a>
+                    <a href="../../../disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 zenlyta.com — BROWSER EXECUTION ENGINE</span>
+                <span class="system-status">STATUS: ALL SYSTEMS OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        "use strict";
+
+        const fileInput = document.getElementById("fileInput");
+        const dropzone = document.getElementById("dropzone");
+        const previewArea = document.getElementById("previewArea");
+        const previewPages = document.getElementById("previewPages");
+        const fileName = document.getElementById("fileName");
+        const fileSize = document.getElementById("fileSize");
+        const pageInfo = document.getElementById("pageInfo");
+        const convertOptions = document.getElementById("convertOptions");
+        const qualityRange = document.getElementById("qualityRange");
+        const qualityValue = document.getElementById("qualityValue");
+        const convertButton = document.getElementById("convertButton");
+        const resultArea = document.getElementById("resultArea");
+        const originalSize = document.getElementById("originalSize");
+        const convertedSize = document.getElementById("convertedSize");
+        const pageCount = document.getElementById("pageCount");
+        const resultPages = document.getElementById("resultPages");
+        const downloadAllButton = document.getElementById("downloadAllButton");
+
+        let selectedFile = null;
+        let tiffBuffer = null;
+        let decodedIFDs = [];
+        let convertedBlobs = [];
+        let convertedURLs = [];
+
+        function formatBytes(bytes) {
+            if (!bytes) return "0 B";
+            const units = ["B", "KB", "MB", "GB"];
+            const index = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+            return parseFloat((bytes / Math.pow(1024, index)).toFixed(2)) + " " + units[index];
+        }
+
+        qualityRange.addEventListener('input', function() {
+            qualityValue.textContent = this.value + '%';
+        });
+
+        function clearConvertedURLs() {
+            convertedURLs.forEach(u => URL.revokeObjectURL(u));
+            convertedURLs = [];
+            convertedBlobs = [];
+        }
+
+        function renderIFDToCanvas(ifd, buffer) {
+            // Ensure image is decoded
+            try {
+                UTIF.decodeImage(buffer, ifd);
+            } catch (e) {
+                console.warn('decodeImage failed', e);
+            }
+            const rgba = UTIF.toRGBA8(ifd);
+            const w = ifd.width;
+            const h = ifd.height;
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return null;
+            const imageData = ctx.createImageData(w, h);
+            imageData.data.set(rgba);
+            ctx.putImageData(imageData, 0, 0);
+            return canvas;
+        }
+
+        async function loadFile(file) {
+            if (!file) return;
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (ext !== 'tif' && ext !== 'tiff') {
+                // also allow mime check
+                if (!file.type.includes('tiff') && ext !== 'tif' && ext !== 'tiff') {
+                    alert('Please select a TIFF file (.tif or .tiff).');
+                    return;
+                }
+            }
+            if (typeof UTIF === 'undefined') {
+                alert('TIFF decoding library not loaded. Please check your internet connection.');
+                return;
+            }
+            selectedFile = file;
+            fileName.textContent = file.name;
+            fileSize.textContent = formatBytes(file.size);
+            previewArea.hidden = false;
+            convertOptions.hidden = false;
+            resultArea.hidden = true;
+            previewPages.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted); font-family:var(--font-mono); font-size:0.75rem;">Decoding TIFF…</div>';
+            pageInfo.textContent = '';
+            clearConvertedURLs();
+            resultPages.innerHTML = '';
+
+            try {
+                const buffer = await file.arrayBuffer();
+                tiffBuffer = buffer;
+                const ifds = UTIF.decode(buffer);
+                if (!ifds || ifds.length === 0) {
+                    throw new Error('No images found in TIFF.');
+                }
+                decodedIFDs = ifds;
+                previewPages.innerHTML = '';
+                ifds.forEach((ifd, idx) => {
+                    const canvas = renderIFDToCanvas(ifd, buffer);
+                    if (!canvas) return;
+                    const wrap = document.createElement('div');
+                    wrap.className = 'preview-page';
+                    // scale down for preview if huge
+                    canvas.style.maxHeight = '300px';
+                    canvas.style.width = 'auto';
+                    wrap.appendChild(canvas);
+                    const label = document.createElement('div');
+                    label.className = 'preview-page-label';
+                    label.textContent = `Page ${idx + 1} — ${ifd.width} × ${ifd.height}`;
+                    const container = document.createElement('div');
+                    container.appendChild(wrap);
+                    container.appendChild(label);
+                    previewPages.appendChild(container);
+                });
+                pageInfo.textContent = ifds.length === 1 ? '1 page detected' : `${ifds.length} pages detected — each will be converted to a separate JPG`;
+            } catch (err) {
+                console.error(err);
+                previewPages.innerHTML = `<div style="text-align:center; padding:20px; color:#ff6b6b; font-family:var(--font-mono); font-size:0.75rem;">Failed to decode TIFF: ${err.message}</div>`;
+                pageInfo.textContent = '';
+                decodedIFDs = [];
+                tiffBuffer = null;
+            }
+        }
+
+        fileInput.addEventListener('change', function() {
+            loadFile(this.files[0]);
+        });
+
+        dropzone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', function() {
+            dropzone.classList.remove('dragover');
+        });
+        dropzone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            loadFile(e.dataTransfer.files[0]);
+        });
+
+        convertButton.addEventListener('click', async function() {
+            if (!selectedFile || !tiffBuffer || decodedIFDs.length === 0) {
+                alert('Please select a valid TIFF file first.');
+                return;
+            }
+            convertButton.disabled = true;
+            convertButton.textContent = 'Converting…';
+            clearConvertedURLs();
+            resultPages.innerHTML = '';
+            resultArea.hidden = true;
+
+            const quality = parseInt(qualityRange.value) / 100;
+            const baseName = selectedFile.name.replace(/\.[^/.]+$/, '');
+
+            try {
+                let totalConvertedSize = 0;
+                for (let i = 0; i < decodedIFDs.length; i++) {
+                    const ifd = decodedIFDs[i];
+                    const canvas = renderIFDToCanvas(ifd, tiffBuffer);
+                    if (!canvas) throw new Error('Failed to render page ' + (i+1));
+
+                    const blob = await new Promise((resolve, reject) => {
+                        canvas.toBlob(function(b) {
+                            if (b) resolve(b);
+                            else reject(new Error('Canvas toBlob failed'));
+                        }, 'image/jpeg', quality);
+                    });
+
+                    totalConvertedSize += blob.size;
+                    convertedBlobs.push(blob);
+                    const url = URL.createObjectURL(blob);
+                    convertedURLs.push(url);
+
+                    // Build result card
+                    const card = document.createElement('div');
+                    card.className = 'result-page-card';
+
+                    const previewWrap = document.createElement('div');
+                    previewWrap.className = 'preview-page';
+                    const previewCanvas = document.createElement('canvas');
+                    // reuse canvas for preview (clone)
+                    previewCanvas.width = canvas.width;
+                    previewCanvas.height = canvas.height;
+                    const pctx = previewCanvas.getContext('2d');
+                    pctx.drawImage(canvas, 0, 0);
+                    previewCanvas.style.maxHeight = '300px';
+                    previewCanvas.style.width = 'auto';
+                    previewWrap.appendChild(previewCanvas);
+
+                    const info = document.createElement('div');
+                    info.className = 'result-page-info';
+                    info.innerHTML = `<strong>Page ${i+1}</strong><span>${ifd.width} × ${ifd.height} · ${formatBytes(blob.size)}</span>`;
+
+                    const dl = document.createElement('a');
+                    dl.href = url;
+                    dl.download = decodedIFDs.length === 1 ? `${baseName}.jpg` : `${baseName}-page-${i+1}.jpg`;
+                    dl.className = 'download-button';
+                    dl.textContent = decodedIFDs.length === 1 ? 'Download JPG' : `Download Page ${i+1} JPG`;
+
+                    card.appendChild(previewWrap);
+                    card.appendChild(info);
+                    card.appendChild(dl);
+                    resultPages.appendChild(card);
+                }
+
+                originalSize.textContent = formatBytes(selectedFile.size);
+                convertedSize.textContent = formatBytes(totalConvertedSize);
+                pageCount.textContent = String(decodedIFDs.length);
+                resultArea.hidden = false;
+                if (decodedIFDs.length > 1) {
+                    downloadAllButton.hidden = false;
+                } else {
+                    downloadAllButton.hidden = true;
+                }
+                resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (err) {
+                console.error(err);
+                alert('Conversion failed: ' + err.message);
+            } finally {
+                convertButton.disabled = false;
+                convertButton.textContent = 'Convert to JPG';
+            }
+        });
+
+        downloadAllButton.addEventListener('click', function() {
+            if (convertedURLs.length === 0) return;
+            const baseName = selectedFile ? selectedFile.name.replace(/\.[^/.]+$/, '') : 'converted';
+            convertedURLs.forEach((url, idx) => {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${baseName}-page-${idx+1}.jpg`;
+                // stagger downloads slightly to avoid browser blocking
+                setTimeout(() => {
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                }, idx * 300);
+            });
+        });
+
+        window.addEventListener('beforeunload', function() {
+            clearConvertedURLs();
+        });
+    </script>
+    <script>
+
+        const TOOLS = [
+            { id: 'add-watermark', emoji: '©', label: 'Add Watermark' },
+            { id: 'aspect-ratio-calculator', emoji: '📐', label: 'Aspect Ratio Calculator' },
+            { id: 'avif-converter', emoji: '🔄', label: 'AVIF Converter' },
+            { id: 'avif-to-jpg', emoji: '🔄', label: 'AVIF to JPG' },
+            { id: 'base64-to-image', emoji: '🔢', label: 'Base64 to Image' },
+            { id: 'black-and-white', emoji: '⚫', label: 'Black & White' },
+            { id: 'blur-background', emoji: '🌫️', label: 'Blur Background' },
+            { id: 'blur-image', emoji: '🌫️', label: 'Blur Image' },
+            { id: 'change-brightness', emoji: '☀️', label: 'Change Brightness' },
+            { id: 'collage-maker', emoji: '🖼️', label: 'Collage Maker' },
+            { id: 'color-palette-extractor', emoji: '🎨', label: 'Color Palette Extractor' },
+            { id: 'color-picker', emoji: '🎨', label: 'Color Picker' },
+            { id: 'compress-image', emoji: '🗜️', label: 'Compress Image' },
+            { id: 'compress-png', emoji: '📦', label: 'Compress PNG' },
+            { id: 'crop-image', emoji: '✂️', label: 'Crop Image' },
+            { id: 'dicom-viewer', emoji: '🩻', label: 'DICOM Viewer' },
+            { id: 'eps-to-png', emoji: '🔄', label: 'EPS to PNG' },
+            { id: 'extract-text', emoji: '📝', label: 'Extract Text' },
+            { id: 'favicon-generator', emoji: '⭐', label: 'Favicon Generator' },
+            { id: 'flip-image', emoji: '↔️', label: 'Flip Image' },
+            { id: 'pixelate-image', emoji: '🟩', label: 'Pixelate Image' },
+            { id: 'heic-to-jpg', emoji: '🔄', label: 'HEIC to JPG' },
+            { id: 'heic-to-png', emoji: '🔄', label: 'HEIC to PNG' },
+            { id: 'image-converter', emoji: '🔄', label: 'Image Converter' },
+            { id: 'image-metadata', emoji: '🔎', label: 'Image Metadata' },
+            { id: 'image-overlay', emoji: '🖼️', label: 'Image Overlay' },
+            { id: 'image-to-base64', emoji: '🔢', label: 'Image to Base64' },
+            { id: 'image-to-pdf', emoji: '📄', label: 'Image to PDF' },
+            { id: 'image-upscaler', emoji: '🔍', label: 'Image Upscaler' },
+            { id: 'invert-colors', emoji: '🔄', label: 'Invert Colors' },
+            { id: 'jpg-to-png', emoji: '🔄', label: 'JPG to PNG' },
+            { id: 'jpg-to-webp', emoji: '🔄', label: 'JPG to WebP' },
+            { id: 'meme-generator', emoji: '😂', label: 'Meme Generator' },
+            { id: 'passport-photo-maker', emoji: '🪪', label: 'Passport Photo Maker' },
+            { id: 'pdf-to-jpg', emoji: '📄', label: 'PDF to JPG' },
+            { id: 'photo-colorizer', emoji: '🎨', label: 'Photo Colorizer' },
+            { id: 'png-to-ico', emoji: '🔄', label: 'PNG to ICO' },
+            { id: 'png-to-jpg', emoji: '🔄', label: 'PNG to JPG' },
+            { id: 'png-to-webp', emoji: '🔄', label: 'PNG to WebP' },
+            { id: 'remove-bg', emoji: '✂️', label: 'Remove Background' },
+            { id: 'remove-exif', emoji: '🔒', label: 'Remove EXIF' },
+            { id: 'resize-image', emoji: '↔️', label: 'Resize Image' },
+            { id: 'rotate-image', emoji: '🔄', label: 'Rotate Image' },
+            { id: 'round-corners', emoji: '⭕', label: 'Round Corners' },
+            { id: 'split-image', emoji: '✂️', label: 'Split Image' },
+            { id: 'sprite-sheet-generator', emoji: '🧩', label: 'Sprite Sheet Generator' },
+            { id: 'svg-optimizer', emoji: '⚡', label: 'SVG Optimizer' },
+            { id: 'svg-to-png', emoji: '🔄', label: 'SVG to PNG' },
+            { id: 'tiff-to-jpg', emoji: '🔄', label: 'TIFF to JPG' },
+            { id: 'webp-to-jpg', emoji: '🔄', label: 'WebP to JPG' },
+            { id: 'webp-to-png', emoji: '🔄', label: 'WebP to PNG' }
+        ];
+
+        const sidebarContainer = document.getElementById('sidebarToolLinks');
+        if (sidebarContainer) {
+            const currentToolId = 'tiff-to-jpg';
+            let html = '';
+            TOOLS.forEach(t => {
+                const active = (t.id === currentToolId) ? ' style="color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);"' : '';
+                html += `<a href="../${t.id}/"${active}><span class="tool-emoji">${t.emoji}</span> ${t.label}</a>`;
+            });
+            html += `<a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>`;
+            sidebarContainer.innerHTML = html;
+        }
+
+        const relatedGrid = document.getElementById('relatedToolsGrid');
+        if (relatedGrid) {
+            const currentToolId = 'tiff-to-jpg';
+            const others = TOOLS.filter(t => t.id !== currentToolId);
+            const selected = others.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let html = '';
+            selected.forEach(t => {
+                html += `<a href="../${t.id}/"><span class="tool-emoji">${t.emoji}</span><strong>${t.label}</strong><span>Free online tool</span></a>`;
+            });
+            relatedGrid.innerHTML = html;
+        }
+
+    </script>
+</body>
+</html>

@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zenlyta — 27 Free Image Tools | Private & Local</title>
-    <meta name="description" content="zenlyta: 27 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
+    <title>zenlyta — 50 Free Image Tools | Private & Local</title>
+    <meta name="description" content="zenlyta: 50 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://zenlyta.com/">
     <meta name="theme-color" content="#10B981">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="zenlyta — 27 Free Image Tools | Private & Local">
-    <meta property="og:description" content="27 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
+    <meta property="og:title" content="zenlyta — 50 Free Image Tools | Private & Local">
+    <meta property="og:description" content="50 free, privacy-first image tools that run locally in your browser. Compress, convert, resize, and edit images with no server upload.">
     <meta property="og:url" content="https://zenlyta.com/">
     <meta property="og:site_name" content="zenlyta">
     <meta property="og:image" content="https://zenlyta.com/assets/og-image.jpg">
@@ -499,8 +499,6 @@
         }
         .category-block {
             margin-top: 3rem;
-            content-visibility: auto;
-            contain-intrinsic-size: 500px;
         }
         .cat-title {
             display: flex;
@@ -525,7 +523,7 @@
         }
         .tool-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
             gap: 1rem;
         }
         .signal-card {
@@ -846,12 +844,12 @@
             .hero-desc { font-size: 0.95rem; }
             .hero-buttons { flex-direction: column; }
             .btn-primary, .btn-secondary { width: min(100%, 360px); }
-            .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); min-width: 0; }
             .console-grid { grid-template-columns: 1fr; }
             .advantage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 540px) {
             .container { padding-inline: 0.9rem; }
             .hero { padding-top: 2.5rem; }
             .hero-pill { font-size: 0.62rem; padding-inline: 0.65rem; }
@@ -892,7 +890,7 @@
         "@type": "WebSite",
         "name": "zenlyta",
         "url": "https://zenlyta.com/",
-        "description": "27 free, privacy-first image tools that run locally in your browser."
+        "description": "50 free, privacy-first image tools that run locally in your browser."
     }
     </script>
 </head>
@@ -919,11 +917,11 @@
         <!-- ===== HERO ===== -->
         <section class="hero animate-on-load">
             <div class="container">
-                <div class="hero-pill">⚡ CLIENT-SIDE ENGINE — 27 ACTIVE IMAGE TOOLS</div>
+                <div class="hero-pill">⚡ CLIENT-SIDE ENGINE — 50 ACTIVE IMAGE TOOLS</div>
                 <h1>Never Upload Private Files<br><span class="highlight">to Unknown Servers Again.</span></h1>
                 <p class="hero-desc">zenlyta executes image compression, conversion, resizing, and editing directly inside your browser. Your sensitive data never leaves your device. 100% private and offline-ready.</p>
                 <div class="hero-buttons">
-                    <a href="#tools" class="btn-primary">EXPLORE TOOLS [27 AVAILABLE]</a>
+                    <a href="#tools" class="btn-primary">EXPLORE TOOLS [50 AVAILABLE]</a>
                     <a href="#architecture" class="btn-secondary">SYS ARCHITECTURE</a>
                 </div>
                 <div class="hero-trust">
@@ -940,10 +938,10 @@
             <div class="container">
                 <div class="search-wrapper">
                     <span class="search-icon">🔍</span>
-                    <input type="text" id="toolSearch" class="search-input" placeholder="Search 27 image tools... (e.g., 'compress', 'png', 'resize')" autocomplete="off">
+                    <input type="text" id="toolSearch" class="search-input" placeholder="Search 50 image tools... (e.g., 'compress', 'png', 'resize')" autocomplete="off">
                 </div>
                 <div class="filter-tabs" id="filterTabs">
-                    <button class="filter-tab active" data-category="all">All Available (27)</button>
+                    <button class="filter-tab active" data-category="all">All Available (50)</button>
                     <button class="filter-tab" data-category="image">🖼️ Image (27)</button>
                     <button class="filter-tab" data-category="coming-soon">📄 Document (Coming Soon)</button>
                     <button class="filter-tab" data-category="dev">💻 Dev (Coming Soon)</button>
@@ -972,11 +970,11 @@
                     <p>Everything you need to compress, convert, resize and manage common file formats.</p>
                 </div>
 
-                <!-- IMAGE TOOLS (27) -->
+                <!-- IMAGE TOOLS (50) -->
                 <div class="category-block reveal-up" id="image-tools" data-category="image">
                     <div class="cat-title">
                         <span>[01_IMAGE_PIPELINE]</span> Image Processing Tools
-                        <span class="cat-tag">27 TOOLS</span>
+                        <span class="cat-tag">50 TOOLS</span>
                     </div>
                     <div class="tool-grid stagger-children">
                         <a class="signal-card" href="/tools/image/compress-image/">
@@ -989,129 +987,244 @@
                             <div><h3>Resize Image</h3><p>Scale resolutions down with custom aspect ratio locking.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
+                        <a class="signal-card" href="/tools/image/crop-image/">
+                            <div class="card-head"><span class="tool-icon">✂️</span><span class="sys-badge">IMG-03</span></div>
+                            <div><h3>Crop Image</h3><p>Trim and crop images to any custom dimension or aspect ratio.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/remove-bg/">
+                            <div class="card-head"><span class="tool-icon">🪄</span><span class="sys-badge">IMG-04</span></div>
+                            <div><h3>Remove Background</h3><p>Erase solid-color backgrounds from images client-side.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-upscaler/">
+                            <div class="card-head"><span class="tool-icon">🔍</span><span class="sys-badge">IMG-05</span></div>
+                            <div><h3>Image Upscaler</h3><p>Upscale images up to 4× using browser-based interpolation.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
                         <a class="signal-card" href="/tools/image/jpg-to-png/">
-                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-03</span></div>
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-06</span></div>
                             <div><h3>JPG to PNG</h3><p>Convert JPG images to uncompressed PNG format.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/png-to-jpg/">
-                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-04</span></div>
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-07</span></div>
                             <div><h3>PNG to JPG</h3><p>Flatten PNG assets into compressed JPG files.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/webp-to-jpg/">
-                            <div class="card-head"><span class="tool-icon">🌐</span><span class="sys-badge">IMG-05</span></div>
+                            <div class="card-head"><span class="tool-icon">🌐</span><span class="sys-badge">IMG-08</span></div>
                             <div><h3>WebP to JPG</h3><p>Decode modern WebP binaries back into traditional JPG.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/jpg-to-webp/">
-                            <div class="card-head"><span class="tool-icon">⚡</span><span class="sys-badge">IMG-06</span></div>
+                            <div class="card-head"><span class="tool-icon">⚡</span><span class="sys-badge">IMG-09</span></div>
                             <div><h3>JPG to WebP</h3><p>Convert JPG into lightweight next-gen WebP structures.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/png-to-webp/">
-                            <div class="card-head"><span class="tool-icon">✨</span><span class="sys-badge">IMG-07</span></div>
+                            <div class="card-head"><span class="tool-icon">✨</span><span class="sys-badge">IMG-10</span></div>
                             <div><h3>PNG to WebP</h3><p>Compress PNG transparency vectors to WebP format.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
-                        <a class="signal-card" href="/tools/image/image-metadata/">
-                            <div class="card-head"><span class="tool-icon">🔎</span><span class="sys-badge">IMG-08</span></div>
-                            <div><h3>EXIF Inspector</h3><p>Parse binary metadata & EXIF headers right in browser memory.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
                         <a class="signal-card" href="/tools/image/webp-to-png/">
-                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-09</span></div>
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-11</span></div>
                             <div><h3>WebP to PNG</h3><p>Convert WebP images to lossless PNG format in your browser.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
-                        <a class="signal-card" href="/tools/image/crop-image/">
-                            <div class="card-head"><span class="tool-icon">✂️</span><span class="sys-badge">IMG-10</span></div>
-                            <div><h3>Crop Image</h3><p>Trim and crop images to any custom dimension or aspect ratio.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/compress-png/">
-                            <div class="card-head"><span class="tool-icon">📦</span><span class="sys-badge">IMG-11</span></div>
-                            <div><h3>Compress PNG</h3><p>Reduce PNG file size while preserving transparency locally.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/remove-bg/">
-                            <div class="card-head"><span class="tool-icon">🪄</span><span class="sys-badge">IMG-12</span></div>
-                            <div><h3>Remove Background</h3><p>Erase solid-color backgrounds from images client-side.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/add-watermark/">
-                            <div class="card-head"><span class="tool-icon">©</span><span class="sys-badge">IMG-13</span></div>
-                            <div><h3>Add Watermark</h3><p>Stamp text or image watermarks onto photos in browser.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/avif-to-jpg/">
-                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-14</span></div>
-                            <div><h3>AVIF to JPG</h3><p>Convert modern AVIF images to universally supported JPG.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/blur-background/">
-                            <div class="card-head"><span class="tool-icon">🌫️</span><span class="sys-badge">IMG-15</span></div>
-                            <div><h3>Blur Background</h3><p>Apply blur effects to image backgrounds locally.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/blur-image/">
-                            <div class="card-head"><span class="tool-icon">🌁</span><span class="sys-badge">IMG-16</span></div>
-                            <div><h3>Blur Image</h3><p>Apply Gaussian blur to entire images with adjustable intensity.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/collage-maker/">
-                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-17</span></div>
-                            <div><h3>Collage Maker</h3><p>Combine multiple images into a single collage layout.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/color-picker/">
-                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-18</span></div>
-                            <div><h3>Color Picker</h3><p>Extract HEX, RGB, and HSL color values from any image.</p></div>
-                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
-                        </a>
-                        <a class="signal-card" href="/tools/image/favicon-generator/">
-                            <div class="card-head"><span class="tool-icon">⭐</span><span class="sys-badge">IMG-19</span></div>
-                            <div><h3>Favicon Generator</h3><p>Generate multi-size ICO and PNG favicons from any image.</p></div>
+                        <a class="signal-card" href="/tools/image/svg-to-png/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-12</span></div>
+                            <div><h3>SVG to PNG</h3><p>Rasterize SVG vector graphics to PNG bitmap format.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/heic-to-jpg/">
-                            <div class="card-head"><span class="tool-icon">📱</span><span class="sys-badge">IMG-20</span></div>
+                            <div class="card-head"><span class="tool-icon">📱</span><span class="sys-badge">IMG-13</span></div>
                             <div><h3>HEIC to JPG</h3><p>Convert iPhone HEIC photos to universally supported JPG.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/heic-to-png/">
-                            <div class="card-head"><span class="tool-icon">📷</span><span class="sys-badge">IMG-21</span></div>
+                            <div class="card-head"><span class="tool-icon">📷</span><span class="sys-badge">IMG-14</span></div>
                             <div><h3>HEIC to PNG</h3><p>Convert iPhone HEIC photos to lossless PNG format.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
-                        <a class="signal-card" href="/tools/image/image-to-base64/">
-                            <div class="card-head"><span class="tool-icon">🔢</span><span class="sys-badge">IMG-22</span></div>
-                            <div><h3>Image to Base64</h3><p>Encode images to Base64 data URI strings in browser.</p></div>
+                        <a class="signal-card" href="/tools/image/avif-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-15</span></div>
+                            <div><h3>AVIF to JPG</h3><p>Convert modern AVIF images to universally supported JPG.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/avif-converter/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-16</span></div>
+                            <div><h3>AVIF Converter</h3><p>Convert AVIF files to JPG, PNG or WebP formats locally.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/eps-to-png/">
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-17</span></div>
+                            <div><h3>EPS to PNG</h3><p>Convert EPS vector graphics into transparent PNG images.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/tiff-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">📷</span><span class="sys-badge">IMG-18</span></div>
+                            <div><h3>TIFF to JPG</h3><p>Convert raw or compressed TIFF files into standard JPGs.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/pdf-to-jpg/">
+                            <div class="card-head"><span class="tool-icon">📄</span><span class="sys-badge">IMG-19</span></div>
+                            <div><h3>PDF to JPG</h3><p>Extract and convert PDF pages into high-resolution JPG images.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/image-to-pdf/">
-                            <div class="card-head"><span class="tool-icon">📄</span><span class="sys-badge">IMG-23</span></div>
+                            <div class="card-head"><span class="tool-icon">📄</span><span class="sys-badge">IMG-20</span></div>
                             <div><h3>Image to PDF</h3><p>Pack one or more images into a clean PDF document.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
-                        <a class="signal-card" href="/tools/image/image-upscaler/">
-                            <div class="card-head"><span class="tool-icon">🔍</span><span class="sys-badge">IMG-24</span></div>
-                            <div><h3>Image Upscaler</h3><p>Upscale images up to 4× using browser-based interpolation.</p></div>
+                        <a class="signal-card" href="/tools/image/png-to-ico/">
+                            <div class="card-head"><span class="tool-icon">⭐</span><span class="sys-badge">IMG-21</span></div>
+                            <div><h3>PNG to ICO</h3><p>Convert PNG images into ICO icon files for websites and apps.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/favicon-generator/">
+                            <div class="card-head"><span class="tool-icon">⭐</span><span class="sys-badge">IMG-22</span></div>
+                            <div><h3>Favicon Generator</h3><p>Generate multi-size ICO and PNG favicons from any image.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/compress-png/">
+                            <div class="card-head"><span class="tool-icon">📦</span><span class="sys-badge">IMG-23</span></div>
+                            <div><h3>Compress PNG</h3><p>Reduce PNG file size while preserving transparency locally.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/add-watermark/">
+                            <div class="card-head"><span class="tool-icon">©</span><span class="sys-badge">IMG-24</span></div>
+                            <div><h3>Add Watermark</h3><p>Stamp text or image watermarks onto photos in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/blur-background/">
+                            <div class="card-head"><span class="tool-icon">🌫️</span><span class="sys-badge">IMG-25</span></div>
+                            <div><h3>Blur Background</h3><p>Apply blur effects to image backgrounds locally.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/blur-image/">
+                            <div class="card-head"><span class="tool-icon">🌁</span><span class="sys-badge">IMG-26</span></div>
+                            <div><h3>Blur Image</h3><p>Apply Gaussian blur to entire images with adjustable intensity.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/change-brightness/">
+                            <div class="card-head"><span class="tool-icon">☀️</span><span class="sys-badge">IMG-27</span></div>
+                            <div><h3>Change Brightness</h3><p>Adjust image brightness, contrast, and saturation online.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/black-and-white/">
+                            <div class="card-head"><span class="tool-icon">⚫</span><span class="sys-badge">IMG-28</span></div>
+                            <div><h3>Black & White</h3><p>Convert color photos into dramatic black and white images.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/invert-colors/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-29</span></div>
+                            <div><h3>Invert Colors</h3><p>Negative color inversion for photos and graphics client-side.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/round-corners/">
+                            <div class="card-head"><span class="tool-icon">⭕</span><span class="sys-badge">IMG-30</span></div>
+                            <div><h3>Round Corners</h3><p>Apply smooth rounded corners or circular masking to images.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/rotate-image/">
+                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-31</span></div>
+                            <div><h3>Rotate Image</h3><p>Rotate photos 90°, 180°, 270°, or set custom angles losslessly.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/flip-image/">
+                            <div class="card-head"><span class="tool-icon">↔️</span><span class="sys-badge">IMG-32</span></div>
+                            <div><h3>Flip Image</h3><p>Flip images horizontally or vertically in your browser instantly.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/split-image/">
+                            <div class="card-head"><span class="tool-icon">✂️</span><span class="sys-badge">IMG-33</span></div>
+                            <div><h3>Split Image</h3><p>Slice images into equal grid tiles or custom puzzle pieces.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/collage-maker/">
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-34</span></div>
+                            <div><h3>Collage Maker</h3><p>Combine multiple images into a single custom collage layout.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/meme-generator/">
-                            <div class="card-head"><span class="tool-icon">😂</span><span class="sys-badge">IMG-25</span></div>
+                            <div class="card-head"><span class="tool-icon">😂</span><span class="sys-badge">IMG-35</span></div>
                             <div><h3>Meme Generator</h3><p>Add custom top and bottom text captions to any image.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                         <a class="signal-card" href="/tools/image/photo-colorizer/">
-                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-26</span></div>
-                            <div><h3>Photo Colorizer</h3><p>Apply color tints and filters to images in your browser.</p></div>
+                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-36</span></div>
+                            <div><h3>Photo Colorizer</h3><p>Apply color tints, filters, and retro tones to photos.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
-                        <a class="signal-card" href="/tools/image/svg-to-png/">
-                            <div class="card-head"><span class="tool-icon">🔄</span><span class="sys-badge">IMG-27</span></div>
-                            <div><h3>SVG to PNG</h3><p>Rasterize SVG vector graphics to PNG bitmap format.</p></div>
+                        <a class="signal-card" href="/tools/image/color-picker/">
+                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-37</span></div>
+                            <div><h3>Color Picker</h3><p>Extract HEX, RGB, and HSL color values from any image.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/color-palette-extractor/">
+                            <div class="card-head"><span class="tool-icon">🎨</span><span class="sys-badge">IMG-38</span></div>
+                            <div><h3>Color Palette Extractor</h3><p>Automatically generate dominant color palettes from photos.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/aspect-ratio-calculator/">
+                            <div class="card-head"><span class="tool-icon">📐</span><span class="sys-badge">IMG-39</span></div>
+                            <div><h3>Aspect Ratio Calculator</h3><p>Calculate dimensions and ratios (16:9, 4:3, 1:1) instantly.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/passport-photo-maker/">
+                            <div class="card-head"><span class="tool-icon">🪪</span><span class="sys-badge">IMG-40</span></div>
+                            <div><h3>Passport Photo Maker</h3><p>Crop and format photos to official passport & visa dimensions.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/dicom-viewer/">
+                            <div class="card-head"><span class="tool-icon">🩻</span><span class="sys-badge">IMG-41</span></div>
+                            <div><h3>DICOM Viewer</h3><p>View and inspect medical DICOM image files directly in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-metadata/">
+                            <div class="card-head"><span class="tool-icon">🔎</span><span class="sys-badge">IMG-42</span></div>
+                            <div><h3>EXIF Inspector</h3><p>Parse binary metadata & EXIF headers right in browser memory.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/remove-exif/">
+                            <div class="card-head"><span class="tool-icon">🔒</span><span class="sys-badge">IMG-43</span></div>
+                            <div><h3>Remove EXIF</h3><p>Strip GPS, camera, and private EXIF data from photos for privacy.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/extract-text/">
+                            <div class="card-head"><span class="tool-icon">📝</span><span class="sys-badge">IMG-44</span></div>
+                            <div><h3>Extract Text (OCR)</h3><p>Recognize and extract text content from images client-side.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-to-base64/">
+                            <div class="card-head"><span class="tool-icon">🔢</span><span class="sys-badge">IMG-45</span></div>
+                            <div><h3>Image to Base64</h3><p>Encode images to Base64 data URI strings in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/base64-to-image/">
+                            <div class="card-head"><span class="tool-icon">🔢</span><span class="sys-badge">IMG-46</span></div>
+                            <div><h3>Base64 to Image</h3><p>Decode Base64 strings back into viewable and downloadable images.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/image-overlay/">
+                            <div class="card-head"><span class="tool-icon">🖼️</span><span class="sys-badge">IMG-47</span></div>
+                            <div><h3>Image Overlay</h3><p>Superimpose two images with opacity and blending mode controls.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/pixelate-image/">
+                            <div class="card-head"><span class="tool-icon">🟩</span><span class="sys-badge">IMG-48</span></div>
+                            <div><h3>Pixelate Image</h3><p>Apply pixelate effects to images in browser.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/sprite-sheet-generator/">
+                            <div class="card-head"><span class="tool-icon">🧩</span><span class="sys-badge">IMG-49</span></div>
+                            <div><h3>Sprite Sheet Generator</h3><p>Combine multiple icons or frames into a single CSS sprite sheet.</p></div>
+                            <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
+                        </a>
+                        <a class="signal-card" href="/tools/image/svg-optimizer/">
+                            <div class="card-head"><span class="tool-icon">⚡</span><span class="sys-badge">IMG-50</span></div>
+                            <div><h3>SVG Optimizer</h3><p>Clean, minify, and shrink SVG code for web performance.</p></div>
                             <div class="card-footer"><span>RUN ENGINE</span><span>→</span></div>
                         </a>
                     </div>
@@ -1125,7 +1238,7 @@
                     </div>
                     <div class="signal-card" style="max-width: none; cursor: default;">
                         <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
-                        <div><h3>Document Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div><h3>Document Tools are coming soon</h3><p>We are building this category. The 50 image tools above are available now.</p></div>
                         <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
                     </div>
                 </div>
@@ -1137,7 +1250,7 @@
                     </div>
                     <div class="signal-card" style="max-width: none; cursor: default;">
                         <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
-                        <div><h3>Developer Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div><h3>Developer Tools are coming soon</h3><p>We are building this category. The 50 image tools above are available now.</p></div>
                         <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
                     </div>
                 </div>
@@ -1149,7 +1262,7 @@
                     </div>
                     <div class="signal-card" style="max-width: none; cursor: default;">
                         <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
-                        <div><h3>Text Tools are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div><h3>Text Tools are coming soon</h3><p>We are building this category. The 50 image tools above are available now.</p></div>
                         <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
                     </div>
                 </div>
@@ -1161,7 +1274,7 @@
                     </div>
                     <div class="signal-card" style="max-width: none; cursor: default;">
                         <div class="card-head"><span class="tool-icon">🚧</span><span class="sys-badge">IN DEVELOPMENT</span></div>
-                        <div><h3>Calculators are coming soon</h3><p>We are building this category. The 27 image tools above are available now.</p></div>
+                        <div><h3>Calculators are coming soon</h3><p>We are building this category. The 50 image tools above are available now.</p></div>
                         <div class="card-footer"><span>COMING SOON</span><span>⌛</span></div>
                     </div>
                 </div>            </div>
@@ -1210,7 +1323,7 @@
                 <div class="section-heading">
                     <span class="label">WHY zenlyta</span>
                     <h2>Image tools designed with privacy in mind</h2>
-                    <p>Image workflows often involve files people would rather not share unnecessarily. Our 27 available image tools process your files in the browser wherever technically possible.</p>
+                    <p>Image workflows often involve files people would rather not share unnecessarily. Our 50 available image tools process your files in the browser wherever technically possible.</p>
                 </div>
                 <div class="advantage-grid stagger-children">
                     <div class="advantage-card">
@@ -1270,7 +1383,7 @@
             <div class="final-cta">
                 <span class="label" style="display:inline-block; margin-bottom:0.25rem;">READY TO START?</span>
                 <h2>Choose an image tool and get started.</h2>
-                <p>No complicated setup. Pick one of the 27 available image tools and continue in your browser.</p>
+                <p>No complicated setup. Pick one of the 50 available image tools and continue in your browser.</p>
                 <a href="#image-tools" class="btn-primary">Browse image tools →</a>
             </div>
         </section>
@@ -1298,7 +1411,7 @@
         <div style="flex: 1; min-width: 200px;">
             <h3 style="margin: 0 0 0.5rem; font-size: 1.35rem; font-weight: 700; color: #F0F6FC;">Support Our Privacy-First Architecture</h3>
             <p style="margin: 0; color: #8B949E; font-size: 0.95rem; line-height: 1.7;">
-                Maintaining a <strong style="color:#F0F6FC;">zero-server, client-side engine</strong> requires continuous development, security audits, and performance optimization. Your donation keeps all 27 available image tools <strong style="color:#F0F6FC;">free, private, and fast</strong> — without ever compromising your files.
+                Maintaining a <strong style="color:#F0F6FC;">zero-server, client-side engine</strong> requires continuous development, security audits, and performance optimization. Your donation keeps all 50 available image tools <strong style="color:#F0F6FC;">free, private, and fast</strong> — without ever compromising your files.
             </p>
         </div>
         <a href="donate.html" 
@@ -1357,7 +1470,7 @@
                 </a>
 
                 <p style="font-size:0.75rem; color:var(--text-muted);">
-                    27 free, privacy-first image tools designed to process
+                    50 free, privacy-first image tools designed to process
                     supported images directly on your device.
                 </p>
 
@@ -1567,9 +1680,19 @@
                         entry.target.classList.add("visible");
                         revealObserver.unobserve(entry.target);
                     });
-                }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+                }, { threshold: 0, rootMargin: "0px 0px 0px 0px" });
 
                 revealElements.forEach(function (element) { revealObserver.observe(element); });
+
+                // Fallback: ensure all above-fold elements are visible after paint
+                window.addEventListener("load", function () {
+                    revealElements.forEach(function (element) {
+                        const rect = element.getBoundingClientRect();
+                        if (rect.top < window.innerHeight) {
+                            element.classList.add("visible");
+                        }
+                    });
+                }, { once: true });
             } else {
                 revealElements.forEach(function (element) { element.classList.add("visible"); });
             }

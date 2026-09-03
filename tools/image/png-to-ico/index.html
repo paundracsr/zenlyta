@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNG to ICO Converter Online Free — Create ICO from PNG — zenlyta</title>
+    <meta name="description" content="Convert PNG to ICO online for free. Create multi-size ICO favicons from PNG images directly in your browser with zenlyta's privacy-first PNG to ICO converter.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://zenlyta.com/tools/image/png-to-ico/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PNG to ICO Converter Online Free — zenlyta">
+    <meta property="og:description" content="Convert PNG to ICO online for free. Create multi-size ICO files directly in your browser.">
+    <meta property="og:url" content="https://zenlyta.com/tools/image/png-to-ico/">
+    <meta property="og:site_name" content="zenlyta">
+    <meta name="theme-color" content="#080808">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3EQRT92T3L');
+    </script>
+    <link rel="stylesheet" href="../../../ads/ads.css">
+    <script src="../../../ads/ad-config.js"></script>
+    <script src="../../../ads/ads.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+        *,*::before,*::after{box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+        body{margin:0;min-width:320px;background-color:var(--bg-main);color:var(--text-main);font-family:var(--font-sans);font-size:16px;line-height:1.6;overflow-x:hidden;background-image:radial-gradient(circle at 50% 0%, rgba(16,185,129,0.06) 0%, transparent 60%),linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);background-size:100% 100%,48px 48px,48px 48px}
+        a{color:inherit;text-decoration:none}img{max-width:100%;display:block}button,input{font:inherit}button{-webkit-tap-highlight-color:transparent}:focus{outline:none}:focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:4px}::selection{background:rgba(16,185,129,0.25);color:var(--text-main)}
+        .container{width:100%;max-width:var(--container-width);margin-inline:auto;padding-inline:1.25rem}
+        .sys-header{position:sticky;top:0;z-index:100;background:rgba(6,8,9,0.94);border-bottom:1px solid var(--border-color);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow var(--transition),background var(--transition)}
+        .sys-header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.4)}
+        .navbar{min-height:3.75rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+        .brand{display:inline-flex;align-items:center;gap:0.65rem;font-family:var(--font-mono);font-weight:800;font-size:1.15rem;letter-spacing:-0.03em;white-space:nowrap}
+        .brand-badge{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;background:var(--primary);color:#000;padding:0.15rem 0.45rem;border-radius:0.25rem;font-size:0.85rem;font-weight:900;transition:transform var(--transition)}
+        .brand:hover .brand-badge{transform:scale(1.04)}
+        .brand span{color:var(--text-main)}.brand .highlight{color:var(--primary)}
+        .nav-links{display:flex;align-items:center;gap:0.2rem}
+        .nav-links a{min-height:40px;display:inline-flex;align-items:center;padding:0.45rem 0.7rem;border:1px solid transparent;border-radius:var(--radius);font-family:var(--font-mono);font-size:0.8rem;color:var(--text-muted);transition:color var(--transition),background var(--transition),border-color var(--transition)}
+        .nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15)}
+        .breadcrumb-wrap{padding-top:26px}
+        .breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:var(--text-muted);font-family:var(--font-mono);font-size:0.72rem}
+        .breadcrumb a:hover{color:var(--primary)}.breadcrumb span:last-child{color:var(--text-main)}
+        .tool-hero{padding:clamp(2.5rem,5vw,4rem) 0 2rem;text-align:center}
+        .tool-badge{display:inline-flex;padding:0.3rem 0.85rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:999px;color:var(--primary);font-family:var(--font-mono);font-size:0.7rem;font-weight:700;letter-spacing:0.08em;margin-bottom:1.25rem}
+        .tool-hero h1{max-width:800px;margin:0 auto 0.75rem;font-size:clamp(2rem,5vw,3.4rem);font-weight:800;letter-spacing:-0.035em;line-height:1.12}
+        .tool-hero>.container>p{max-width:680px;margin:0 auto 1.5rem;color:var(--text-muted);font-size:1.05rem;line-height:1.7}
+        .hero-features{display:flex;flex-wrap:wrap;gap:1.25rem 2rem;justify-content:center;color:var(--text-muted);font-family:var(--font-mono);font-size:0.78rem}
+        .hero-features span{display:inline-flex;align-items:center;gap:0.4rem}
+        .tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start}
+        .tool-main{min-width:0}
+        .tool-card{overflow:hidden;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-card);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+        .tool-header{min-height:75px;padding:1.15rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--border-color)}
+        .terminal-label{display:block;margin-bottom:3px;color:var(--primary);font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.04em}
+        .tool-header h2{margin:0;font-size:1rem;font-weight:700}
+        .status{padding:5px 9px;border:1px solid rgba(16,185,129,0.2);color:var(--primary);font-family:var(--font-mono);font-size:0.62rem;border-radius:4px}
+        .dropzone{margin:1.5rem;padding:3.5rem 1.5rem;text-align:center;border:1px dashed var(--border-glow);border-radius:10px;background:rgba(255,255,255,0.015);transition:border-color var(--transition),background var(--transition),transform var(--transition)}
+        .dropzone:hover,.dropzone.dragover{border-color:var(--primary);background:rgba(16,185,129,0.025);transform:translateY(-2px)}
+        .drop-icon{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 18px;border:1px solid var(--border-glow);border-radius:50%;color:var(--primary);font-family:var(--font-mono);font-size:1.5rem}
+        .dropzone h3{margin:0 0 5px;font-size:1rem;font-weight:700}
+        .dropzone p{margin:0 18px;color:var(--text-muted);font-size:0.82rem}
+        .dropzone small{display:block;margin-top:15px;color:var(--text-muted);font-family:var(--font-mono);font-size:0.65rem;opacity:0.8}
+        .upload-button{display:inline-flex;padding:10px 18px;border:1px solid var(--primary);border-radius:6px;color:var(--primary);font-family:var(--font-mono);font-size:0.75rem;font-weight:700;cursor:pointer;transition:background var(--transition),color var(--transition)}
+        .upload-button:hover{background:var(--primary);color:#051A14}
+        .preview-area{margin:1.5rem;padding:1.25rem;border:1px solid var(--border-color);border-radius:9px;background:var(--bg-main)}
+        .preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .preview-box{text-align:center;display:flex;flex-direction:column}
+        .preview-box .label{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);margin-bottom:8px;display:block;flex-shrink:0}
+        .preview-box .label .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-weight:700;margin-left:4px}
+        .preview-box .label .badge.png-badge{background:rgba(139,148,158,0.15);color:var(--text-muted)}
+        .preview-box .label .badge.ico-badge{background:rgba(16,185,129,0.15);color:var(--primary)}
+        .preview-box .image-wrap{background:#050505;border-radius:6px;overflow:hidden;min-height:140px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-color);position:relative;flex:1;padding:8px}
+        .preview-box .image-wrap img{max-width:100%;max-height:300px;width:auto;height:auto;object-fit:contain;display:block}
+        .preview-box .image-wrap canvas{max-width:100%;max-height:300px;width:auto;height:auto;object-fit:contain;display:block}
+        .preview-box .image-wrap .placeholder{color:var(--text-muted);font-size:0.75rem;padding:20px;font-family:var(--font-mono)}
+        .preview-box .dimensions{margin-top:6px;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);flex-shrink:0}
+        .ico-options{margin:1.5rem;padding:1.25rem;border:1px solid var(--border-color);border-radius:9px;background:var(--bg-card)}
+        .ico-options h3{margin:0 0 14px;font-size:0.85rem;font-weight:700;display:flex;align-items:center;gap:8px}
+        .ico-options h3 span{color:var(--primary);font-family:var(--font-mono);font-size:0.7rem}
+        .size-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+        .size-option{position:relative;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-main);cursor:pointer;transition:all var(--transition);user-select:none}
+        .size-option:hover{border-color:var(--border-glow);background:var(--bg-card-hover)}
+        .size-option.active{border-color:var(--primary);background:rgba(16,185,129,0.08)}
+        .size-option input{accent-color:var(--primary);width:16px;height:16px;flex-shrink:0}
+        .size-option label{font-family:var(--font-mono);font-size:0.75rem;color:var(--text-main);cursor:pointer;flex:1}
+        .size-option .size-hint{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted)}
+        .preset-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+        .preset-btn{padding:6px 12px;border:1px solid var(--border-color);border-radius:999px;background:var(--bg-main);color:var(--text-muted);font-family:var(--font-mono);font-size:0.65rem;cursor:pointer;transition:all var(--transition)}
+        .preset-btn:hover{border-color:var(--primary);color:var(--primary)}
+        .preset-btn.active{border-color:var(--primary);background:rgba(16,185,129,0.1);color:var(--primary)}
+        .option-row{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+        .option-row:last-child{margin-bottom:0}
+        .option-group{flex:1;min-width:140px}
+        .option-group label{display:block;margin-bottom:6px;font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted)}
+        .option-group select{width:100%;padding:8px 10px;background:var(--bg-main);border:1px solid var(--border-color);border-radius:6px;color:var(--text-main);font-family:var(--font-mono);font-size:0.75rem;transition:border-color var(--transition)}
+        .option-group select:focus{border-color:var(--primary);outline:none}
+        .option-group select option{background:var(--bg-card)}
+        .process-button{width:100%;margin-top:4px;padding:13px;border:1px solid var(--primary);border-radius:7px;background:var(--primary);color:#051A14;font-family:var(--font-mono);font-weight:800;cursor:pointer;transition:transform var(--transition),opacity var(--transition)}
+        .process-button:hover{background:var(--primary-hover);transform:translateY(-2px)}
+        .process-button:disabled{opacity:0.55;cursor:wait}
+        .result-area{margin:1.5rem;padding:2rem;text-align:center;border:1px solid rgba(16,185,129,0.2);border-radius:9px;background:rgba(16,185,129,0.025);display:none}
+        .result-area.visible{display:block}
+        .result-icon{width:45px;height:45px;display:grid;place-items:center;margin:0 auto 12px;border:1px solid var(--primary);border-radius:50%;color:var(--primary);font-family:var(--font-mono)}
+        .result-area h3{margin:0 0 22px;font-size:1.25rem;font-weight:700}
+        .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+        .result-stats div{padding:12px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-card)}
+        .result-stats span{display:block;margin-bottom:4px;color:var(--text-muted);font-size:0.65rem}
+        .result-stats strong{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-main)}
+        .download-button{display:inline-flex;justify-content:center;width:100%;padding:13px;border:1px solid var(--primary);border-radius:7px;background:var(--primary);color:#051A14;font-family:var(--font-mono);font-size:0.75rem;font-weight:800;transition:transform var(--transition)}
+        .download-button:hover{background:var(--primary-hover);transform:translateY(-2px)}
+        .ico-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin:16px 0}
+        .ico-preview-item{padding:10px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-card);text-align:center}
+        .ico-preview-item img{width:48px;height:48px;object-fit:contain;margin:0 auto 6px;image-rendering:auto;background:repeating-conic-gradient(#1a1a1a 0% 25%, #2a2a2a 0% 50%) 0 0 / 12px 12px}
+        .ico-preview-item span{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted)}
+        .tool-sidebar{display:flex;flex-direction:column;gap:18px}
+        .sidebar-card{padding:20px;border:1px solid var(--border-color);border-radius:var(--radius);background:var(--bg-card);max-height:500px;overflow-y:auto}
+        .sidebar-card::-webkit-scrollbar{width:4px}.sidebar-card::-webkit-scrollbar-track{background:var(--bg-main)}.sidebar-card::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:4px}
+        .sidebar-card h3{margin:0 0 14px;color:var(--primary);font-family:var(--font-mono);font-size:0.67rem;letter-spacing:0.04em}
+        .sidebar-card a{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:6px;border-bottom:1px solid transparent;transition:all 0.2s ease;font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted)}
+        .sidebar-card a:last-child{border-bottom:none}
+        .sidebar-card a:hover{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.2);color:var(--primary);transform:translateX(3px)}
+        .sidebar-card .tool-emoji{font-size:1rem;flex-shrink:0}
+        .tool-content{padding:10px 0 20px}
+        .tool-content h2,.faq-section h2{margin:42px 0 13px;font-size:1.4rem;line-height:1.3;letter-spacing:-0.025em;color:var(--text-main)}
+        .tool-content h2:first-child{margin-top:15px}
+        .tool-content p,.tool-content li,.faq-section p{color:var(--text-muted);font-size:0.9rem}
+        .tool-content a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}
+        .tool-content a:hover{color:var(--primary-hover)}
+        .tool-content ol{padding-left:22px}.tool-content li{margin-bottom:8px}
+        .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .format-card{padding:16px;border:1px solid var(--border-color);border-radius:8px;background:var(--bg-card)}
+        .format-card strong{display:block;margin-bottom:4px;color:var(--primary);font-family:var(--font-mono)}
+        .format-card span{color:var(--text-muted);font-size:0.72rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .related-grid a{padding:16px;border:1px solid var(--border-color);border-radius:8px;background:var(--bg-card);text-align:center;transition:all var(--transition)}
+        .related-grid a:hover{border-color:var(--primary);background:var(--bg-card-hover);transform:translateY(-2px)}
+        .related-grid strong{display:block;margin-bottom:4px;color:var(--text-main);font-size:0.8rem}
+        .related-grid span{color:var(--text-muted);font-size:0.7rem}
+        .related-grid a .tool-emoji{font-size:1.5rem;margin-bottom:2px}
+        .faq-section{max-width:900px;padding:15px 0 20px}
+        .faq-section details{border-top:1px solid var(--border-color)}
+        .faq-section details:last-child{border-bottom:1px solid var(--border-color)}
+        .faq-section summary{padding:18px 0;cursor:pointer;list-style:none;font-size:0.9rem;font-weight:650;color:var(--text-main)}
+        .faq-section summary::-webkit-details-marker{display:none}
+        .faq-section summary::after{content:"+";float:right;color:var(--primary);font-family:var(--font-mono)}
+        .faq-section details[open] summary::after{content:"−"}
+        .donate-cta{display:flex;gap:22px;align-items:center;margin:35px 0;padding:28px;border:1px solid rgba(16,185,129,0.4);border-radius:var(--radius);background:linear-gradient(135deg, rgba(16,185,129,0.08), rgba(255,255,255,0.02));box-shadow:0 8px 24px rgba(16,185,129,0.1)}
+        .donate-icon{width:60px;height:60px;flex:0 0 60px;display:grid;place-items:center;border:1px solid var(--border-glow);border-radius:12px;font-size:1.6rem}
+        .donate-copy h2{margin:3px 0 7px;font-size:1.25rem;color:var(--text-main)}
+        .donate-copy p{margin:0 15px 15px 0;color:var(--text-muted);font-size:0.82rem}
+        .donate-button{display:inline-flex;padding:10px 20px;border-radius:6px;background:var(--primary);color:#051A14;font-family:var(--font-mono);font-size:0.8rem;font-weight:800;transition:all 0.25s ease;box-shadow:0 0 20px rgba(16,185,129,0.4);text-decoration:none}
+        .donate-button:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 6px 24px rgba(16,185,129,0.5)}
+        .donate-trust{font-size:0.7rem;color:var(--text-muted);margin-left:10px}
+        .sys-footer{margin-top:80px;padding:55px 0 25px;border-top:1px solid var(--border-color);background:#030507;color:var(--text-muted);font-family:var(--font-mono);font-size:0.8rem}
+        .footer-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:35px}
+        .footer-brand-block p{max-width:300px;color:var(--text-muted);font-size:0.75rem}
+        .footer-note{margin-top:10px;opacity:0.75;font-family:var(--font-mono);font-size:0.65rem !important}
+        .footer-grid h4{margin:0 0 12px;color:var(--primary);font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.02em}
+        .footer-grid>div:not(.footer-brand-block) a{display:block;padding:5px 0;color:var(--text-muted);font-size:0.73rem;transition:color var(--transition),transform var(--transition)}
+        .footer-grid>div:not(.footer-brand-block) a:hover{color:var(--primary);transform:translateX(2px)}
+        .footer-bottom{display:flex;justify-content:space-between;gap:20px;margin-top:40px;padding-top:18px;border-top:1px solid var(--border-color);color:#5f5f5f;font-family:var(--font-mono);font-size:0.62rem}
+        .system-status{color:var(--primary)}
+        @media (max-width:900px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{display:grid;grid-template-columns:repeat(2,1fr);position:static;top:auto;max-height:none;overflow-y:visible}.footer-grid{grid-template-columns:repeat(2,1fr)}.related-grid{grid-template-columns:repeat(2,1fr)}}
+        @media (max-width:650px){.container{width:min(100% - 28px,1180px);padding-inline:0}.navbar{min-height:62px}.nav-links{gap:12px}.nav-links a{font-size:0.65rem}.nav-links a:nth-child(2){display:none}.tool-hero{padding:50px 0 35px}.tool-hero h1{font-size:2.35rem}.hero-features{flex-direction:column;gap:7px;align-items:flex-start}.tool-sidebar{grid-template-columns:1fr}.format-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.result-stats{grid-template-columns:1fr}.donate-cta{align-items:flex-start;flex-direction:column}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.preview-grid{grid-template-columns:1fr}.size-grid{grid-template-columns:repeat(2,1fr)}}
+        @media (max-width:430px){.nav-links a{display:none}.nav-links a:last-child{display:block}.dropzone{margin:15px;padding:45px 15px}.preview-area,.ico-options,.result-area{margin:15px}.tool-header{padding:16px}.status{display:none}.donate-cta{padding:20px}}
+        @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important}.upload-button:hover,.process-button:hover,.download-button:hover,.donate-button:hover,.related-grid a:hover{transform:none}}
+        @media (min-width:901px){.tool-sidebar{position:sticky;top:100px;align-self:start;max-height:calc(100vh - 120px);overflow-y:auto}}
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "zenlyta PNG to ICO Converter",
+        "url": "https://zenlyta.com/tools/image/png-to-ico/",
+        "description": "Convert PNG images to ICO format with multi-size support directly in your browser.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser",
+        "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"},
+        "featureList": ["Convert PNG to ICO","Multi-size ICO support","Preserves transparency","No upload required","Browser-based"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem","position": 1,"name": "Home","item": "https://zenlyta.com/"},
+            {"@type": "ListItem","position": 2,"name": "Image Tools","item": "https://zenlyta.com/#image-tools"},
+            {"@type": "ListItem","position": 3,"name": "PNG to ICO","item": "https://zenlyta.com/tools/image/png-to-ico/"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "Is zenlyta's PNG to ICO converter free?","acceptedAnswer": {"@type": "Answer","text": "Yes. zenlyta's core browser tools are designed to be free to use without requiring an account."}},
+            {"@type": "Question","name": "Are my images uploaded?","acceptedAnswer": {"@type": "Answer","text": "Supported client-side image processing happens directly in your browser. The selected image does not need to be uploaded to a zenlyta file-processing server."}},
+            {"@type": "Question","name": "What sizes are supported?","acceptedAnswer": {"@type": "Answer","text": "You can generate ICO files with 16×16, 32×32, 48×48, 64×64, 128×128, and 256×256 sizes, including multi-size ICOs."}},
+            {"@type": "Question","name": "Does it preserve transparency?","acceptedAnswer": {"@type": "Answer","text": "Yes. PNG transparency is preserved when converting to ICO using PNG-compressed ICO format."}}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="sys-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a class="brand" href="../../../index.html" aria-label="zenlyta homepage">
+                    <span class="brand-badge">Z</span>
+                    <span>zenlyta<span class="highlight">.com</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../../index.html#tools">Tools</a>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../about.html">About</a>
+                    <a href="../../../donate.html">Support Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container breadcrumb-wrap">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../../index.html#image-tools">Image Tools</a>
+                <span>/</span>
+                <span aria-current="page">PNG to ICO</span>
+            </nav>
+        </section>
+
+        <section class="tool-hero">
+            <div class="container">
+                <span class="tool-badge">IMAGE TOOL</span>
+                <h1>PNG to ICO Converter</h1>
+                <p>Convert PNG images to ICO format online for free. Create single or multi-size ICO favicons with transparency preserved — all processing happens in your browser.</p>
+                <div class="hero-features">
+                    <span>✓ Free to use</span>
+                    <span>✓ Multi-size ICO</span>
+                    <span>✓ Transparency preserved</span>
+                    <span>✓ Privacy-first</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="top"></div>
+        </section>
+
+        <section class="container">
+            <div class="tool-layout">
+                <div class="tool-main">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div>
+                                <span class="terminal-label">// PNG_TO_ICO</span>
+                                <h2>Convert PNG to ICO</h2>
+                            </div>
+                            <span class="status">LOCAL</span>
+                        </div>
+
+                        <div class="dropzone" id="dropzone">
+                            <div class="drop-icon">↑</div>
+                            <h3>Drop your PNG here</h3>
+                            <p>or select a file from your device</p>
+                            <label for="fileInput" class="upload-button">Select PNG</label>
+                            <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/x-icon" hidden>
+                            <small>PNG · JPG · WebP — will be converted to ICO</small>
+                        </div>
+
+                        <div class="preview-area" id="previewArea" hidden>
+                            <div class="preview-grid">
+                                <div class="preview-box">
+                                    <span class="label">Source Image <span class="badge png-badge">PNG</span></span>
+                                    <div class="image-wrap" id="sourceWrap">
+                                        <img id="sourcePreview" alt="Source preview">
+                                        <div class="placeholder" id="sourcePlaceholder">No image</div>
+                                    </div>
+                                    <div class="dimensions" id="sourceDimensions">—</div>
+                                </div>
+                                <div class="preview-box">
+                                    <span class="label">ICO Preview <span class="badge ico-badge">ICO</span></span>
+                                    <div class="image-wrap" id="icoWrap">
+                                        <canvas id="icoPreviewCanvas" width="128" height="128" style="display:none;"></canvas>
+                                        <div class="placeholder" id="icoPlaceholder">ICO preview will appear here</div>
+                                        <img id="icoPreviewImg" alt="ICO preview" style="display:none;">
+                                    </div>
+                                    <div class="dimensions" id="icoDimensions">—</div>
+                                </div>
+                            </div>
+                            <div class="ico-preview-grid" id="icoPreviewGrid" hidden></div>
+                        </div>
+
+                        <div class="ico-options" id="icoOptions" hidden>
+                            <h3>ICO Sizes <span>// SELECT SIZES TO INCLUDE</span></h3>
+                            <div class="preset-row">
+                                <button type="button" class="preset-btn active" data-preset="favicon">Favicon (16,32,48)</button>
+                                <button type="button" class="preset-btn" data-preset="all">All Sizes</button>
+                                <button type="button" class="preset-btn" data-preset="single32">Single 32×32</button>
+                                <button type="button" class="preset-btn" data-preset="single256">Single 256×256</button>
+                            </div>
+                            <div class="size-grid" id="sizeGrid">
+                                <label class="size-option active"><input type="checkbox" value="16" checked><span>16×16</span><span class="size-hint">favicon</span></label>
+                                <label class="size-option active"><input type="checkbox" value="32" checked><span>32×32</span><span class="size-hint">standard</span></label>
+                                <label class="size-option active"><input type="checkbox" value="48" checked><span>48×48</span><span class="size-hint">taskbar</span></label>
+                                <label class="size-option"><input type="checkbox" value="64"><span>64×64</span><span class="size-hint">high-DPI</span></label>
+                                <label class="size-option"><input type="checkbox" value="128"><span>128×128</span><span class="size-hint">large</span></label>
+                                <label class="size-option"><input type="checkbox" value="256"><span>256×256</span><span class="size-hint">Vista+</span></label>
+                            </div>
+                            <div class="option-row">
+                                <div class="option-group">
+                                    <label for="bgMode">Background</label>
+                                    <select id="bgMode">
+                                        <option value="transparent" selected>Transparent (preserve)</option>
+                                        <option value="white">White</option>
+                                        <option value="black">Black</option>
+                                    </select>
+                                </div>
+                                <div class="option-group">
+                                    <label for="qualityHint">Scaling Quality</label>
+                                    <select id="qualityHint">
+                                        <option value="high" selected>High (smooth)</option>
+                                        <option value="pixelated">Pixelated (sharp)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="button" class="process-button" id="convertButton">Convert to ICO</button>
+                            <p style="margin:8px 0 0;color:var(--text-muted);font-family:var(--font-mono);font-size:0.62rem;text-align:center;">Multi-size ICO contains all selected sizes in one .ico file — recommended for favicons.</p>
+                        </div>
+
+                        <div class="result-area" id="resultArea">
+                            <div class="result-icon">✓</div>
+                            <h3>ICO Ready</h3>
+                            <div class="result-stats">
+                                <div><span>Source</span><strong id="originalSize">—</strong></div>
+                                <div><span>ICO Size</span><strong id="convertedSize">—</strong></div>
+                                <div><span>Sizes</span><strong id="sizesIncluded">—</strong></div>
+                            </div>
+                            <a href="#" class="download-button" id="downloadButton" download="converted.ico">Download ICO</a>
+                            <p style="margin:10px 0 0;color:var(--text-muted);font-family:var(--font-mono);font-size:0.62rem;">File: <span id="fileNameOut">favicon.ico</span></p>
+                        </div>
+                    </div>
+
+                    <div class="ad-section" aria-label="Advertisement">
+                        <div class="zenlyta-ad" data-ad-position="content"></div>
+                    </div>
+
+                    <article class="tool-content">
+                        <h2>Free Online PNG to ICO Converter</h2>
+                        <p>zenlyta's PNG to ICO converter transforms PNG images into ICO files directly in your browser. ICO is the standard format for favicons and Windows icons, supporting multiple embedded sizes and transparency.</p>
+                        <p>No account is required. Your image is processed locally — it never leaves your device.</p>
+
+                        <h2>How to Convert PNG to ICO</h2>
+                        <ol>
+                            <li>Select a PNG (or JPG/WebP) image from your device.</li>
+                            <li>Choose which sizes to include — select multiple for a multi-size ICO.</li>
+                            <li>Click <strong>Convert to ICO</strong> and preview the result.</li>
+                            <li>Download the <code>.ico</code> file and use it as favicon.ico or Windows icon.</li>
+                        </ol>
+
+                        <h2>Why Multi-Size ICO?</h2>
+                        <p>A single ICO file can contain 16×16, 32×32, 48×48 and larger variants. Browsers and operating systems automatically pick the best size for tabs, bookmarks, taskbars, and high-DPI displays. Selecting <em>Favicon (16,32,48)</em> covers 99% of use cases; <em>All Sizes</em> is ideal for Windows apps.</p>
+
+                        <h2>Privacy-First Processing</h2>
+                        <p>zenlyta is designed around a client-side, privacy-first architecture. For supported local processing, the selected image is processed directly in your browser rather than being uploaded to a remote server.</p>
+                        <p>Learn more on the <a href="../../../architecture.html">System Architecture</a> page and read our <a href="../../../privacy.html">Privacy Policy</a>.</p>
+
+                        <h2>Supported Formats</h2>
+                        <div class="format-grid">
+                            <div class="format-card"><strong>PNG</strong><span>Input — with transparency</span></div>
+                            <div class="format-card"><strong>JPG / WebP</strong><span>Input — auto-converted</span></div>
+                            <div class="format-card"><strong>ICO</strong><span>Output — PNG-compressed</span></div>
+                        </div>
+
+                        <h2>More Image Tools</h2>
+                        <p>Looking for another utility? Explore related zenlyta tools:</p>
+                        <div class="related-grid" id="relatedToolsGrid"></div>
+                    </article>
+                </div>
+
+                <aside class="tool-sidebar">
+                    <div class="sidebar-card">
+                        <h3>// IMAGE_TOOLS</h3>
+                        <div id="sidebarToolLinks"></div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>// ZENLYTA</h3>
+                        <a href="../../../architecture.html"><span>⚙️</span> System Architecture</a>
+                        <a href="../../../privacy.html"><span>🔒</span> Privacy Policy</a>
+                        <a href="../../../about.html"><span>💡</span> About zenlyta</a>
+                        <a href="../../../contact.html"><span>📧</span> Contact</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="container">
+            <article class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <details open>
+                    <summary>Is zenlyta's PNG to ICO converter free?</summary>
+                    <p>Yes. zenlyta's core browser tools are designed to be free to use without requiring an account.</p>
+                </details>
+                <details>
+                    <summary>Are my images uploaded?</summary>
+                    <p>Supported client-side image processing happens directly in your browser. The selected image does not need to be uploaded to a zenlyta file-processing server.</p>
+                </details>
+                <details>
+                    <summary>What sizes should I choose?</summary>
+                    <p>For favicons, 16×16, 32×32 and 48×48 cover most browsers and Windows. Include 64×64, 128×128 and 256×256 for high-DPI displays and Windows apps. Multi-size ICO lets the OS pick the best resolution automatically.</p>
+                </details>
+                <details>
+                    <summary>Does it preserve transparency?</summary>
+                    <p>Yes. The tool generates PNG-compressed ICO entries, which preserve alpha transparency. If you select a background color, transparency will be filled.</p>
+                </details>
+                <details>
+                    <summary>Can I use this on my phone?</summary>
+                    <p>The tool is designed to work in modern desktop and mobile browsers. Performance may vary depending on device and image size.</p>
+                </details>
+            </article>
+        </section>
+
+        <section class="container">
+            <div class="donate-cta">
+                <div class="donate-icon">☕</div>
+                <div class="donate-copy">
+                    <span class="terminal-label">// SUPPORT_INDEPENDENT_DEVELOPMENT</span>
+                    <h2>Find zenlyta Useful?</h2>
+                    <p>zenlyta is free to use. If this tool saved you time or helped you complete your work, you can support the continued development and maintenance of the project.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                        <a href="../../../donate.html" class="donate-button">❤️ Support zenlyta</a>
+                        <span class="donate-trust">🔒 Secure · No account required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="bottom"></div>
+        </section>
+    </main>
+
+    <footer class="sys-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-block">
+                    <a class="brand" href="../../../index.html">
+                        <span class="brand-badge">Z</span>
+                        <span>zenlyta<span class="highlight">.com</span></span>
+                    </a>
+                    <p>Free, privacy-first browser tools designed to process supported files directly on your device.</p>
+                    <p class="footer-note">No account. No unnecessary upload.</p>
+                </div>
+                <div>
+                    <h4>// UTILITIES</h4>
+                    <a href="../../../index.html#image-tools">Image Tools</a>
+                    <a href="../../../index.html#pdf-tools">PDF Tools</a>
+                    <a href="../../../index.html#developer-tools">Developer Suite</a>
+                    <a href="../../../index.html#text-tools">Text Tools</a>
+                    <a href="../../../index.html#calculators">Calculators</a>
+                </div>
+                <div>
+                    <h4>// SYSTEM</h4>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../privacy.html">Privacy Policy</a>
+                    <a href="../../../about.html">About System</a>
+                    <a href="../../../contact.html">Contact</a>
+                </div>
+                <div>
+                    <h4>// SUPPORT</h4>
+                    <a href="../../../donate.html">Support zenlyta</a>
+                    <a href="../../../terms.html">Terms of Use</a>
+                    <a href="../../../disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 zenlyta.com — BROWSER EXECUTION ENGINE</span>
+                <span class="system-status">STATUS: ALL SYSTEMS OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    "use strict";
+    const fileInput = document.getElementById('fileInput');
+    const dropzone = document.getElementById('dropzone');
+    const previewArea = document.getElementById('previewArea');
+    const sourcePreview = document.getElementById('sourcePreview');
+    const sourcePlaceholder = document.getElementById('sourcePlaceholder');
+    const sourceDimensions = document.getElementById('sourceDimensions');
+    const icoPreviewCanvas = document.getElementById('icoPreviewCanvas');
+    const icoPreviewImg = document.getElementById('icoPreviewImg');
+    const icoPlaceholder = document.getElementById('icoPlaceholder');
+    const icoDimensions = document.getElementById('icoDimensions');
+    const icoPreviewGrid = document.getElementById('icoPreviewGrid');
+    const icoOptions = document.getElementById('icoOptions');
+    const sizeGrid = document.getElementById('sizeGrid');
+    const convertButton = document.getElementById('convertButton');
+    const resultArea = document.getElementById('resultArea');
+    const originalSizeEl = document.getElementById('originalSize');
+    const convertedSizeEl = document.getElementById('convertedSize');
+    const sizesIncludedEl = document.getElementById('sizesIncluded');
+    const downloadButton = document.getElementById('downloadButton');
+    const fileNameOut = document.getElementById('fileNameOut');
+    const bgMode = document.getElementById('bgMode');
+    const qualityHint = document.getElementById('qualityHint');
+
+    let selectedFile = null;
+    let previewURL = null;
+    let convertedURL = null;
+    let loadedImage = null;
+
+    function formatBytes(bytes){
+        if(!bytes) return '0 B';
+        const units=['B','KB','MB','GB'];
+        const i=Math.min(Math.floor(Math.log(bytes)/Math.log(1024)),units.length-1);
+        return parseFloat((bytes/Math.pow(1024,i)).toFixed(2))+' '+units[i];
+    }
+    function getSelectedSizes(){
+        const checks = sizeGrid.querySelectorAll('input[type="checkbox"]:checked');
+        return Array.from(checks).map(c=>parseInt(c.value,10)).sort((a,b)=>a-b);
+    }
+    function updateSizeOptionUI(){
+        sizeGrid.querySelectorAll('.size-option').forEach(opt=>{
+            const cb=opt.querySelector('input');
+            opt.classList.toggle('active', cb.checked);
+        });
+        const sizes=getSelectedSizes();
+        convertButton.disabled = sizes.length===0;
+        convertButton.textContent = sizes.length===0 ? 'Select at least one size' : 'Convert to ICO';
+    }
+    function applyPreset(preset){
+        const map={
+            favicon:[16,32,48],
+            all:[16,32,48,64,128,256],
+            single32:[32],
+            single256:[256]
+        };
+        const wanted = map[preset]||[];
+        sizeGrid.querySelectorAll('input').forEach(cb=>{
+            cb.checked = wanted.includes(parseInt(cb.value,10));
+        });
+        updateSizeOptionUI();
+        document.querySelectorAll('.preset-btn').forEach(b=>b.classList.toggle('active', b.dataset.preset===preset));
+    }
+    // preset buttons
+    document.querySelectorAll('.preset-btn').forEach(btn=>{
+        btn.addEventListener('click',()=>applyPreset(btn.dataset.preset));
+    });
+    sizeGrid.querySelectorAll('input').forEach(cb=>{
+        cb.addEventListener('change',()=>{
+            updateSizeOptionUI();
+            document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('active'));
+        });
+    });
+    // also click on label toggles
+    sizeGrid.querySelectorAll('.size-option').forEach(opt=>{
+        opt.addEventListener('click', (e)=>{
+            if(e.target.tagName==='INPUT') return;
+            const cb=opt.querySelector('input');
+            cb.checked=!cb.checked;
+            cb.dispatchEvent(new Event('change'));
+        });
+    });
+
+    function loadFile(file){
+        if(!file) return;
+        const okTypes=['image/png','image/jpeg','image/webp','image/x-icon','image/vnd.microsoft.icon'];
+        if(!okTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.png') && !file.name.toLowerCase().endsWith('.jpg') && !file.name.toLowerCase().endsWith('.jpeg') && !file.name.toLowerCase().endsWith('.webp')){
+            alert('Please select a PNG, JPG or WebP image.');
+            return;
+        }
+        selectedFile=file;
+        if(previewURL) URL.revokeObjectURL(previewURL);
+        previewURL=URL.createObjectURL(file);
+        const img=new Image();
+        img.onload=function(){
+            loadedImage=img;
+            sourcePreview.src=previewURL;
+            sourcePreview.style.display='block';
+            sourcePlaceholder.style.display='none';
+            const w=img.naturalWidth||img.width;
+            const h=img.naturalHeight||img.width;
+            sourceDimensions.textContent=w+' × '+h+' px';
+            previewArea.hidden=false;
+            icoOptions.hidden=false;
+            resultArea.classList.remove('visible');
+            icoPlaceholder.style.display='block';
+            icoPreviewImg.style.display='none';
+            icoPreviewCanvas.style.display='none';
+            icoDimensions.textContent='—';
+            icoPreviewGrid.hidden=true;
+            icoPreviewGrid.innerHTML='';
+            if(convertedURL){ URL.revokeObjectURL(convertedURL); convertedURL=null; }
+            updateSizeOptionUI();
+        };
+        img.onerror=function(){ alert('Unable to read this image.'); };
+        img.src=previewURL;
+        dropzone.classList.add('has-file');
+    }
+
+    fileInput.addEventListener('change',function(){ loadFile(this.files[0]); });
+    dropzone.addEventListener('dragover',function(e){ e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave',function(){ dropzone.classList.remove('dragover'); });
+    dropzone.addEventListener('drop',function(e){ e.preventDefault(); dropzone.classList.remove('dragover'); const f=e.dataTransfer.files[0]; loadFile(f); });
+
+    function canvasToPNGBytes(canvas){
+        const dataURL=canvas.toDataURL('image/png');
+        const base64=dataURL.split(',')[1];
+        const binary=atob(base64);
+        const len=binary.length;
+        const bytes=new Uint8Array(len);
+        for(let i=0;i<len;i++) bytes[i]=binary.charCodeAt(i);
+        return bytes;
+    }
+    function buildICO(pngDatas, sizes){
+        const count=sizes.length;
+        const headerSize=6;
+        const entrySize=16;
+        const offsetStart=headerSize+entrySize*count;
+        let totalSize=offsetStart;
+        pngDatas.forEach(b=> totalSize+=b.length);
+        const buffer=new ArrayBuffer(totalSize);
+        const view=new DataView(buffer);
+        const u8=new Uint8Array(buffer);
+        // ICONDIR
+        view.setUint16(0,0,true); // reserved
+        view.setUint16(2,1,true); // type 1 = icon
+        view.setUint16(4,count,true);
+        let offset=offsetStart;
+        for(let i=0;i<count;i++){
+            const size=sizes[i];
+            const bytes=pngDatas[i];
+            const entryOffset=headerSize+i*entrySize;
+            u8[entryOffset]= size===256?0:size; // width
+            u8[entryOffset+1]= size===256?0:size; // height
+            u8[entryOffset+2]=0; // color count
+            u8[entryOffset+3]=0; // reserved
+            view.setUint16(entryOffset+4,1,true); // planes
+            view.setUint16(entryOffset+6,32,true); // bit count
+            view.setUint32(entryOffset+8,bytes.length,true); // bytes in res
+            view.setUint32(entryOffset+12,offset,true); // image offset
+            u8.set(bytes, offset);
+            offset+=bytes.length;
+        }
+        return new Blob([buffer],{type:'image/x-icon'});
+    }
+
+    async function convertToICO(){
+        if(!loadedImage || !selectedFile) return;
+        const sizes=getSelectedSizes();
+        if(sizes.length===0){ alert('Select at least one size.'); return; }
+        convertButton.disabled=true;
+        convertButton.textContent='Converting...';
+        try{
+            const bg=bgMode.value;
+            const smooth = qualityHint.value==='high';
+            const pngDatas=[];
+            const previewCanvases=[];
+            for(const s of sizes){
+                const c=document.createElement('canvas');
+                c.width=s; c.height=s;
+                const ctx=c.getContext('2d');
+                if(!ctx) throw new Error('Canvas not supported');
+                ctx.imageSmoothingEnabled=smooth;
+                ctx.imageSmoothingQuality= smooth ? 'high' : 'low';
+                if(bg==='white'){
+                    ctx.fillStyle='#FFFFFF';
+                    ctx.fillRect(0,0,s,s);
+                } else if(bg==='black'){
+                    ctx.fillStyle='#000000';
+                    ctx.fillRect(0,0,s,s);
+                } else {
+                    ctx.clearRect(0,0,s,s);
+                }
+                const srcW=loadedImage.naturalWidth||loadedImage.width;
+                const srcH=loadedImage.naturalHeight||loadedImage.height;
+                const ratio=Math.min(s/srcW, s/srcH);
+                const dw=srcW*ratio;
+                const dh=srcH*ratio;
+                const dx=(s-dw)/2;
+                const dy=(s-dh)/2;
+                ctx.drawImage(loadedImage, dx, dy, dw, dh);
+                const bytes=canvasToPNGBytes(c);
+                pngDatas.push(bytes);
+                previewCanvases.push(c);
+            }
+            const icoBlob=buildICO(pngDatas, sizes);
+            if(convertedURL) URL.revokeObjectURL(convertedURL);
+            convertedURL=URL.createObjectURL(icoBlob);
+            // update preview - show largest size
+            const largestIdx=sizes.length-1;
+            const largestCanvas=previewCanvases[largestIdx];
+            // draw to preview canvas element
+            icoPreviewCanvas.width=largestCanvas.width;
+            icoPreviewCanvas.height=largestCanvas.height;
+            const pctx=icoPreviewCanvas.getContext('2d');
+            pctx.clearRect(0,0,icoPreviewCanvas.width,icoPreviewCanvas.height);
+            pctx.drawImage(largestCanvas,0,0);
+            icoPreviewCanvas.style.display='block';
+            icoPlaceholder.style.display='none';
+            icoPreviewImg.style.display='none';
+            icoDimensions.textContent=sizes.join(', ')+' px — '+sizes.length+' image'+(sizes.length>1?'s':'');
+            // grid previews
+            icoPreviewGrid.innerHTML='';
+            sizes.forEach((s,idx)=>{
+                const item=document.createElement('div');
+                item.className='ico-preview-item';
+                const img=document.createElement('img');
+                img.alt=s+'×'+s;
+                // create object URL for each png for preview
+                const blob=new Blob([pngDatas[idx]],{type:'image/png'});
+                img.src=URL.createObjectURL(blob);
+                img.onload=()=>{ /* keep */ };
+                const label=document.createElement('span');
+                label.textContent=s+'×'+s;
+                item.appendChild(img);
+                item.appendChild(label);
+                icoPreviewGrid.appendChild(item);
+            });
+            icoPreviewGrid.hidden=false;
+
+            originalSizeEl.textContent=formatBytes(selectedFile.size);
+            convertedSizeEl.textContent=formatBytes(icoBlob.size);
+            sizesIncludedEl.textContent=sizes.length+' size'+(sizes.length>1?'s':'');
+            const baseName=selectedFile.name.replace(/\.[^/.]+$/,'')||'favicon';
+            downloadButton.href=convertedURL;
+            downloadButton.download=baseName+'.ico';
+            fileNameOut.textContent=baseName+'.ico';
+            resultArea.classList.add('visible');
+            resultArea.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }catch(err){
+            console.error(err);
+            alert('Failed to convert: '+(err.message||err));
+        }finally{
+            convertButton.disabled=false;
+            convertButton.textContent='Convert to ICO';
+        }
+    }
+
+    convertButton.addEventListener('click', convertToICO);
+
+    window.addEventListener('beforeunload',function(){
+        if(previewURL) URL.revokeObjectURL(previewURL);
+        if(convertedURL) URL.revokeObjectURL(convertedURL);
+    });
+    // init
+    updateSizeOptionUI();
+    </script>
+    <script>
+
+        const TOOLS = [
+            { id: 'add-watermark', emoji: '©', label: 'Add Watermark' },
+            { id: 'aspect-ratio-calculator', emoji: '📐', label: 'Aspect Ratio Calculator' },
+            { id: 'avif-converter', emoji: '🔄', label: 'AVIF Converter' },
+            { id: 'avif-to-jpg', emoji: '🔄', label: 'AVIF to JPG' },
+            { id: 'base64-to-image', emoji: '🔢', label: 'Base64 to Image' },
+            { id: 'black-and-white', emoji: '⚫', label: 'Black & White' },
+            { id: 'blur-background', emoji: '🌫️', label: 'Blur Background' },
+            { id: 'blur-image', emoji: '🌫️', label: 'Blur Image' },
+            { id: 'change-brightness', emoji: '☀️', label: 'Change Brightness' },
+            { id: 'collage-maker', emoji: '🖼️', label: 'Collage Maker' },
+            { id: 'color-palette-extractor', emoji: '🎨', label: 'Color Palette Extractor' },
+            { id: 'color-picker', emoji: '🎨', label: 'Color Picker' },
+            { id: 'compress-image', emoji: '🗜️', label: 'Compress Image' },
+            { id: 'compress-png', emoji: '📦', label: 'Compress PNG' },
+            { id: 'crop-image', emoji: '✂️', label: 'Crop Image' },
+            { id: 'dicom-viewer', emoji: '🩻', label: 'DICOM Viewer' },
+            { id: 'eps-to-png', emoji: '🔄', label: 'EPS to PNG' },
+            { id: 'extract-text', emoji: '📝', label: 'Extract Text' },
+            { id: 'favicon-generator', emoji: '⭐', label: 'Favicon Generator' },
+            { id: 'flip-image', emoji: '↔️', label: 'Flip Image' },
+            { id: 'pixelate-image', emoji: '🟩', label: 'Pixelate Image' },
+            { id: 'heic-to-jpg', emoji: '🔄', label: 'HEIC to JPG' },
+            { id: 'heic-to-png', emoji: '🔄', label: 'HEIC to PNG' },
+            { id: 'image-converter', emoji: '🔄', label: 'Image Converter' },
+            { id: 'image-metadata', emoji: '🔎', label: 'Image Metadata' },
+            { id: 'image-overlay', emoji: '🖼️', label: 'Image Overlay' },
+            { id: 'image-to-base64', emoji: '🔢', label: 'Image to Base64' },
+            { id: 'image-to-pdf', emoji: '📄', label: 'Image to PDF' },
+            { id: 'image-upscaler', emoji: '🔍', label: 'Image Upscaler' },
+            { id: 'invert-colors', emoji: '🔄', label: 'Invert Colors' },
+            { id: 'jpg-to-png', emoji: '🔄', label: 'JPG to PNG' },
+            { id: 'jpg-to-webp', emoji: '🔄', label: 'JPG to WebP' },
+            { id: 'meme-generator', emoji: '😂', label: 'Meme Generator' },
+            { id: 'passport-photo-maker', emoji: '🪪', label: 'Passport Photo Maker' },
+            { id: 'pdf-to-jpg', emoji: '📄', label: 'PDF to JPG' },
+            { id: 'photo-colorizer', emoji: '🎨', label: 'Photo Colorizer' },
+            { id: 'png-to-ico', emoji: '🔄', label: 'PNG to ICO' },
+            { id: 'png-to-jpg', emoji: '🔄', label: 'PNG to JPG' },
+            { id: 'png-to-webp', emoji: '🔄', label: 'PNG to WebP' },
+            { id: 'remove-bg', emoji: '✂️', label: 'Remove Background' },
+            { id: 'remove-exif', emoji: '🔒', label: 'Remove EXIF' },
+            { id: 'resize-image', emoji: '↔️', label: 'Resize Image' },
+            { id: 'rotate-image', emoji: '🔄', label: 'Rotate Image' },
+            { id: 'round-corners', emoji: '⭕', label: 'Round Corners' },
+            { id: 'split-image', emoji: '✂️', label: 'Split Image' },
+            { id: 'sprite-sheet-generator', emoji: '🧩', label: 'Sprite Sheet Generator' },
+            { id: 'svg-optimizer', emoji: '⚡', label: 'SVG Optimizer' },
+            { id: 'svg-to-png', emoji: '🔄', label: 'SVG to PNG' },
+            { id: 'tiff-to-jpg', emoji: '🔄', label: 'TIFF to JPG' },
+            { id: 'webp-to-jpg', emoji: '🔄', label: 'WebP to JPG' },
+            { id: 'webp-to-png', emoji: '🔄', label: 'WebP to PNG' }
+        ];
+
+        const sidebarContainer = document.getElementById('sidebarToolLinks');
+        if (sidebarContainer) {
+            const currentToolId = 'png-to-ico';
+            let html = '';
+            TOOLS.forEach(t => {
+                const active = (t.id === currentToolId) ? ' style="color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);"' : '';
+                html += `<a href="../${t.id}/"${active}><span class="tool-emoji">${t.emoji}</span> ${t.label}</a>`;
+            });
+            html += `<a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>`;
+            sidebarContainer.innerHTML = html;
+        }
+
+        const relatedGrid = document.getElementById('relatedToolsGrid');
+        if (relatedGrid) {
+            const currentToolId = 'png-to-ico';
+            const others = TOOLS.filter(t => t.id !== currentToolId);
+            const selected = others.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let html = '';
+            selected.forEach(t => {
+                html += `<a href="../${t.id}/"><span class="tool-emoji">${t.emoji}</span><strong>${t.label}</strong><span>Free online tool</span></a>`;
+            });
+            relatedGrid.innerHTML = html;
+        }
+
+    </script>
+</body>
+</html>

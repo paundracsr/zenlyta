@@ -42,12 +42,24 @@
         <priority>0.5</priority>
     </url>
 
-    <!-- Image Tools -->
+    <!-- Image Tools — Compression & Optimization -->
     <url>
         <loc>https://zenlyta.com/tools/image/compress-image/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/compress-png/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/svg-optimizer/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Image Tools — Resize & Transform -->
     <url>
         <loc>https://zenlyta.com/tools/image/resize-image/</loc>
         <changefreq>weekly</changefreq>
@@ -59,34 +71,56 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/remove-bg/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
         <loc>https://zenlyta.com/tools/image/image-upscaler/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/jpg-to-png/</loc>
+        <loc>https://zenlyta.com/tools/image/rotate-image/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/flip-image/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/split-image/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/round-corners/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/aspect-ratio-calculator/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Image Tools — Format Conversion -->
+    <url>
+        <loc>https://zenlyta.com/tools/image/jpg-to-png/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/png-to-jpg/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/webp-to-jpg/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/jpg-to-webp/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/png-to-webp/</loc>
@@ -106,7 +140,7 @@
     <url>
         <loc>https://zenlyta.com/tools/image/heic-to-jpg/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/heic-to-png/</loc>
@@ -119,22 +153,46 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://zenlyta.com/tools/image/avif-converter/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/eps-to-png/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/tiff-to-jpg/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/png-to-ico/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Image Tools — PDF -->
+    <url>
         <loc>https://zenlyta.com/tools/image/image-to-pdf/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/compress-png/</loc>
+        <loc>https://zenlyta.com/tools/image/pdf-to-jpg/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <!-- Image Tools — Editing & Effects -->
     <url>
-        <loc>https://zenlyta.com/tools/image/color-picker/</loc>
+        <loc>https://zenlyta.com/tools/image/remove-bg/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/blur-image/</loc>
+        <loc>https://zenlyta.com/tools/image/add-watermark/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -144,17 +202,22 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/meme-generator/</loc>
+        <loc>https://zenlyta.com/tools/image/blur-image/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/collage-maker/</loc>
+        <loc>https://zenlyta.com/tools/image/change-brightness/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/image-metadata/</loc>
+        <loc>https://zenlyta.com/tools/image/black-and-white/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/invert-colors/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -164,17 +227,83 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/image-to-base64/</loc>
+        <loc>https://zenlyta.com/tools/image/image-overlay/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Image Tools — Creative -->
+    <url>
+        <loc>https://zenlyta.com/tools/image/collage-maker/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://zenlyta.com/tools/image/add-watermark/</loc>
+        <loc>https://zenlyta.com/tools/image/meme-generator/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/passport-photo-maker/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://zenlyta.com/tools/image/favicon-generator/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/gif-frame-extractor/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/sprite-sheet-generator/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Image Tools — Color & Inspection -->
+    <url>
+        <loc>https://zenlyta.com/tools/image/color-picker/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/color-palette-extractor/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/image-metadata/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/remove-exif/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/dicom-viewer/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Image Tools — Encode & Extract -->
+    <url>
+        <loc>https://zenlyta.com/tools/image/image-to-base64/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/base64-to-image/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://zenlyta.com/tools/image/extract-text/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>

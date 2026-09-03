@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base64 to Image Converter Online Free — Decode Data URI | zenlyta</title>
+    <meta name="description" content="Convert Base64 strings or Data URIs to PNG, JPG, and WebP images online for free. Decode and download Base64 images directly in your browser — privacy-first, no upload." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://zenlyta.com/tools/image/base64-to-image/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Base64 to Image Converter Online Free — zenlyta" />
+    <meta property="og:description" content="Decode Base64 strings or Data URIs to PNG, JPG, or WebP images instantly in your browser." />
+    <meta property="og:url" content="https://zenlyta.com/tools/image/base64-to-image/" />
+    <meta property="og:site_name" content="zenlyta" />
+    <meta name="theme-color" content="#080808" />
+
+    <!-- Global Advertisement System -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EQRT92T3L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3EQRT92T3L');
+    </script>
+    <link rel="stylesheet" href="../../../ads/ads.css" />
+
+    <style>
+        /* =========================================================
+               ZENLYTA GLOBAL TOOL CSS
+               Konsisten dengan index.html / about.html / architecture.html
+               (Tanpa styling untuk iklan — sudah ditangani oleh ads.css)
+               ========================================================= */
+        :root {
+            --bg-main: #060809;
+            --bg-card: #0D1117;
+            --bg-card-hover: #161B22;
+            --border-color: #21262D;
+            --border-glow: #30363D;
+            --primary: #10B981;
+            --primary-hover: #34D399;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+            --radius: 0.5rem;
+            --transition: 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-smooth: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --container-width: 1240px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body {
+            margin: 0;
+            min-width: 320px;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
+        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        button, input, textarea, select { font: inherit; }
+        button { -webkit-tap-highlight-color: transparent; }
+        :focus { outline: none; }
+        :focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+        ::selection { background: rgba(16, 185, 129, 0.25); color: var(--text-main); }
+        .container { width: 100%; max-width: var(--container-width); margin-inline: auto; padding-inline: 1.25rem; }
+
+        /* ===== HEADER ===== */
+        .sys-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(6, 8, 9, 0.94);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            transition: box-shadow var(--transition), background var(--transition);
+        }
+        .sys-header.scrolled { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+        .navbar { min-height: 3.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        .brand { display: inline-flex; align-items: center; gap: 0.65rem; font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em; white-space: nowrap; }
+        .brand-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 28px; background: var(--primary); color: #000; padding: 0.15rem 0.45rem; border-radius: 0.25rem; font-size: 0.85rem; font-weight: 900; transition: transform var(--transition); }
+        .brand:hover .brand-badge { transform: scale(1.04); }
+        .brand span { color: var(--text-main); }
+        .brand .highlight { color: var(--primary); }
+        .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+        .nav-links a { min-height: 40px; display: inline-flex; align-items: center; padding: 0.45rem 0.7rem; border: 1px solid transparent; border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); transition: color var(--transition), background var(--transition), border-color var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.15); }
+
+        /* ===== BREADCRUMB ===== */
+        .breadcrumb-wrap { padding-top: 26px; }
+        .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span:last-child { color: var(--text-main); }
+
+        /* ===== HERO ===== */
+        .tool-hero { padding: clamp(2.5rem, 5vw, 4rem) 0 2rem; text-align: center; }
+        .tool-badge { display: inline-flex; padding: 0.3rem 0.85rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 999px; color: var(--primary); font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+        .tool-hero h1 { max-width: 800px; margin: 0 auto 0.75rem; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.12; }
+        .tool-hero > div > p { max-width: 680px; margin: 0 auto 1.5rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .hero-features { display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.78rem; }
+        .hero-features span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+        /* ===== TOOL LAYOUT ===== */
+        .tool-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: start; }
+        .tool-main { min-width: 0; }
+        .tool-card { overflow: hidden; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-card); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+        .tool-header { min-height: 75px; padding: 1.15rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--border-color); }
+        .terminal-label { display: block; margin-bottom: 3px; color: var(--primary); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; }
+        .tool-header h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+        .status { padding: 5px 9px; border: 1px solid rgba(16, 185, 129, 0.2); color: var(--primary); font-family: var(--font-mono); font-size: 0.62rem; border-radius: 4px; }
+
+        /* ===== INPUT AREA ===== */
+        .input-area { padding: 1.5rem; }
+        .input-area label { display: block; margin-bottom: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.75rem; }
+        textarea.base64-input {
+            width: 100%; height: 180px; padding: 12px;
+            border: 1px solid var(--border-color); border-radius: 8px;
+            background: var(--bg-main); color: var(--text-main);
+            font-family: var(--font-mono); font-size: 0.8rem; resize: vertical;
+            transition: border-color var(--transition), box-shadow var(--transition);
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        textarea.base64-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12); }
+        textarea.base64-input::placeholder { color: #5a6572; }
+        .btn-group { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .action-button {
+            padding: 10px 16px; border: 1px solid var(--border-color); border-radius: 6px;
+            background: var(--bg-card-hover); color: var(--text-main);
+            font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease;
+        }
+        .action-button:hover { border-color: var(--primary); color: var(--primary); }
+        .process-button {
+            width: calc(100% - 3rem); margin: 0 1.5rem 1.5rem; padding: 13px;
+            border: 1px solid var(--primary); border-radius: 7px;
+            background: var(--primary); color: #051A14;
+            font-family: var(--font-mono); font-weight: 800; cursor: pointer;
+            transition: transform var(--transition), opacity var(--transition);
+        }
+        .process-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .process-button:disabled { opacity: 0.55; cursor: wait; }
+
+        .result-area { margin: 1.5rem; padding: 2rem; text-align: center; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 9px; background: rgba(16, 185, 129, 0.025); }
+        .result-icon { width: 45px; height: 45px; display: grid; place-items: center; margin: 0 auto 12px; border: 1px solid var(--primary); border-radius: 50%; color: var(--primary); font-family: var(--font-mono); }
+        .result-area h3 { margin: 0 0 18px; font-size: 1.25rem; font-weight: 700; }
+        .image-preview-box { max-height: 350px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #050505; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; margin-bottom: 16px; }
+        .image-preview-box img { max-height: 330px; width: auto; object-fit: contain; }
+        .file-details { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); flex-wrap: wrap; }
+        .file-details strong { color: var(--primary); }
+        .download-row { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
+        .format-select { padding: 12px; border: 1px solid var(--border-color); border-radius: 7px; background: var(--bg-card); color: var(--text-main); font-family: var(--font-mono); font-size: 0.75rem; }
+        .download-button { flex: 1; min-width: 180px; display: inline-flex; align-items: center; justify-content: center; padding: 13px; border: 1px solid var(--primary); border-radius: 7px; background: var(--primary); color: #051A14; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 800; transition: transform var(--transition); }
+        .download-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        /* ===== SIDEBAR ===== */
+        .tool-sidebar { display: flex; flex-direction: column; gap: 18px; }
+        .sidebar-card { padding: 20px; border: 1px solid var(--border-color); border-radius: var(--radius); background: var(--bg-card); }
+        .sidebar-card h3 { margin: 0 0 14px; color: var(--primary); font-family: var(--font-mono); font-size: 0.67rem; letter-spacing: 0.04em; }
+        .sidebar-card a { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 6px; border-bottom: 1px solid transparent; transition: all 0.2s ease; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+        .sidebar-card a:last-child { border-bottom: none; }
+        .sidebar-card a:hover { background: rgba(16, 185, 129, 0.06); border-color: rgba(16, 185, 129, 0.2); color: var(--primary); transform: translateX(3px); }
+        .sidebar-card a .tool-emoji { font-size: 1.1rem; line-height: 1; }
+
+        /* ===== SEO CONTENT ===== */
+        .tool-content { padding: 10px 0 20px; }
+        .tool-content h2 { margin: 42px 0 13px; font-size: 1.4rem; line-height: 1.3; letter-spacing: -0.025em; color: var(--text-main); }
+        .tool-content h2:first-child { margin-top: 15px; }
+        .tool-content p, .tool-content li, .faq-section p { color: var(--text-muted); font-size: 0.9rem; }
+        .tool-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+        .tool-content a:hover { color: var(--primary-hover); }
+        .tool-content ol { padding-left: 22px; }
+        .tool-content li { margin-bottom: 8px; }
+        .format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .format-card { padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); }
+        .format-card strong { display: block; margin-bottom: 4px; color: var(--primary); font-family: var(--font-mono); }
+        .format-card span { color: var(--text-muted); font-size: 0.72rem; }
+
+        /* ===== RELATED GRID ===== */
+        .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .related-grid a { display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-card); text-decoration: none; transition: all 0.2s ease; }
+        .related-grid a:hover { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.04); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25); }
+        .related-grid strong { color: var(--text-main); font-size: 0.8rem; }
+        .related-grid span { color: var(--text-muted); font-size: 0.7rem; }
+        .related-grid a .tool-emoji { font-size: 1.5rem; margin-bottom: 2px; }
+
+        /* ===== FAQ ===== */
+        .faq-section { max-width: 900px; padding: 15px 0 20px; }
+        .faq-section details { border-top: 1px solid var(--border-color); }
+        .faq-section details:last-child { border-bottom: 1px solid var(--border-color); }
+        .faq-section summary { padding: 18px 0; cursor: pointer; list-style: none; font-size: 0.9rem; font-weight: 650; color: var(--text-main); }
+        .faq-section summary::-webkit-details-marker { display: none; }
+        .faq-section summary::after { content: "+"; float: right; color: var(--primary); font-family: var(--font-mono); }
+        .faq-section details[open] summary::after { content: "−"; }
+
+        /* ===== DONATE CTA ===== */
+        .donate-cta { display: flex; gap: 22px; align-items: center; margin: 35px 0; padding: 28px; border: 1px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius); background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0.02)); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.1); }
+        .donate-icon { width: 60px; height: 60px; flex: 0 0 60px; display: grid; place-items: center; border: 1px solid var(--border-glow); border-radius: 12px; font-size: 1.6rem; }
+        .donate-copy h2 { margin: 3px 0 7px; font-size: 1.25rem; color: var(--text-main); }
+        .donate-copy p { margin: 0 15px 15px 0; color: var(--text-muted); font-size: 0.82rem; }
+        .donate-button { display: inline-flex; padding: 10px 20px; border-radius: 6px; background: var(--primary); color: #051A14; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 800; transition: all 0.25s ease; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); text-decoration: none; }
+        .donate-button:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5); }
+        .donate-trust { font-size: 0.7rem; color: var(--text-muted); margin-left: 10px; }
+
+        /* ===== FOOTER ===== */
+        .sys-footer { margin-top: 80px; padding: 55px 0 25px; border-top: 1px solid var(--border-color); background: #030507; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.8rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 35px; }
+        .footer-brand-block p { max-width: 300px; color: var(--text-muted); font-size: 0.75rem; }
+        .footer-note { margin-top: 10px; opacity: 0.75; font-family: var(--font-mono); font-size: 0.65rem !important; }
+        .footer-grid h4 { margin: 0 0 12px; color: var(--primary); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; }
+        .footer-grid > div:not(.footer-brand-block) a { display: block; padding: 5px 0; color: var(--text-muted); font-size: 0.73rem; transition: color var(--transition), transform var(--transition); }
+        .footer-grid > div:not(.footer-brand-block) a:hover { color: var(--primary); transform: translateX(2px); }
+        .footer-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border-color); color: #5f5f5f; font-family: var(--font-mono); font-size: 0.62rem; }
+        .system-status { color: var(--primary); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .tool-layout { grid-template-columns: 1fr; }
+            .tool-sidebar { display: grid; grid-template-columns: repeat(2, 1fr); position: static; top: auto; max-height: none; overflow-y: visible; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 650px) {
+            .container { width: min(100% - 28px, 1180px); padding-inline: 0; }
+            .navbar { min-height: 62px; }
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: 0.65rem; }
+            .nav-links a:nth-child(2) { display: none; }
+            .tool-hero { padding: 50px 0 35px; }
+            .tool-hero h1 { font-size: 2.35rem; }
+            .hero-features { flex-direction: column; gap: 7px; align-items: flex-start; }
+            .tool-sidebar { grid-template-columns: 1fr; }
+            .format-grid { grid-template-columns: 1fr; }
+            .related-grid { grid-template-columns: 1fr; }
+            .donate-cta { align-items: flex-start; flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; }
+            .download-row { flex-direction: column; }
+        }
+        @media (max-width: 430px) {
+            .nav-links a { display: none; }
+            .nav-links a:last-child { display: block; }
+            .input-area, .result-area { margin: 15px; }
+            .tool-header { padding: 16px; }
+            .status { display: none; }
+            .donate-cta { padding: 20px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+            .process-button:hover, .download-button:hover, .donate-button:hover, .related-grid a:hover { transform: none; }
+        }
+        @media (min-width: 901px) {
+            .tool-sidebar { position: sticky; top: 100px; align-self: start; max-height: calc(100vh - 120px); overflow-y: auto; }
+        }
+    </style>
+
+    <script src="../../../ads/ad-config.js"></script>
+    <script src="../../../ads/ads.js"></script>
+
+    <!-- ===== STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "zenlyta Base64 to Image",
+            "url": "https://zenlyta.com/tools/image/base64-to-image/",
+            "description": "Convert Base64 encoded strings or Data URIs into downloadable PNG, JPG, or WebP images directly in your browser.",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires a modern web browser",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "featureList": ["Base64 decoder", "Data URI converter", "PNG export", "JPG export", "WebP export", "Client-side processing"]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zenlyta.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Image Tools", "item": "https://zenlyta.com/#image-tools" },
+                { "@type": "ListItem", "position": 3, "name": "Base64 to Image", "item": "https://zenlyta.com/tools/image/base64-to-image/" }
+            ]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "What is Base64 encoding?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Base64 is a binary-to-text encoding scheme that represents image binary data as an ASCII string, often starting with data:image/png;base64,... so it can be embedded in JSON, HTML, or CSS." }
+            }, {
+                "@type": "Question",
+                "name": "Can I convert raw Base64 without the data:image prefix?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool automatically detects missing Data URI headers and adds a default PNG header for rendering." }
+            }, {
+                "@type": "Question",
+                "name": "Is my Base64 data uploaded to a server?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. Decoding and rendering are processed 100% locally in your browser. No data is sent to a zenlyta server." }
+            }, {
+                "@type": "Question",
+                "name": "What export formats are supported?",
+                "acceptedAnswer": { "@type": "Answer", "text": "You can export the decoded image as PNG, JPG, or WebP directly from the browser canvas." }
+            }, {
+                "@type": "Question",
+                "name": "Do I need an account to use this tool?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No account is required. The tool is free to use in any modern desktop or mobile browser." }
+            }]
+        }
+    </script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="sys-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a class="brand" href="../../../index.html" aria-label="zenlyta homepage">
+                    <span class="brand-badge">Z</span>
+                    <span>zenlyta<span class="highlight">.com</span></span>
+                </a>
+                <div class="nav-links">
+                    <a href="../../../index.html#tools">Tools</a>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../about.html">About</a>
+                    <a href="../../../donate.html">Support Us</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- BREADCRUMB -->
+        <section class="container breadcrumb-wrap">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../../index.html#image-tools">Image Tools</a>
+                <span>/</span>
+                <span aria-current="page">Base64 to Image</span>
+            </nav>
+        </section>
+
+        <!-- HERO -->
+        <section class="tool-hero">
+            <div class="container">
+                <span class="tool-badge">IMAGE TOOL</span>
+                <h1>Base64 to Image Converter</h1>
+                <p>Decode Base64 strings or Data URIs into downloadable PNG, JPG, or WebP image files instantly in your browser — no upload required.</p>
+                <div class="hero-features">
+                    <span>✓ Free to use</span>
+                    <span>✓ Supports Data URI & raw Base64</span>
+                    <span>✓ Export PNG, JPG, WebP</span>
+                    <span>✓ 100% Client-side privacy</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- IKLAN TOP -->
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="top"></div>
+        </section>
+
+        <!-- TOOL LAYOUT -->
+        <section class="container">
+            <div class="tool-layout">
+
+                <!-- MAIN -->
+                <div class="tool-main">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div>
+                                <span class="terminal-label">// BASE64_DECODER</span>
+                                <h2>Convert Base64 to Image</h2>
+                            </div>
+                            <span class="status">LOCAL</span>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div class="input-area">
+                            <label for="base64Input">Paste your Base64 code or Data URI below:</label>
+                            <textarea id="base64Input" class="base64-input" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="></textarea>
+                            <div class="btn-group">
+                                <button type="button" class="action-button" id="btnPaste">📋 Paste from Clipboard</button>
+                                <button type="button" class="action-button" id="btnClear">🗑️ Clear</button>
+                                <button type="button" class="action-button" id="btnSample">✨ Load Sample</button>
+                            </div>
+                        </div>
+
+                        <button type="button" class="process-button" id="processButton">Decode & Render Image</button>
+
+                        <!-- Result -->
+                        <div class="result-area" id="resultArea" hidden>
+                            <div class="result-icon">✓</div>
+                            <h3>Image Decoded Successfully</h3>
+                            <div class="image-preview-box">
+                                <img id="resultImage" alt="Decoded Base64 preview" />
+                            </div>
+                            <div class="file-details">
+                                <span>Dimensions: <strong id="imgDimensions">—</strong></span>
+                                <span>Type: <strong id="imgType">PNG</strong></span>
+                                <span>Size: <strong id="imgSize">—</strong></span>
+                            </div>
+                            <div class="download-row">
+                                <select id="formatSelect" class="format-select" aria-label="Select export format">
+                                    <option value="png">Save as PNG</option>
+                                    <option value="jpeg">Save as JPG</option>
+                                    <option value="webp">Save as WebP</option>
+                                </select>
+                                <a href="#" class="download-button" id="downloadButton" download="decoded-image.png">Download Image</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Iklan Content -->
+                    <div class="ad-section" aria-label="Advertisement">
+                        <div class="zenlyta-ad" data-ad-position="content"></div>
+                    </div>
+
+                    <!-- SEO CONTENT -->
+                    <article class="tool-content">
+                        <h2>Free Online Base64 to Image Decoder</h2>
+                        <p>zenlyta’s Base64 to Image Converter decodes text-encoded image data back into standard image files (PNG, JPG, WebP). Developers, designers, and database administrators frequently store images as Base64 strings inside JSON, XML, HTML, CSS, or database fields. This utility lets you quickly visualize and export those strings back into downloadable image files without installing any software.</p>
+                        <p>No account is required. Paste your string, render the image, choose your export format, and download the result — all processed locally in your browser.</p>
+
+                        <h2>How to Convert Base64 String to Image</h2>
+                        <ol>
+                            <li>Paste your Base64 encoded string or full Data URI (e.g. <code>data:image/png;base64,...</code>) into the text field above.</li>
+                            <li>Click <strong>Decode & Render Image</strong> to generate the visual preview.</li>
+                            <li>Check the detected dimensions and image type.</li>
+                            <li>Select your desired export format (PNG, JPG, or WebP).</li>
+                            <li>Click <strong>Download Image</strong> to save the decoded file to your device.</li>
+                        </ol>
+
+                        <h2>Why Convert Base64 to Image?</h2>
+                        <p>Base64 encoding is commonly used to embed images directly into code, emails, or data payloads without requiring separate file references. While convenient for transmission, Base64 strings are not viewable as images until decoded. Converting them back to image files makes it easier to preview, edit, share, or reuse the visual content in design tools, documents, and web projects.</p>
+                        <p>Common use cases include debugging API responses, extracting images from database dumps, recovering images from HTML/CSS source code, and validating Data URIs generated by canvas or file readers.</p>
+
+                        <h2>Privacy-First Base64 Processing</h2>
+                        <p>zenlyta is designed around a client-side, privacy-first architecture. For supported local processing, your Base64 string is decoded and rendered directly in your browser using the HTML5 Image and Canvas APIs — it is not uploaded to a zenlyta file-processing server.</p>
+                        <p>This approach is ideal for sensitive or proprietary image data that should not be transmitted to remote services. Learn more about how zenlyta works on the <a href="../../../architecture.html">System Architecture</a> page and read our <a href="../../../privacy.html">Privacy Policy</a> for additional information.</p>
+
+                        <h2>Supported Base64 Formats</h2>
+                        <div class="format-grid">
+                            <div class="format-card"><strong>Data URI Scheme</strong><span>Full <code>data:image/*;base64,...</code> prefixes with MIME type detection</span></div>
+                            <div class="format-card"><strong>Raw Base64</strong><span>Automatically handles raw strings without headers by adding a default PNG prefix</span></div>
+                            <div class="format-card"><strong>Multi-Format Export</strong><span>Convert and download as PNG, JPG, or WebP via browser canvas</span></div>
+                        </div>
+
+                        <h2>More Developer & Image Tools</h2>
+                        <p>Looking for another utility? Explore related zenlyta tools:</p>
+                        <div class="related-grid" id="relatedToolsGrid"></div>
+                    </article>
+                </div>
+
+                <!-- SIDEBAR -->
+                <aside class="tool-sidebar">
+                    <div class="sidebar-card">
+                        <h3>// IMAGE_TOOLS</h3>
+                        <div id="sidebarToolLinks"></div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h3>// ZENLYTA</h3>
+                        <a href="../../../architecture.html"><span>⚙️</span> System Architecture</a>
+                        <a href="../../../privacy.html"><span>🔒</span> Privacy Policy</a>
+                        <a href="../../../about.html"><span>💡</span> About zenlyta</a>
+                        <a href="../../../contact.html"><span>📧</span> Contact</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="container">
+            <article class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <details open>
+                    <summary>What is Base64 encoding?</summary>
+                    <p>Base64 is a binary-to-text encoding scheme that represents image binary data as an ASCII string so it can be safely embedded in HTML, CSS, JSON, or database fields without data loss.</p>
+                </details>
+                <details>
+                    <summary>Can I convert raw Base64 without the data:image prefix?</summary>
+                    <p>Yes. The tool automatically detects if the Data URI header is missing and adds a default <code>data:image/png;base64,</code> prefix for rendering.</p>
+                </details>
+                <details>
+                    <summary>Is my Base64 data uploaded to any server?</summary>
+                    <p>No. All decoding and rendering are executed entirely within your browser session. Your string never leaves your device.</p>
+                </details>
+                <details>
+                    <summary>What export formats are supported?</summary>
+                    <p>You can export the decoded image as PNG, JPG, or WebP. The tool uses the browser’s canvas <code>toBlob</code> API to generate the selected format.</p>
+                </details>
+                <details>
+                    <summary>Do I need to create an account?</summary>
+                    <p>No account is required. The tool is free to use in any modern desktop or mobile browser.</p>
+                </details>
+            </article>
+        </section>
+
+        <!-- DONATE CTA -->
+        <section class="container">
+            <div class="donate-cta">
+                <div class="donate-icon">☕</div>
+                <div class="donate-copy">
+                    <span class="terminal-label">// SUPPORT_INDEPENDENT_DEVELOPMENT</span>
+                    <h2>Find zenlyta Useful?</h2>
+                    <p>zenlyta is free to use. If this tool saved you time or helped you complete your work, you can support the continued development and maintenance of the project.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+                        <a href="../../../donate.html" class="donate-button">❤️ Support zenlyta</a>
+                        <span class="donate-trust">🔒 Secure · No account required</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IKLAN BOTTOM -->
+        <section class="container ad-section" aria-label="Advertisement">
+            <div class="zenlyta-ad" data-ad-position="bottom"></div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="sys-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-block">
+                    <a class="brand" href="../../../index.html">
+                        <span class="brand-badge">Z</span>
+                        <span>zenlyta<span class="highlight">.com</span></span>
+                    </a>
+                    <p>Free, privacy-first browser tools designed to process supported files directly on your device.</p>
+                    <p class="footer-note">No account. No unnecessary upload.</p>
+                </div>
+                <div>
+                    <h4>// UTILITIES</h4>
+                    <a href="../../../index.html#image-tools">Image Tools</a>
+                    <a href="../../../index.html#pdf-tools">PDF Tools</a>
+                    <a href="../../../index.html#developer-tools">Developer Suite</a>
+                    <a href="../../../index.html#text-tools">Text Tools</a>
+                    <a href="../../../index.html#calculators">Calculators</a>
+                </div>
+                <div>
+                    <h4>// SYSTEM</h4>
+                    <a href="../../../architecture.html">Architecture</a>
+                    <a href="../../../privacy.html">Privacy Policy</a>
+                    <a href="../../../about.html">About System</a>
+                    <a href="../../../contact.html">Contact</a>
+                </div>
+                <div>
+                    <h4>// SUPPORT</h4>
+                    <a href="../../../donate.html">Support zenlyta</a>
+                    <a href="../../../terms.html">Terms of Use</a>
+                    <a href="../../../disclaimer.html">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 zenlyta.com — BROWSER EXECUTION ENGINE</span>
+                <span class="system-status">STATUS: ALL SYSTEMS OPERATIONAL</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        "use strict";
+        const TOOLS = [
+            { id: 'add-watermark', emoji: '©', label: 'Add Watermark' },
+            { id: 'aspect-ratio-calculator', emoji: '📐', label: 'Aspect Ratio Calculator' },
+            { id: 'avif-converter', emoji: '🔄', label: 'AVIF Converter' },
+            { id: 'avif-to-jpg', emoji: '🔄', label: 'AVIF to JPG' },
+            { id: 'base64-to-image', emoji: '🔢', label: 'Base64 to Image' },
+            { id: 'black-and-white', emoji: '⚫', label: 'Black & White' },
+            { id: 'blur-background', emoji: '🌫️', label: 'Blur Background' },
+            { id: 'blur-image', emoji: '🌫️', label: 'Blur Image' },
+            { id: 'change-brightness', emoji: '☀️', label: 'Change Brightness' },
+            { id: 'collage-maker', emoji: '🖼️', label: 'Collage Maker' },
+            { id: 'color-palette-extractor', emoji: '🎨', label: 'Color Palette Extractor' },
+            { id: 'color-picker', emoji: '🎨', label: 'Color Picker' },
+            { id: 'compress-image', emoji: '🗜️', label: 'Compress Image' },
+            { id: 'compress-png', emoji: '📦', label: 'Compress PNG' },
+            { id: 'crop-image', emoji: '✂️', label: 'Crop Image' },
+            { id: 'dicom-viewer', emoji: '🩻', label: 'DICOM Viewer' },
+            { id: 'eps-to-png', emoji: '🔄', label: 'EPS to PNG' },
+            { id: 'extract-text', emoji: '📝', label: 'Extract Text' },
+            { id: 'favicon-generator', emoji: '⭐', label: 'Favicon Generator' },
+            { id: 'flip-image', emoji: '↔️', label: 'Flip Image' },
+            { id: 'pixelate-image', emoji: '🟩', label: 'Pixelate Image' },
+            { id: 'heic-to-jpg', emoji: '🔄', label: 'HEIC to JPG' },
+            { id: 'heic-to-png', emoji: '🔄', label: 'HEIC to PNG' },
+            { id: 'image-converter', emoji: '🔄', label: 'Image Converter' },
+            { id: 'image-metadata', emoji: '🔎', label: 'Image Metadata' },
+            { id: 'image-overlay', emoji: '🖼️', label: 'Image Overlay' },
+            { id: 'image-to-base64', emoji: '🔢', label: 'Image to Base64' },
+            { id: 'image-to-pdf', emoji: '📄', label: 'Image to PDF' },
+            { id: 'image-upscaler', emoji: '🔍', label: 'Image Upscaler' },
+            { id: 'invert-colors', emoji: '🎨', label: 'Invert Colors' },
+            { id: 'jpg-to-png', emoji: '🔄', label: 'JPG to PNG' },
+            { id: 'jpg-to-webp', emoji: '🔄', label: 'JPG to WebP' },
+            { id: 'meme-generator', emoji: '😂', label: 'Meme Generator' },
+            { id: 'passport-photo-maker', emoji: '🪪', label: 'Passport Photo Maker' },
+            { id: 'pdf-to-jpg', emoji: '📄', label: 'PDF to JPG' },
+            { id: 'photo-colorizer', emoji: '🎨', label: 'Photo Colorizer' },
+            { id: 'png-to-ico', emoji: '🔄', label: 'PNG to ICO' },
+            { id: 'png-to-jpg', emoji: '🔄', label: 'PNG to JPG' },
+            { id: 'png-to-webp', emoji: '🔄', label: 'PNG to WebP' },
+            { id: 'remove-bg', emoji: '✂️', label: 'Remove Background' },
+            { id: 'remove-exif', emoji: '🔒', label: 'Remove EXIF' },
+            { id: 'resize-image', emoji: '↔️', label: 'Resize Image' },
+            { id: 'rotate-image', emoji: '🔄', label: 'Rotate Image' },
+            { id: 'round-corners', emoji: '⭕', label: 'Round Corners' },
+            { id: 'split-image', emoji: '✂️', label: 'Split Image' },
+            { id: 'sprite-sheet-generator', emoji: '🧩', label: 'Sprite Sheet Generator' },
+            { id: 'svg-optimizer', emoji: '⚡', label: 'SVG Optimizer' },
+            { id: 'svg-to-png', emoji: '🔄', label: 'SVG to PNG' },
+            { id: 'tiff-to-jpg', emoji: '🔄', label: 'TIFF to JPG' },
+            { id: 'webp-to-jpg', emoji: '🔄', label: 'WebP to JPG' },
+            { id: 'webp-to-png', emoji: '🔄', label: 'WebP to PNG' }
+        ];
+
+        // Sidebar render
+        const sidebarContainer = document.getElementById('sidebarToolLinks');
+        if (sidebarContainer) {
+            const pathParts = window.location.pathname.split('/');
+            const currentToolId = pathParts[pathParts.length - 2] || 'base64-to-image';
+            let html = '';
+            TOOLS.forEach(t => {
+                const active = (t.id === currentToolId) ? ' style="color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);"' : '';
+                html += `<a href="../${t.id}/"${active}><span class="tool-emoji">${t.emoji}</span> ${t.label}</a>`;
+            });
+            html += `<a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>`;
+            sidebarContainer.innerHTML = html;
+        }
+
+        // Related grid render
+        const relatedGrid = document.getElementById('relatedToolsGrid');
+        if (relatedGrid) {
+            const pathParts = window.location.pathname.split('/');
+            const currentToolId = pathParts[pathParts.length - 2] || 'base64-to-image';
+            const others = TOOLS.filter(t => t.id !== currentToolId);
+            const selected = others.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let html = '';
+            selected.forEach(t => {
+                html += `<a href="../${t.id}/"><span class="tool-emoji">${t.emoji}</span><strong>${t.label}</strong><span>Free online tool</span></a>`;
+            });
+            relatedGrid.innerHTML = html;
+        }
+
+        // Tool script
+        (function() {
+            const base64Input = document.getElementById('base64Input');
+            const btnPaste = document.getElementById('btnPaste');
+            const btnClear = document.getElementById('btnClear');
+            const btnSample = document.getElementById('btnSample');
+            const processButton = document.getElementById('processButton');
+            const resultArea = document.getElementById('resultArea');
+            const resultImage = document.getElementById('resultImage');
+            const imgDimensions = document.getElementById('imgDimensions');
+            const imgType = document.getElementById('imgType');
+            const imgSize = document.getElementById('imgSize');
+            const formatSelect = document.getElementById('formatSelect');
+            const downloadButton = document.getElementById('downloadButton');
+
+            let currentImg = null;
+            let currentBlobURL = null;
+            let currentDataURI = null;
+
+            const SAMPLE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==';
+
+            function formatBytes(bytes) {
+                if (!bytes) return '0 B';
+                const units = ['B', 'KB', 'MB', 'GB'];
+                const i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+                return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + units[i];
+            }
+
+            function estimateBase64Size(str) {
+                try {
+                    const base64Part = str.includes(',') ? str.split(',')[1] : str;
+                    const padding = (base64Part.match(/=+$/) || [''])[0].length;
+                    return Math.floor((base64Part.length * 3) / 4) - padding;
+                } catch { return 0; }
+            }
+
+            async function pasteFromClipboard() {
+                try {
+                    if (navigator.clipboard && typeof navigator.clipboard.readText === 'function') {
+                        const text = await navigator.clipboard.readText();
+                        if (text) {
+                            base64Input.value = text.trim();
+                            base64Input.focus();
+                            base64Input.select();
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    // fall through to manual paste fallback
+                }
+
+                base64Input.focus();
+                const fallbackUsed = document.execCommand && document.execCommand('paste');
+                if (!fallbackUsed) {
+                    alert('Clipboard access is blocked in this browser. Focus the text area and press Ctrl+V or long-press Paste.');
+                }
+            }
+
+            btnPaste.addEventListener('click', function() {
+                pasteFromClipboard();
+            });
+
+            base64Input.addEventListener('paste', function() {
+                setTimeout(() => {
+                    if (this.value.trim()) {
+                        resultArea.hidden = true;
+                    }
+                }, 0);
+            });
+            btnClear.addEventListener('click', function() {
+                base64Input.value = '';
+                resultArea.hidden = true;
+                if (currentBlobURL) URL.revokeObjectURL(currentBlobURL);
+            });
+            btnSample.addEventListener('click', function() {
+                base64Input.value = SAMPLE;
+            });
+
+            function updateDownloadLink() {
+                if (!currentImg || !currentDataURI) return;
+                const canvas = document.createElement('canvas');
+                canvas.width = currentImg.naturalWidth;
+                canvas.height = currentImg.naturalHeight;
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+                // For JPG, fill white background to avoid black transparency
+                if (formatSelect.value === 'jpeg') {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+                ctx.drawImage(currentImg, 0, 0);
+                const fmt = formatSelect.value;
+                const mimeType = 'image/' + fmt;
+                canvas.toBlob(function(blob) {
+                    if (!blob) return;
+                    if (currentBlobURL) URL.revokeObjectURL(currentBlobURL);
+                    currentBlobURL = URL.createObjectURL(blob);
+                    downloadButton.href = currentBlobURL;
+                    const ext = fmt === 'jpeg' ? 'jpg' : fmt;
+                    downloadButton.download = 'decoded-image.' + ext;
+                    imgSize.textContent = formatBytes(blob.size);
+                }, mimeType, 0.92);
+            }
+
+            formatSelect.addEventListener('change', updateDownloadLink);
+
+            processButton.addEventListener('click', function() {
+                let str = base64Input.value.trim();
+                if (!str) { alert('Please enter a Base64 string or Data URI.'); return; }
+                // Remove whitespace/newlines
+                str = str.replace(/\s+/g, '');
+                if (!str.startsWith('data:image/')) {
+                    // Validate base64 characters
+                    if (!/^[A-Za-z0-9+/=]+$/.test(str)) {
+                        alert('Invalid Base64 string. Please check your input.');
+                        return;
+                    }
+                    str = 'data:image/png;base64,' + str;
+                }
+                currentDataURI = str;
+                processButton.disabled = true;
+                processButton.textContent = 'Decoding…';
+
+                const img = new Image();
+                img.onload = function() {
+                    currentImg = img;
+                    resultImage.src = str;
+                    imgDimensions.textContent = img.naturalWidth + ' × ' + img.naturalHeight + ' px';
+                    const match = str.match(/^data:image\/([a-zA-Z0-9+]+);base64,/);
+                    imgType.textContent = match && match[1] ? match[1].toUpperCase() : 'PNG';
+                    imgSize.textContent = formatBytes(estimateBase64Size(str));
+                    updateDownloadLink();
+                    resultArea.hidden = false;
+                    resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    processButton.disabled = false;
+                    processButton.textContent = 'Decode & Render Image';
+                };
+                img.onerror = function() {
+                    alert('Invalid Base64 string or unsupported image format. Please verify your input.');
+                    processButton.disabled = false;
+                    processButton.textContent = 'Decode & Render Image';
+                };
+                img.src = str;
+            });
+
+            window.addEventListener('beforeunload', function() {
+                if (currentBlobURL) URL.revokeObjectURL(currentBlobURL);
+            });
+        })();
+    </script>
+</body>
+</html>

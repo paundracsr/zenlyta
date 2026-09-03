@@ -1274,50 +1274,14 @@
 
                         <h2>More Image Tools</h2>
                         <p>Looking for another image utility? Explore related zenlyta tools:</p>
-                        <div class="related-grid">
-                            <a href="../webp-to-png/"><span class="tool-emoji">🔄</span><strong>WebP to PNG</strong><span>Convert WebP to PNG</span></a>
-                            <a href="../jpg-to-webp/"><span class="tool-emoji">🔄</span><strong>JPG to WebP</strong><span>Convert JPG to WebP</span></a>
-                            <a href="../jpg-to-png/"><span class="tool-emoji">🔄</span><strong>JPG to PNG</strong><span>Convert JPG to PNG</span></a>
-                            <a href="../png-to-jpg/"><span class="tool-emoji">🔄</span><strong>PNG to JPG</strong><span>Convert PNG to JPG</span></a>
-                            <a href="../compress-image/"><span class="tool-emoji">🗜️</span><strong>Compress Image</strong><span>Reduce file size</span></a>
-                            <a href="../resize-image/"><span class="tool-emoji">↔️</span><strong>Resize Image</strong><span>Change dimensions</span></a>
-                            <a href="../remove-bg/"><span class="tool-emoji">✂️</span><strong>Remove Background</strong><span>Erase solid backgrounds</span></a>
-                            <a href="../image-metadata/"><span class="tool-emoji">🔎</span><strong>Image Metadata</strong><span>Inspect image info</span></a>
-                        </div>
+                        <div class="related-grid" id="relatedToolsGrid"></div>
                     </article>
                 </div>
 
                 <aside class="tool-sidebar">
                     <div class="sidebar-card">
                         <h3>// IMAGE_TOOLS</h3>
-                        <a href="../add-watermark/"><span class="tool-emoji">©</span> Add Watermark</a>
-                        <a href="../avif-to-jpg/"><span class="tool-emoji">🔄</span> AVIF to JPG</a>
-                        <a href="../blur-background/"><span class="tool-emoji">🌫️</span> Blur Background</a>
-                        <a href="../blur-image/"><span class="tool-emoji">🌫️</span> Blur Image</a>
-                        <a href="../collage-maker/"><span class="tool-emoji">🖼️</span> Collage Maker</a>
-                        <a href="../color-picker/"><span class="tool-emoji">🎨</span> Color Picker</a>
-                        <a href="../compress-image/"><span class="tool-emoji">🗜️</span> Compress Image</a>
-                        <a href="../compress-png/"><span class="tool-emoji">📦</span> Compress PNG</a>
-                        <a href="../crop-image/"><span class="tool-emoji">✂️</span> Crop Image</a>
-                        <a href="../favicon-generator/"><span class="tool-emoji">⭐</span> Favicon Generator</a>
-                        <a href="../heic-to-jpg/"><span class="tool-emoji">🔄</span> HEIC to JPG</a>
-                        <a href="../heic-to-png/"><span class="tool-emoji">🔄</span> HEIC to PNG</a>
-                        <a href="../image-metadata/"><span class="tool-emoji">🔎</span> Image Metadata</a>
-                        <a href="../image-to-base64/"><span class="tool-emoji">🔢</span> Image to Base64</a>
-                        <a href="../image-to-pdf/"><span class="tool-emoji">📄</span> Image to PDF</a>
-                        <a href="../image-upscaler/"><span class="tool-emoji">🔍</span> Image Upscaler</a>
-                        <a href="../jpg-to-png/"><span class="tool-emoji">🔄</span> JPG to PNG</a>
-                        <a href="../jpg-to-webp/"><span class="tool-emoji">🔄</span> JPG to WebP</a>
-                        <a href="../meme-generator/"><span class="tool-emoji">😂</span> Meme Generator</a>
-                        <a href="../photo-colorizer/"><span class="tool-emoji">🎨</span> Photo Colorizer</a>
-                        <a href="../png-to-jpg/"><span class="tool-emoji">🔄</span> PNG to JPG</a>
-                        <a href="../png-to-webp/"><span class="tool-emoji">🔄</span> PNG to WebP</a>
-                        <a href="../remove-bg/"><span class="tool-emoji">✂️</span> Remove Background</a>
-                        <a href="../resize-image/"><span class="tool-emoji">↔️</span> Resize Image</a>
-                        <a href="../svg-to-png/"><span class="tool-emoji">🔄</span> SVG to PNG</a>
-                        <a href="../webp-to-jpg/"><span class="tool-emoji">🔄</span> WebP to JPG</a>
-                        <a href="../webp-to-png/"><span class="tool-emoji">🔄</span> WebP to PNG</a>
-                        <a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>
+                        <div id="sidebarToolLinks"></div>
                     </div>
                     <div class="sidebar-card">
                         <h3>// ZENLYTA</h3>
@@ -1541,6 +1505,87 @@
             if (previewURL) URL.revokeObjectURL(previewURL);
             if (convertedURL) URL.revokeObjectURL(convertedURL);
         });
+    </script>
+    <script>
+
+        const TOOLS = [
+            { id: 'add-watermark', emoji: '©', label: 'Add Watermark' },
+            { id: 'aspect-ratio-calculator', emoji: '📐', label: 'Aspect Ratio Calculator' },
+            { id: 'avif-converter', emoji: '🔄', label: 'AVIF Converter' },
+            { id: 'avif-to-jpg', emoji: '🔄', label: 'AVIF to JPG' },
+            { id: 'base64-to-image', emoji: '🔢', label: 'Base64 to Image' },
+            { id: 'black-and-white', emoji: '⚫', label: 'Black & White' },
+            { id: 'blur-background', emoji: '🌫️', label: 'Blur Background' },
+            { id: 'blur-image', emoji: '🌫️', label: 'Blur Image' },
+            { id: 'change-brightness', emoji: '☀️', label: 'Change Brightness' },
+            { id: 'collage-maker', emoji: '🖼️', label: 'Collage Maker' },
+            { id: 'color-palette-extractor', emoji: '🎨', label: 'Color Palette Extractor' },
+            { id: 'color-picker', emoji: '🎨', label: 'Color Picker' },
+            { id: 'compress-image', emoji: '🗜️', label: 'Compress Image' },
+            { id: 'compress-png', emoji: '📦', label: 'Compress PNG' },
+            { id: 'crop-image', emoji: '✂️', label: 'Crop Image' },
+            { id: 'dicom-viewer', emoji: '🩻', label: 'DICOM Viewer' },
+            { id: 'eps-to-png', emoji: '🔄', label: 'EPS to PNG' },
+            { id: 'extract-text', emoji: '📝', label: 'Extract Text' },
+            { id: 'favicon-generator', emoji: '⭐', label: 'Favicon Generator' },
+            { id: 'flip-image', emoji: '↔️', label: 'Flip Image' },
+            { id: 'pixelate-image', emoji: '🟩', label: 'Pixelate Image' },
+            { id: 'heic-to-jpg', emoji: '🔄', label: 'HEIC to JPG' },
+            { id: 'heic-to-png', emoji: '🔄', label: 'HEIC to PNG' },
+            { id: 'image-converter', emoji: '🔄', label: 'Image Converter' },
+            { id: 'image-metadata', emoji: '🔎', label: 'Image Metadata' },
+            { id: 'image-overlay', emoji: '🖼️', label: 'Image Overlay' },
+            { id: 'image-to-base64', emoji: '🔢', label: 'Image to Base64' },
+            { id: 'image-to-pdf', emoji: '📄', label: 'Image to PDF' },
+            { id: 'image-upscaler', emoji: '🔍', label: 'Image Upscaler' },
+            { id: 'invert-colors', emoji: '🔄', label: 'Invert Colors' },
+            { id: 'jpg-to-png', emoji: '🔄', label: 'JPG to PNG' },
+            { id: 'jpg-to-webp', emoji: '🔄', label: 'JPG to WebP' },
+            { id: 'meme-generator', emoji: '😂', label: 'Meme Generator' },
+            { id: 'passport-photo-maker', emoji: '🪪', label: 'Passport Photo Maker' },
+            { id: 'pdf-to-jpg', emoji: '📄', label: 'PDF to JPG' },
+            { id: 'photo-colorizer', emoji: '🎨', label: 'Photo Colorizer' },
+            { id: 'png-to-ico', emoji: '🔄', label: 'PNG to ICO' },
+            { id: 'png-to-jpg', emoji: '🔄', label: 'PNG to JPG' },
+            { id: 'png-to-webp', emoji: '🔄', label: 'PNG to WebP' },
+            { id: 'remove-bg', emoji: '✂️', label: 'Remove Background' },
+            { id: 'remove-exif', emoji: '🔒', label: 'Remove EXIF' },
+            { id: 'resize-image', emoji: '↔️', label: 'Resize Image' },
+            { id: 'rotate-image', emoji: '🔄', label: 'Rotate Image' },
+            { id: 'round-corners', emoji: '⭕', label: 'Round Corners' },
+            { id: 'split-image', emoji: '✂️', label: 'Split Image' },
+            { id: 'sprite-sheet-generator', emoji: '🧩', label: 'Sprite Sheet Generator' },
+            { id: 'svg-optimizer', emoji: '⚡', label: 'SVG Optimizer' },
+            { id: 'svg-to-png', emoji: '🔄', label: 'SVG to PNG' },
+            { id: 'tiff-to-jpg', emoji: '🔄', label: 'TIFF to JPG' },
+            { id: 'webp-to-jpg', emoji: '🔄', label: 'WebP to JPG' },
+            { id: 'webp-to-png', emoji: '🔄', label: 'WebP to PNG' }
+        ];
+
+        const sidebarContainer = document.getElementById('sidebarToolLinks');
+        if (sidebarContainer) {
+            const currentToolId = 'webp-to-jpg';
+            let html = '';
+            TOOLS.forEach(t => {
+                const active = (t.id === currentToolId) ? ' style="color:var(--primary);background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.15);"' : '';
+                html += `<a href="../${t.id}/"${active}><span class="tool-emoji">${t.emoji}</span> ${t.label}</a>`;
+            });
+            html += `<a href="../../../index.html#image-tools"><span class="tool-emoji">📂</span> View All Image Tools →</a>`;
+            sidebarContainer.innerHTML = html;
+        }
+
+        const relatedGrid = document.getElementById('relatedToolsGrid');
+        if (relatedGrid) {
+            const currentToolId = 'webp-to-jpg';
+            const others = TOOLS.filter(t => t.id !== currentToolId);
+            const selected = others.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let html = '';
+            selected.forEach(t => {
+                html += `<a href="../${t.id}/"><span class="tool-emoji">${t.emoji}</span><strong>${t.label}</strong><span>Free online tool</span></a>`;
+            });
+            relatedGrid.innerHTML = html;
+        }
+
     </script>
 </body>
 </html>
