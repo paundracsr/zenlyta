@@ -414,128 +414,463 @@
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
-    <header class="navbar">
-        <div class="container nav-inner">
-            <a class="brand" href="index.html">
-                <span class="brand-badge">Z</span>
-                <span>zenlyta<span class="highlight">.com</span></span>
-            </a>
-            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">☰</button>
-            <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
-                <a href="index.html#tools">/tools</a>
-                <a href="architecture.html">/architecture</a>
-                <a href="privacy.html" class="active">/privacy</a>
-                <a href="about.html">/about</a>
-                <a href="donate.html">/support-us</a>
-            </nav>
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <div class="container nav-inner">
+
+        <a class="brand" href="index.html">
+            <span class="brand-badge">Z</span>
+            <span>zenlyta<span class="highlight">.com</span></span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="main-navigation">
+            ☰
+        </button>
+
+        <nav
+            class="main-nav"
+            id="main-navigation"
+            aria-label="Main navigation">
+
+            <a href="index.html#tools">/tools</a>
+            <a href="architecture.html">/architecture</a>
+            <a href="privacy.html" class="active">/privacy</a>
+            <a href="about.html">/about</a>
+            <a href="donate.html">/support-us</a>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero animate-on-load">
+
+        <div class="container">
+
+            <h1>
+                Privacy <span class="highlight">Policy</span>
+            </h1>
+
+            <p>
+                Learn how Zenlyta handles your files, privacy,
+                analytics, cookies, and third-party services.
+            </p>
+
         </div>
-    </header>
 
-    <main>
+    </section>
 
-        <!-- ===== PAGE HERO ===== -->
-        <section class="page-hero animate-on-load">
-            <div class="container">
-                <h1>Privacy <span class="highlight">Policy</span></h1>
-                <p>Your privacy matters to us. Here's how Zenlyta protects your data.</p>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="content-page">
+
+        <div class="container">
+
+            <!-- LAST UPDATED -->
+            <div class="last-updated">
+                📅 Last updated: August 27, 2026
             </div>
-        </section>
 
-        <!-- ===== CONTENT ===== -->
-        <section class="content-page">
-            <div class="container">
 
-                <div class="last-updated">📅 Last updated: August 27, 2026</div>
+            <!-- ===== 1. IMAGE PROCESSING ===== -->
+            <div class="reveal-up">
 
-                <!-- 1. File Processing -->
-                <div class="reveal-up"> <h2 class="section-title">1. Image Processing</h2>
-                    <p>
-                        Zenlyta is built with a <strong>privacy-first architecture</strong>.
-                        Our image tools are designed to process supported files
-                        <strong>directly in your browser</strong>, keeping your images on your device
-                        whenever client-side processing is supported.
-                    </p>
-                    
-                    <p>
-                        Zenlyta currently provides <strong>50 image processing tools</strong>, including:
-                    </p>
-                    
-                    <ul>
-                        <li>
-                            <strong>Compression & Optimization</strong> — compress and optimize
-                            JPG, PNG, and WebP images to reduce file size.
-                        </li>
-                        <li>
-                            <strong>Resize, Crop & Transform</strong> — resize, crop, rotate,
-                            flip, split, and adjust image dimensions.
-                        </li>
-                        <li>
-                            <strong>Format Conversion</strong> — convert between JPG, PNG, WebP,
-                            HEIC, AVIF, SVG, EPS, TIFF, ICO, and other supported formats.
-                        </li>
-                        <li>
-                            <strong>Image Editing</strong> — adjust brightness, blur images,
-                            remove backgrounds, add watermarks, pixelate, invert colors,
-                            apply black-and-white effects, and more.
-                        </li>
-                        <li>
-                            <strong>Image Creation</strong> — create collages, memes, favicons,
-                            sprite sheets, overlays, and image-based PDF documents.
-                        </li>
-                        <li>
-                            <strong>Image Analysis & Metadata</strong> — inspect EXIF data,
-                            remove private metadata, extract colors and palettes, and extract
-                            text from images using OCR.
-                        </li>
-                        <li>
-                            <strong>Image Utilities</strong> — calculate aspect ratios, convert
-                            images to Base64, decode Base64 data, and optimize SVG files.
-                        </li>
-                    </ul>
-                    
-                    <p>
-                        <strong>Privacy:</strong> When a tool supports client-side processing,
-                        your image is processed directly on your device and is
-                        <strong>not uploaded to Zenlyta servers or third-party services</strong>.
-                    </p>
-                    
-                    <p>
-                        <strong>Processing Notice:</strong> If a specific tool requires
-                        server-side processing, this will be <strong>clearly disclosed on the
-                        tool's page</strong> before any data is transmitted.
-                    </p>
-                    
-                    </div>
+                <h2 class="section-title">
+                    1. Image Processing
+                </h2>
 
-                <!-- 2. Data Collection -->
-                <div class="reveal-up">
-                    <h2 class="section-title">2. Data Collection</h2>
-                    <p>We do <strong>not</strong> collect, store, or share the content of your files. We may collect anonymous usage statistics (e.g., which tool is used most often) to improve our services, but this data is aggregated and does <strong>not</strong> identify you personally.</p>
-                </div>
+                <p>
+                    Zenlyta is built with a
+                    <strong>privacy-first architecture</strong>.
+                    Our image tools are designed to process supported
+                    images <strong>directly in your web browser</strong>
+                    whenever client-side processing is technically
+                    supported.
+                </p>
 
-                <!-- 3. Cookies -->
-                <div class="reveal-up">
-                    <h2 class="section-title">3. Cookies</h2>
-                    <p>We may use minimal cookies solely for functionality (like remembering your theme preference). We do not use tracking cookies or third-party advertising cookies without your explicit consent.</p>
-                </div>
+                <p>
+                    Zenlyta currently provides
+                    <strong>50 free image tools</strong> for common
+                    image processing, conversion, editing,
+                    optimization, and image-related tasks.
+                </p>
 
-                <!-- 4. Third-Party Services -->
-                <div class="reveal-up">
-                    <h2 class="section-title">4. Third-Party Services</h2>
-                    <p>We do not share your data with third parties. If we integrate external services (like analytics) in the future, we will update this policy and provide you with the option to opt-out.</p>
-                </div>
+                <ul>
 
-                <!-- 5. Contact -->
-                <div class="reveal-up">
-                    <h2 class="section-title">5. Contact</h2>
-                    <p>If you have questions about this privacy policy, please <a href="contact.html" style="color:var(--primary);">contact us</a>.</p>
-                </div>
+                    <li>
+                        <strong>Compression &amp; Optimization</strong>
+                        — compress and optimize JPG, PNG, and WebP
+                        images to reduce file size.
+                    </li>
+
+                    <li>
+                        <strong>Resize, Crop &amp; Transform</strong>
+                        — resize, crop, rotate, flip, split,
+                        and transform images directly in your browser.
+                    </li>
+
+                    <li>
+                        <strong>Format Conversion</strong>
+                        — convert supported formats including
+                        JPG, PNG, WebP, HEIC, AVIF, SVG, EPS,
+                        TIFF, and ICO.
+                    </li>
+
+                    <li>
+                        <strong>Image Editing</strong>
+                        — adjust brightness, blur images,
+                        remove backgrounds, add watermarks,
+                        pixelate images, invert colors,
+                        and apply black-and-white effects.
+                    </li>
+
+                    <li>
+                        <strong>Image Creation</strong>
+                        — create collages, memes, favicons,
+                        sprite sheets, overlays, and
+                        image-based PDF files.
+                    </li>
+
+                    <li>
+                        <strong>Image Analysis &amp; Metadata</strong>
+                        — inspect EXIF metadata, remove private
+                        metadata, extract colors and palettes,
+                        and recognize text from images using OCR.
+                    </li>
+
+                    <li>
+                        <strong>Image Utilities</strong>
+                        — calculate aspect ratios, convert images
+                        to Base64, decode Base64 data, and optimize
+                        SVG files.
+                    </li>
+
+                </ul>
+
+                <p>
+                    <strong>Privacy by Design:</strong>
+                    When using a client-side image tool,
+                    <strong>your files never leave your device</strong>.
+                    Processing takes place directly in your browser
+                    without uploading the selected image to a
+                    Zenlyta processing server.
+                </p>
+
+                <p>
+                    <strong>Processing Notice:</strong>
+                    If a specific tool requires server-side processing
+                    or transmission to an external service, this will
+                    be clearly disclosed on the tool's page before the
+                    relevant data is transmitted.
+                </p>
 
             </div>
-        </section>
 
-    </main>
+
+            <!-- ===== 2. DATA COLLECTION ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    2. Data Collection
+                </h2>
+
+                <p>
+                    Zenlyta does not intentionally collect or store
+                    the contents of images processed by its
+                    client-side image tools.
+                </p>
+
+                <p>
+                    When you select an image for a client-side tool,
+                    the file is handled by your browser for processing.
+                    The file is not intentionally uploaded to a
+                    Zenlyta processing server.
+                </p>
+
+                <p>
+                    Zenlyta may collect limited technical or usage
+                    information through services such as website
+                    analytics. This information may include general
+                    information about page visits, browser type,
+                    device type, approximate geographic information,
+                    or which pages and tools are accessed.
+                </p>
+
+                <p>
+                    Analytics information is used to understand how
+                    the website is used, improve our tools, monitor
+                    performance, and improve the overall user experience.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 3. COOKIES & LOCAL STORAGE ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    3. Cookies and Local Storage
+                </h2>
+
+                <p>
+                    Zenlyta may use browser technologies such as
+                    cookies, local storage, or similar technologies
+                    to provide basic website functionality.
+                </p>
+
+                <p>
+                    These technologies may be used to remember
+                    interface preferences, support website features,
+                    maintain settings, or improve the user experience.
+                </p>
+
+                <p>
+                    Third-party services integrated into Zenlyta,
+                    including analytics and advertising providers,
+                    may use cookies or similar technologies according
+                    to their own privacy policies and terms.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 4. ANALYTICS ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    4. Analytics
+                </h2>
+
+                <p>
+                    Zenlyta may use analytics services to understand
+                    website traffic and usage patterns.
+                </p>
+
+                <p>
+                    Analytics may provide information such as page
+                    views, referral sources, device and browser
+                    information, general geographic information,
+                    and interactions with website pages or tools.
+                </p>
+
+                <p>
+                    This information helps us understand which image
+                    tools are useful, identify technical issues,
+                    improve website performance, and develop future
+                    features.
+                </p>
+
+                <p>
+                    Analytics providers may process information
+                    according to their own privacy policies and
+                    applicable terms.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 5. ADVERTISING ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    5. Advertising
+                </h2>
+
+                <p>
+                    Zenlyta may display advertisements to help support
+                    the development, maintenance, hosting, and
+                    continued availability of its free image tools.
+                </p>
+
+                <p>
+                    Advertising providers may use cookies,
+                    advertising identifiers, or similar technologies
+                    to provide, measure, and improve advertisements
+                    according to their own policies.
+                </p>
+
+                <p>
+                    Zenlyta does not provide advertising partners with
+                    the contents of images processed through its
+                    client-side image tools.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 6. THIRD-PARTY SERVICES ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    6. Third-Party Services
+                </h2>
+
+                <p>
+                    Zenlyta may use third-party services to operate,
+                    analyze, secure, improve, or monetize the website.
+                    These services may include hosting providers,
+                    analytics services, advertising networks,
+                    content delivery services, or other technical
+                    infrastructure providers.
+                </p>
+
+                <p>
+                    Third-party providers may process certain technical
+                    information according to their own privacy policies,
+                    terms of service, and applicable laws.
+                </p>
+
+                <p>
+                    Client-side image tools are designed so that
+                    supported image files can be processed locally
+                    in your browser without uploading those files
+                    to a Zenlyta processing server.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 7. DATA SECURITY ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    7. Data Security
+                </h2>
+
+                <p>
+                    Zenlyta takes reasonable measures to maintain a
+                    privacy-focused architecture and protect the
+                    website and its users.
+                </p>
+
+                <p>
+                    Client-side processing reduces the need to transmit
+                    supported image files to a remote processing server.
+                    This approach is intended to minimize unnecessary
+                    exposure of user files during image processing.
+                </p>
+
+                <p>
+                    However, no website, browser, network, or internet
+                    service can guarantee absolute security. Users are
+                    encouraged to keep their operating system, browser,
+                    and security software reasonably up to date.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 8. EXTERNAL LINKS ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    8. External Links
+                </h2>
+
+                <p>
+                    Zenlyta may contain links to external websites,
+                    services, or resources that are not operated by us.
+                </p>
+
+                <p>
+                    We are not responsible for the privacy practices,
+                    security, availability, or content of external
+                    websites and services.
+                </p>
+
+                <p>
+                    We recommend reviewing the privacy policy and
+                    terms of any third-party service before providing
+                    personal information or using that service.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 9. CHILDREN'S PRIVACY ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    9. Children's Privacy
+                </h2>
+
+                <p>
+                    Zenlyta is a general-purpose website providing
+                    browser-based image tools. We do not intentionally
+                    collect personal information from children.
+                </p>
+
+                <p>
+                    If you believe that a child has provided personal
+                    information through the website, please contact us
+                    so that we can review the situation and take
+                    appropriate action.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 10. POLICY UPDATES ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    10. Privacy Policy Updates
+                </h2>
+
+                <p>
+                    This Privacy Policy may be updated when Zenlyta
+                    introduces new tools, features, integrations,
+                    advertising services, analytics services,
+                    or changes to its data practices.
+                </p>
+
+                <p>
+                    The latest version of this policy will be published
+                    on this page. The date shown at the beginning of
+                    this policy indicates when it was last updated.
+                </p>
+
+            </div>
+
+
+            <!-- ===== 11. CONTACT ===== -->
+            <div class="reveal-up">
+
+                <h2 class="section-title">
+                    11. Contact
+                </h2>
+
+                <p>
+                    If you have questions, concerns, or requests
+                    regarding this Privacy Policy or how Zenlyta
+                    handles data, please
+                    <a
+                        href="contact.html"
+                        style="color:var(--primary);">
+                        contact us
+                    </a>.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+</body>
+
 
     <!-- ===== FOOTER ===== -->
    <footer class="sys-footer">
@@ -583,22 +918,6 @@
 
                 <a href="index.html#image-tools">
                     Image Tools
-                </a>
-
-                <a href="index.html#pdf-tools">
-                    PDF Tools
-                </a>
-
-                <a href="index.html#developer-tools">
-                    Developer Suite
-                </a>
-
-                <a href="index.html#text-tools">
-                    Text Tools
-                </a>
-
-                <a href="index.html#calculators">
-                    Calculators
                 </a>
 
             </div>
