@@ -1,8 +1,6 @@
 /* =========================================================
    ZENLYTA — UNIVERSAL PNP ADS
-   Provider controls the actual advertisement.
-   Zenlyta only controls spacing and safe layout.
-   When no provider is active, containers stay collapsed.
+   CSS LAYOUT FOR ADSENSE & ADSTERRA
    ========================================================= */
 
 
@@ -15,6 +13,7 @@
     margin-top: 1.75rem;
     margin-bottom: 1.75rem;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 
@@ -45,13 +44,24 @@
 
 .ad-label {
     display: block;
+
+    width: 100%;
+
     font-size: 0.6875rem;
+    line-height: 1.2;
+
     text-transform: uppercase;
     letter-spacing: 0.08em;
+
     color: var(--text-tertiary, #94a3b8);
+
     margin-bottom: 0.375rem;
+
     text-align: center;
+
     user-select: none;
+
+    box-sizing: border-box;
 }
 
 
@@ -61,16 +71,22 @@
 
 .zenlyta-ad > * {
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .zenlyta-ad .ad-provider-container {
     width: 100%;
     max-width: 100%;
+
     margin-inline: auto;
+
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
+    box-sizing: border-box;
 }
 
 
@@ -79,14 +95,14 @@
    ========================================================= */
 
 .zenlyta-ad .adsbygoogle {
-    display: block;
+    display: block !important;
+
     width: 100%;
     max-width: 100%;
-    margin-inline: auto;
-}
 
-.zenlyta-ad iframe {
-    max-width: 100% !important;
+    margin-inline: auto;
+
+    box-sizing: border-box;
 }
 
 
@@ -94,83 +110,151 @@
    06. ADSTERRA
    ========================================================= */
 
-.zenlyta-ad [data-provider="adsterra"] {
+.zenlyta-ad .ad-provider-container[data-provider="adsterra"] {
     width: 100%;
     max-width: 100%;
+
     margin-inline: auto;
-    text-align: center;
+
     display: flex;
-    justify-content: center;
+
+    flex-direction: column;
+
     align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
     min-height: 50px;
 }
 
 
 /* =========================================================
-   07. DUMMY AD (FALLBACK ONLY WHEN EXPLICITLY ENABLED)
+   07. ADSTERRA IFRAME
+   ========================================================= */
+
+.zenlyta-ad iframe {
+    display: block;
+
+    border: 0;
+
+    max-width: 100% !important;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   08. DUMMY AD
    ========================================================= */
 
 .zenlyta-dummy-ad {
+    width: 100%;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
     padding: 1.5rem 1rem;
+
     border: 1px dashed var(--border-color, #e2e8f0);
+
     border-radius: 12px;
-    background: var(--surface-secondary, rgba(241, 245, 249, 0.6));
+
+    background:
+        var(
+            --surface-secondary,
+            rgba(241, 245, 249, 0.6)
+        );
+
     color: var(--text-secondary, #64748b);
+
     text-align: center;
-    transition: border-color 0.2s ease, background 0.2s ease;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+
     gap: 0.35rem;
+
+    box-sizing: border-box;
 }
 
 .dummy-ad-position {
     font-size: 0.65rem;
+
     font-weight: 700;
+
     letter-spacing: 0.1em;
+
     color: var(--primary, #3b82f6);
-    background: rgba(59, 130, 246, 0.1);
+
+    background:
+        rgba(59, 130, 246, 0.1);
+
     padding: 0.2rem 0.6rem;
+
     border-radius: 9999px;
+
     margin-bottom: 0.25rem;
 }
 
 .dummy-ad-brand {
     font-size: 0.75rem;
+
     font-weight: 600;
+
     color: var(--text-tertiary, #94a3b8);
+
     text-transform: uppercase;
+
     letter-spacing: 0.05em;
 }
 
 .dummy-ad-title {
     font-size: 1rem;
+
     font-weight: 700;
+
     color: var(--text-primary, #0f172a);
 }
 
 .dummy-ad-description {
     font-size: 0.8125rem;
+
     color: var(--text-secondary, #64748b);
+
     max-width: 400px;
 }
 
 .dummy-ad-button {
     margin-top: 0.5rem;
+
     display: inline-block;
+
     padding: 0.4rem 1rem;
+
     font-size: 0.75rem;
+
     font-weight: 600;
+
     color: #ffffff;
+
     background: var(--primary, #3b82f6);
+
     border-radius: 6px;
+
     user-select: none;
 }
 
 
 /* =========================================================
-   08. POSITION SPACING
+   09. POSITION SPACING
    ========================================================= */
 
 .zenlyta-ad[data-ad-position="top"] {
@@ -190,68 +274,108 @@
 
 
 /* =========================================================
-   09. DISABLED ADS & COLLAPSED STATE
+   10. DISABLED ADS
    ========================================================= */
 
-.ad-section.ad-disabled,
-.ad-section:has(.zenlyta-ad.ad-disabled),
-.ad-section:has(.zenlyta-ad:empty) {
+.ad-section.ad-disabled {
     display: none !important;
+
     margin: 0 !important;
     padding: 0 !important;
+
+    width: 0 !important;
     height: 0 !important;
+
+    min-width: 0 !important;
     min-height: 0 !important;
+
+    overflow: hidden !important;
 }
 
-.zenlyta-ad.ad-disabled,
-.zenlyta-ad:empty {
+.zenlyta-ad.ad-disabled {
     display: none !important;
+
     margin: 0 !important;
     padding: 0 !important;
+
+    width: 0 !important;
     height: 0 !important;
+
+    min-width: 0 !important;
     min-height: 0 !important;
+
+    overflow: hidden !important;
 }
 
 
 /* =========================================================
-   10. THIRD-PARTY IMAGE PROTECTION
+   11. THIRD-PARTY IMAGES
    ========================================================= */
 
 .zenlyta-ad img {
     max-width: 100%;
+
     height: auto;
 }
 
 
 /* =========================================================
-   11. RESPONSIVE
+   12. RESPONSIVE
    ========================================================= */
 
 @media (max-width: 768px) {
+
     .ad-section:not(.ad-disabled) {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
     }
+
+    .zenlyta-ad {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .zenlyta-ad .ad-provider-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .zenlyta-ad iframe {
+        max-width: 100% !important;
+    }
 }
 
+
 @media (max-width: 480px) {
+
     .ad-section:not(.ad-disabled) {
         margin-top: 1.25rem;
         margin-bottom: 1.25rem;
+    }
+
+    .zenlyta-ad {
+        width: 100%;
     }
 }
 
 
 /* =========================================================
-   12. ACCESSIBILITY & PRINT
+   13. ACCESSIBILITY
    ========================================================= */
 
 .zenlyta-ad:focus-within {
     outline: 1px solid var(--primary, currentColor);
+
     outline-offset: 3px;
 }
 
+
+/* =========================================================
+   14. PRINT
+   ========================================================= */
+
 @media print {
+
     .ad-section,
     .zenlyta-ad {
         display: none !important;
