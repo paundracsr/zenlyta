@@ -10,10 +10,6 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 =========================================================
 */
 
-
-/*
-
-
 (function () {
     "use strict";
 
@@ -39,14 +35,11 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     };
 
     /*
-
-    
     -----------------------------------------------------
     01. CREATE AD LABEL
     -----------------------------------------------------
     */
 
-    /*
     function createLabel() {
         if (config.showLabels === false) {
             return null;
@@ -64,9 +57,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function renderDummy(slot, position) {
         const dummy = config.dummy || {};
+
         if (dummy.enabled !== true) {
             renderDisabled(slot);
             return;
@@ -76,6 +69,7 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         unhideParentSection(slot);
 
         const label = createLabel();
+
         if (label) {
             slot.appendChild(label);
         }
@@ -85,7 +79,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 
         const positionBadge = document.createElement("span");
         positionBadge.className = "dummy-ad-position";
-        positionBadge.textContent = "ADVERTISEMENT • " + String(position).toUpperCase();
+        positionBadge.textContent =
+            "ADVERTISEMENT • " +
+            String(position).toUpperCase();
 
         const brand = document.createElement("div");
         brand.className = "dummy-ad-brand";
@@ -93,15 +89,19 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 
         const title = document.createElement("div");
         title.className = "dummy-ad-title";
-        title.textContent = dummy.title || "Fast, Private & In-Browser Tools";
+        title.textContent =
+            dummy.title || "Fast, Private & In-Browser Tools";
 
         const description = document.createElement("div");
         description.className = "dummy-ad-description";
-        description.textContent = dummy.description || "100% Client-side conversions and utilities.";
+        description.textContent =
+            dummy.description ||
+            "100% Client-side conversions and utilities.";
 
         const button = document.createElement("span");
         button.className = "dummy-ad-button";
-        button.textContent = dummy.buttonText || "Explore Tools";
+        button.textContent =
+            dummy.buttonText || "Explore Tools";
 
         ad.appendChild(positionBadge);
         ad.appendChild(brand);
@@ -118,9 +118,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function renderAdSense(slot, position) {
         let pubId = activeState.adsense.publisherId;
+
         if (!pubId) {
             renderDisabled(slot);
             return;
@@ -141,17 +141,19 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
             slot.appendChild(label);
         }
 
-        const adSlotId = activeState.adsense.slots && activeState.adsense.slots[position];
+        const adSlotId =
+            activeState.adsense.slots &&
+            activeState.adsense.slots[position];
 
         const ad = document.createElement("ins");
         ad.className = "adsbygoogle";
         ad.style.display = "block";
         ad.setAttribute("data-ad-client", pubId);
-        
+
         if (adSlotId) {
             ad.setAttribute("data-ad-slot", adSlotId);
         }
-        
+
         ad.setAttribute("data-ad-format", "auto");
         ad.setAttribute("data-full-width-responsive", "true");
 
@@ -161,7 +163,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         if (!document.querySelector("script[data-zenlyta-adsense]")) {
             const script = document.createElement("script");
             script.async = true;
-            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(pubId);
+            script.src =
+                "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+                encodeURIComponent(pubId);
             script.crossOrigin = "anonymous";
             script.dataset.zenlytaAdsense = "true";
             document.head.appendChild(script);
@@ -189,17 +193,26 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function renderAdsterra(slot, position) {
-        const directUnit = activeState.adsterra.directUnits && activeState.adsterra.directUnits[position];
+        const directUnit =
+            activeState.adsterra.directUnits &&
+            activeState.adsterra.directUnits[position];
 
-        if (directUnit && directUnit.containerId && directUnit.scriptUrl) {
+        if (
+            directUnit &&
+            directUnit.containerId &&
+            directUnit.scriptUrl
+        ) {
             renderAdsterraDirectUnit(slot, directUnit);
             return;
         }
 
-        const slotKey = (activeState.adsterra.slots && activeState.adsterra.slots[position]) ||
-                        (activeState.adsterra.keys && activeState.adsterra.keys[0]) || "";
+        const slotKey =
+            (activeState.adsterra.slots &&
+                activeState.adsterra.slots[position]) ||
+            (activeState.adsterra.keys &&
+                activeState.adsterra.keys[0]) ||
+            "";
 
         if (!slotKey) {
             renderDisabled(slot);
@@ -210,6 +223,7 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         unhideParentSection(slot);
 
         const label = createLabel();
+
         if (label) {
             slot.appendChild(label);
         }
@@ -229,6 +243,7 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         // Default dimensions based on placement
         let width = 728;
         let height = 90;
+
         if (position === "content") {
             width = 300;
             height = 250;
@@ -237,8 +252,12 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         iframe.style.maxWidth = width + "px";
         iframe.style.height = height + "px";
 
-        const scriptDomain = activeState.adsterra.domain || "www.highperformanceformat.com";
-        iframe.srcdoc = `<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body><script type="text/javascript">atOptions = {'key' : '${slotKey}','format' : 'iframe','height' : ${height},'width' : ${width},'params' : {}};</script><script type="text/javascript" src="//${scriptDomain}/${slotKey}/invoke.js"></script></body></html>`;
+        const scriptDomain =
+            activeState.adsterra.domain ||
+            "www.highperformanceformat.com";
+
+        iframe.srcdoc =
+            `<!DOCTYPE html><html><head><style>body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style></head><body><script type="text/javascript">atOptions = {'key' : '${slotKey}','format' : 'iframe','height' : ${height},'width' : ${width},'params' : {}};</script><script type="text/javascript" src="//${scriptDomain}/${slotKey}/invoke.js"><\/script></body></html>`;
 
         container.appendChild(iframe);
         slot.appendChild(container);
@@ -249,6 +268,7 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         unhideParentSection(slot);
 
         const label = createLabel();
+
         if (label) {
             slot.appendChild(label);
         }
@@ -257,6 +277,7 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         container.className = "ad-provider-container";
         container.dataset.provider = "adsterra";
         container.id = unit.containerId;
+
         slot.appendChild(container);
 
         const script = document.createElement("script");
@@ -264,22 +285,23 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
         script.setAttribute("data-cfasync", "false");
         script.src = unit.scriptUrl;
         script.dataset.zenlytaAdsterra = unit.containerId;
+
         slot.appendChild(script);
     }
 
     /*
-     -----------------------------------------------------
-     05. HIDE / DISABLED AD & CONTAINER
-     -----------------------------------------------------
-     */
+    -----------------------------------------------------
+    05. HIDE / DISABLED AD & CONTAINER
+    -----------------------------------------------------
+    */
 
-     /*
     function renderDisabled(slot) {
         slot.innerHTML = "";
         slot.classList.add("ad-disabled");
 
         // Also cleanly hide the wrapper section to prevent leftover margins/empty spaces
         const parentSection = slot.closest(".ad-section");
+
         if (parentSection) {
             parentSection.classList.add("ad-disabled");
         }
@@ -287,7 +309,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 
     function unhideParentSection(slot) {
         slot.classList.remove("ad-disabled");
+
         const parentSection = slot.closest(".ad-section");
+
         if (parentSection) {
             parentSection.classList.remove("ad-disabled");
         }
@@ -299,9 +323,9 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function renderSlot(slot) {
-        const position = slot.dataset.adPosition || "content";
+        const position =
+            slot.dataset.adPosition || "content";
 
         const targetProvider = activeState.provider;
 
@@ -331,17 +355,20 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function findAdsTxtUrl() {
-        const scriptEl = document.querySelector('script[src*="ads/ads.js"]');
+        const scriptEl =
+            document.querySelector('script[src*="ads/ads.js"]');
+
         if (scriptEl) {
             const src = scriptEl.getAttribute("src");
             const idx = src.indexOf("ads/ads.js");
+
             if (idx >= 0) {
                 const prefix = src.substring(0, idx);
                 return prefix + "ads.txt";
             }
         }
+
         return "/ads.txt";
     }
 
@@ -355,10 +382,19 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
             }
 
             const primaryUrl = findAdsTxtUrl();
-            const fallbackUrls = [primaryUrl, "/ads.txt", "ads.txt", "../ads.txt", "../../ads.txt", "../../../ads.txt"];
-            
+
+            const fallbackUrls = [
+                primaryUrl,
+                "/ads.txt",
+                "ads.txt",
+                "../ads.txt",
+                "../../ads.txt",
+                "../../../ads.txt"
+            ];
+
             // Remove duplicates
-            const uniqueUrls = Array.from(new Set(fallbackUrls));
+            const uniqueUrls =
+                Array.from(new Set(fallbackUrls));
 
             function tryFetch(index) {
                 if (index >= uniqueUrls.length) {
@@ -368,15 +404,28 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
                 }
 
                 const url = uniqueUrls[index];
+
                 fetch(url, { cache: "no-cache" })
                     .then((res) => {
                         if (res.ok) {
                             return res.text();
                         }
-                        throw new Error("Fetch not ok: " + res.status);
+
+                        throw new Error(
+                            "Fetch not ok: " + res.status
+                        );
                     })
                     .then((text) => {
-                        if (text && typeof text === "string" && (text.includes("google.com") || text.includes("adsterra.com") || text.includes("DIRECT") || text.includes("RESELLER"))) {
+                        if (
+                            text &&
+                            typeof text === "string" &&
+                            (
+                                text.includes("google.com") ||
+                                text.includes("adsterra.com") ||
+                                text.includes("DIRECT") ||
+                                text.includes("RESELLER")
+                            )
+                        ) {
                             parseAdsTxtContent(text);
                             resolve(activeState);
                         } else {
@@ -396,23 +445,34 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 
                 for (let line of lines) {
                     line = line.trim();
+
                     // Ignore comment lines and empty lines
                     if (!line || line.startsWith("#")) {
                         continue;
                     }
 
-                    const parts = line.split(",").map((p) => p.trim());
+                    const parts =
+                        line.split(",").map((p) => p.trim());
+
                     if (parts.length >= 2) {
                         const domain = parts[0].toLowerCase();
                         const pubId = parts[1];
 
                         // Check Google AdSense
-                        if (domain === "google.com" && pubId && !pubId.includes("XXXX")) {
+                        if (
+                            domain === "google.com" &&
+                            pubId &&
+                            !pubId.includes("XXXX")
+                        ) {
                             foundAdSense = pubId;
                         }
 
                         // Check Adsterra
-                        if (domain.includes("adsterra") && pubId && !pubId.includes("XXXX")) {
+                        if (
+                            domain.includes("adsterra") &&
+                            pubId &&
+                            !pubId.includes("XXXX")
+                        ) {
                             foundAdsterra = pubId;
                             adsterraKeys.push(pubId);
                         }
@@ -421,24 +481,45 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
 
                 if (foundAdSense) {
                     activeState.provider = "adsense";
-                    activeState.adsense.publisherId = foundAdSense;
+                    activeState.adsense.publisherId =
+                        foundAdSense;
                 } else if (foundAdsterra) {
                     activeState.provider = "adsterra";
-                    activeState.adsterra.keys = adsterraKeys;
+                    activeState.adsterra.keys =
+                        adsterraKeys;
                 } else {
                     fallbackToConfig();
                 }
             }
 
             function fallbackToConfig() {
-                if (config.adsense && config.adsense.enabled && config.adsense.publisherId && !config.adsense.publisherId.includes("XXXX")) {
+                if (
+                    config.adsense &&
+                    config.adsense.enabled &&
+                    config.adsense.publisherId &&
+                    !config.adsense.publisherId.includes("XXXX")
+                ) {
                     activeState.provider = "adsense";
-                } else if (config.adsterra && config.adsterra.enabled && (
-                    (config.adsterra.directUnits && Object.keys(config.adsterra.directUnits).length > 0) ||
-                    config.adsterra.slots.top || config.adsterra.slots.content || config.adsterra.slots.bottom
-                )) {
+                } else if (
+                    config.adsterra &&
+                    config.adsterra.enabled &&
+                    (
+                        (
+                            config.adsterra.directUnits &&
+                            Object.keys(
+                                config.adsterra.directUnits
+                            ).length > 0
+                        ) ||
+                        config.adsterra.slots.top ||
+                        config.adsterra.slots.content ||
+                        config.adsterra.slots.bottom
+                    )
+                ) {
                     activeState.provider = "adsterra";
-                } else if (config.dummy && config.dummy.enabled === true) {
+                } else if (
+                    config.dummy &&
+                    config.dummy.enabled === true
+                ) {
                     activeState.provider = "dummy";
                 } else {
                     activeState.provider = "none";
@@ -455,9 +536,10 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     function initializeAds() {
-        const slots = document.querySelectorAll(".zenlyta-ad");
+        const slots =
+            document.querySelectorAll(".zenlyta-ad");
+
         if (!slots || slots.length === 0) {
             return;
         }
@@ -473,7 +555,6 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     window.ZenlytaAds = {
         init: initializeAds,
         refresh: initializeAds,
@@ -486,9 +567,11 @@ ZENLYTA — UNIVERSAL PNP AD ENGINE (ADSENSE & ADSTERRA)
     -----------------------------------------------------
     */
 
-    /*
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeAds);
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeAds
+        );
     } else {
         initializeAds();
     }
